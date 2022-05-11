@@ -6,7 +6,6 @@ import {AppComponent} from './app.component';
 import {AdminModule} from './admin/admin.module';
 import {CustomerModule} from './customer/customer.module';
 import {MerchantModule} from './merchant/merchant.module';
-import {TestModuleModule} from './test-module/test-module.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +17,6 @@ import {TestModuleModule} from './test-module/test-module.module';
     AdminModule,
     CustomerModule,
     MerchantModule,
-    TestModuleModule
   ],
   providers: [],
   bootstrap: [AppComponent]
