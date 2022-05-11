@@ -1,12 +1,15 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { CustomerRoutingModule } from './customer-routing.module';
-import { CustomerComponent } from './customer.component';
+import {CustomerRoutingModule} from './customer-routing.module';
+import {CustomerComponent} from './customer.component';
+import {FooterComponent} from './shared/footer/footer.component';
+import { InfoComponent } from './shared/info/info.component';
+import { NavbarComponent } from './shared/navbar/navbar.component';
 
 
 @NgModule({
-  declarations: [CustomerComponent],
+  declarations: [CustomerComponent, FooterComponent, InfoComponent, NavbarComponent],
   imports: [
     CommonModule,
     CustomerRoutingModule,
