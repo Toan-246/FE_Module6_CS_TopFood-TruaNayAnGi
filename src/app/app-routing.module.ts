@@ -17,7 +17,7 @@ const routes: Routes = [
     loadChildren: () => import('./admin/admin.module').then(module => module.AdminModule)
   },
   {
-    path: 'merchant',
+    path: 'merchant-list',
     loadChildren: () => import('./merchant/merchant.module').then(module => module.MerchantModule)
   },
   {

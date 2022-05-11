@@ -7,10 +7,15 @@ import {AdminModule} from './admin/admin.module';
 import {CustomerModule} from './customer/customer.module';
 import {MerchantModule} from './merchant/merchant.module';
 import {TestModuleModule} from './test-module/test-module.module';
+import {HttpClientModule} from '@angular/common/http';
+import {NavbarComponent} from './shared/navbar/navbar.component';
+import {SidebarComponent} from './shared/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    NavbarComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
@@ -18,6 +23,7 @@ import {TestModuleModule} from './test-module/test-module.module';
     AdminModule,
     CustomerModule,
     MerchantModule,
+    HttpClientModule,
     TestModuleModule
   ],
   providers: [],

@@ -1,13 +1,14 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {AdminComponent} from './admin.component';
+import {MerchantComponent} from './merchant/merchant.component';
 
 
 const routes: Routes = [
   {
     path: '',
-    component: AdminComponent
-  }
+    loadChildren: () => import('./merchant/merchant.module').then(module => module.MerchantModule)
+  },
 ];
 
 @NgModule({

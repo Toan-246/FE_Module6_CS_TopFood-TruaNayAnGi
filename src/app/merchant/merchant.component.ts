@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-merchant',
+  selector: 'app-merchant-list',
   templateUrl: './merchant.component.html',
   styleUrls: ['./merchant.component.css']
 })
