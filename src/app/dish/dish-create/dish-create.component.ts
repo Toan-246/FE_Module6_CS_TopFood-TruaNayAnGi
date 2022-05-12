@@ -2,6 +2,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 import {CategoryService} from 'src/app/service/category/category.service';
+import {Router} from '@angular/router';
+import {DishService} from '../../service/dish/dish.service';
 
 @Component({
   selector: 'app-dish-create',
@@ -17,10 +19,44 @@ export class DishCreateComponent implements OnInit {
     image: new FormControl('', Validators.required)
   });
 
-  constructor(private categoryService: CategoryService) {
+  constructor(private dishService: DishService,
+              private categoryService: CategoryService,
+              private router: Router) {
   }
 
+  get name() {
+    return this.dishForm.get('name');
+  }
+  get price() {
+    return this.dishForm.get('price');
+  }
+  // get categories() {
+  //   return this.dishForm.get('price');
+  // }
+  get merchant() {
+    return this.dishForm.get('merchant');
+  }
+  get description() {
+    return this.dishForm.get('description');
+  }
+  // get image() {
+  //   return this.dishForm.get('image');
+  // }
+
   ngOnInit() {
+  }
+
+  createDish() {
+    if (this.dishForm.valid) {
+      this.dishService.createDish(this.dishForm.value).subscribe(() => {
+        /// thong bao
+      }, error => {
+        // thong bao
+      });
+    } else {
+      /// thOng bao
+    }
+    this.router.navigateByUrl('/dishes');
   }
 
 }
