@@ -1,7 +1,7 @@
 <app-navbar-customer></app-navbar-customer>
 <section class="breadcrumb-osahan pt-5 pb-5 bg-dark position-relative text-center">
-  <h1 class="text-white">Offers Near You</h1>
-  <h6 class="text-white-50">Best deals at your favourite restaurants</h6>
+  <h1 class="text-white">Trưa nay ăn gì?</h1>
+  <h6 class="text-white-50">Tìm món ngon quanh bạn</h6>
 </section>
 <section class="section pt-5 pb-5 products-listing">
   <div class="container">
@@ -31,6 +31,27 @@
           </div>
           <div class="filters-body">
             <div id="accordion">
+              <div class="filters-card p-4">
+                <div class="filters-card-header" id="headingCategory">
+                  <h6 class="mb-0">
+                    <a href="#" class="btn-link" data-toggle="collapse"
+                       data-target="#collapseCategory" aria-expanded="true"
+                       aria-controls="collapseCategory">
+                      Danh mục món ăn <i class="icofont-arrow-down float-right"></i>
+                    </a>
+                  </h6>
+                </div>
+                <div id="collapseCategory" class="collapse" aria-labelledby="headingCategory"
+                     data-parent="#accordion">
+                  <div class="filters-card-body card-shop-filters">
+                    <div class="custom-control custom-checkbox" *ngFor="let category of categories">
+                      <input type="checkbox" class="custom-control-input" id="cb-category-{{category.id}}">
+                      <label class="custom-control-label" for="cb-category-{{category.id}}">{{category.name}} <small
+                        class="text-black-50">({{category.numberOfDishes}} món)</small></label>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <div class="filters-card border-bottom p-4">
                 <div class="filters-card-header" id="headingOne">
                   <h6 class="mb-0">
@@ -217,38 +238,6 @@
                       </label>
                     </div>
                     <div class="mt-2"><a href="#" class="link">See all</a></div>
-                  </div>
-                </div>
-              </div>
-              <div class="filters-card p-4">
-                <div class="filters-card-header" id="headingCategory">
-                  <h6 class="mb-0">
-                    <a href="#" class="btn-link" data-toggle="collapse"
-                       data-target="#collapseCategory" aria-expanded="true"
-                       aria-controls="collapseCategory">
-                      Category <i class="icofont-arrow-down float-right"></i>
-                    </a>
-                  </h6>
-                </div>
-                <div id="collapseCategory" class="collapse" aria-labelledby="headingCategory"
-                     data-parent="#accordion">
-                  <div class="filters-card-body card-shop-filters">
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="cb15">
-                      <label class="custom-control-label" for="cb15">Delivery <small
-                        class="text-black-50">156</small></label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="cb26">
-                      <label class="custom-control-label" for="cb26">Dine-out <small
-                        class="text-black-50">120</small></label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="cb37">
-                      <label class="custom-control-label" for="cb37">Cafés<small
-                        class="text-black-50">85</small>
-                      </label>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -655,6 +644,7 @@
     </div>
   </div>
 </section>
+<app-most-purchased-dishes></app-most-purchased-dishes>
 <section class="section pt-5 pb-5 text-center bg-white">
   <div class="container">
     <div class="row">

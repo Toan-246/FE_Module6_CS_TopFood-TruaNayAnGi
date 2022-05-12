@@ -17,9 +17,13 @@ const routes: Routes = [
     loadChildren: () => import('./admin/admin.module').then(module => module.AdminModule)
   },
   {
-    path: 'merchant-list',
+    path: 'merchant',
     loadChildren: () => import('./merchant/merchant.module').then(module => module.MerchantModule)
-  }
+  },
+  {
+    path: '',
+    loadChildren: () => import('./auth/auth.module').then(module => module.AuthModule)
+  },
 ];
 
 @NgModule({
