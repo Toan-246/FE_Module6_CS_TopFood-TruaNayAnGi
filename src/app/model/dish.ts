@@ -5,7 +5,7 @@ export interface Dish {
   id?: number;
   name?: string;
   price?: number;
-  categories?: Array<Category>;
+  categories?: Category[];
   merchant?: Merchant;
   sold?: number;
   description?: string;
