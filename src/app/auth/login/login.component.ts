@@ -25,9 +25,10 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.authService.login(this.loginForm.get('email').value, this.loginForm.get('password').value).subscribe(() => {
-      this.notificationService.showMessage('success', 'Đăng nhập thành công')
+      this.notificationService.showMessage('success', 'Đăng nhập thành công');
       this.router.navigateByUrl('/home');
     }, error => {
-      this.notificationService.showMessage('error', 'Đăng nhập thất bại')    });
+      this.notificationService.showMessage('error', 'Đăng nhập thất bại');
+    });
   }
 }
