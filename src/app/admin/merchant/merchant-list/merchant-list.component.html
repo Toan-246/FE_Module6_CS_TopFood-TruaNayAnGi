@@ -1,68 +1,67 @@
-
-    <app-sidebar-admin></app-sidebar-admin>
-    <app-navbar-admin></app-navbar-admin>
-    <div class="content-wrapper">
-      <router-outlet></router-outlet>
-
-<section class="content-header">
-  <div class="container-fluid">
-    <div class="row mb-2">
-      <div class="col-sm-6">
-        <h1>List merchant</h1>
-      </div>
-      <div class="col-sm-6">
-        <ol class="breadcrumb float-sm-right">
-          <li class="breadcrumb-item"><a routerLink="/admin">Home</a></li>
-        </ol>
-      </div>
-    </div>
-  </div><!-- /.container-fluid -->
-</section>
-<section class="content">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-12">
-        <div class="card">
-          <div class="card-header">
-          </div>
-          <div class="card-body">
-            <table id="merchant-list" class="table table-bordered table-hover">
-              <thead>
-              <tr>
-                <th>#</th>
-                <th>Name</th>
-                <th>Address</th>
-                <th>Phone</th>
-                <th>OpenTime</th>
-                <th>CloseTime</th>
-                <th>VSATTP</th>
-                <th>Status</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr *ngFor="let merchant of merchants; index as i">
-                <td>{{i + 1}}</td>
-                <td>{{merchant.name}}</td>
-                <td>{{merchant.address}}</td>
-                <td>{{merchant.phone}}</td>
-                <td>{{merchant.openTime}}</td>
-                <td>{{merchant.closeTime}}</td>
-                <td>{{merchant.vsattp}}</td>
-                <td>
-                  <button *ngIf="merchant.active">Block</button>
-                  <button *ngIf="!merchant.active">Unblock</button>
-                </td>
-              </tr>
-              </tbody>
-            </table>
-          </div>
-          <!-- /.card-body -->
+<app-sidebar-admin></app-sidebar-admin>
+<app-navbar-admin></app-navbar-admin>
+<div class="content-wrapper">
+  <router-outlet></router-outlet>
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>List merchant</h1>
         </div>
-        <!-- /.card -->
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a routerLink="/admin">Home</a></li>
+          </ol>
+        </div>
       </div>
-      <!-- /.col -->
+    </div><!-- /.container-fluid -->
+  </section>
+
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+            </div>
+            <div class="card-body">
+              <table id="merchant-list" class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Address</th>
+                  <th>Phone</th>
+                  <th>OpenTime</th>
+                  <th>CloseTime</th>
+                  <th>VSATTP</th>
+                  <th>Status</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let merchant of merchants; index as i" >
+                  <td>{{i + 1}}</td>
+                  <td><a routerLink="/admin/merchant/view/{{merchant.id}}">{{merchant.name}}</a></td>
+                  <td>{{merchant.address}}</td>
+                  <td>{{merchant.phone}}</td>
+                  <td>{{merchant.openTime}}</td>
+                  <td>{{merchant.closeTime}}</td>
+                  <td>{{merchant.vsattp}}</td>
+                  <td>
+                    <button *ngIf="merchant.active" class="btn btn-danger">Block</button>
+                    <button *ngIf="!merchant.active" class="btn btn-success">Unblock</button>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
     </div>
-    <!-- /.row -->
-  </div>
-  <!-- /.container-fluid -->
-</section>
+    <!-- /.container-fluid -->
+  </section>
