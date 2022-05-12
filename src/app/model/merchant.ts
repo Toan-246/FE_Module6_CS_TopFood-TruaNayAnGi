@@ -7,4 +7,5 @@ export interface Merchant {
   closeTime?: number;
   vsattp?: string;
   active?: boolean;
+  user?: any;
 }

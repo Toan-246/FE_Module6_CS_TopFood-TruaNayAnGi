@@ -16,7 +16,6 @@
       </div>
     </div><!-- /.container-fluid -->
   </section>
-
   <section class="content">
     <div class="container-fluid">
       <div class="row">
@@ -27,28 +26,32 @@
             <div class="card-body">
               <form [formGroup]="merchantForm" (ngSubmit)="submit()">
               <div class="mb-3">
-                <label class="form-label">Name</label>
+                <label class="form-label">Tên cửa hàng</label>
                 <input formControlName="name" class="form-control" disabled>
               </div>
                 <div class="mb-3">
-                <label class="form-label">Address</label>
+                <label class="form-label">Địa chỉ</label>
                 <input formControlName="address" class="form-control" disabled>
               </div>
                 <div class="mb-3">
-                <label class="form-label">Phone</label>
+                <label class="form-label">Số điện thoại</label>
                 <input formControlName="phone" class="form-control" disabled>
               </div>
                 <div class="mb-3">
-                <label class="form-label">Open Time</label>
+                <label class="form-label">Giờ mở cửa</label>
                 <input formControlName="openTime" class="form-control" disabled>
               </div>
                 <div class="mb-3">
-                <label class="form-label">Close Time</label>
+                <label class="form-label">Giờ đóng cửa</label>
                 <input formControlName="closeTime" class="form-control" disabled>
               </div>
                 <div class="mb-3">
-                <label class="form-label">VSATTP</label>
+                <label class="form-label">Giấy chứng nhận VSATTP</label>
                 <input formControlName="vsattp" class="form-control" disabled>
+              </div>
+                <div class="mb-3">
+                <label class="form-label">Tài khoản</label>
+                <input formControlName="user" class="form-control" disabled>
               </div>
                 <tr>
                   <td></td>
