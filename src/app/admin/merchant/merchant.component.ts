@@ -7,13 +7,11 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./merchant.component.css']
 })
 export class MerchantComponent implements OnInit {
-    ngOnInit(): void {
-
-    }
-
-
   constructor() {
   }
 
+  ngOnInit(): void {
+
+  }
 
 }
