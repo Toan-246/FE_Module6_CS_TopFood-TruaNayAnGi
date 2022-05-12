@@ -9,10 +9,10 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import {SharedModule} from '../shared/shared.module';
 import { MerchantRegisterComponent } from './merchant-register/merchant-register.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-
+import { MostPurchasedDishesComponent } from './most-purchased-dishes/most-purchased-dishes.component';
 
 @NgModule({
-    declarations: [CustomerComponent, FooterComponent, InfoComponent, NavbarComponent, MerchantRegisterComponent],
+    declarations: [CustomerComponent, FooterComponent, InfoComponent, NavbarComponent, MerchantRegisterComponent, MostPurchasedDishesComponent],
     exports: [
         NavbarComponent
     ],
