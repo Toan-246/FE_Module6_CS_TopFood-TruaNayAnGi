@@ -16,7 +16,6 @@
       </div>
     </div><!-- /.container-fluid -->
   </section>
-
   <section class="content">
     <div class="container-fluid">
       <div class="row">
@@ -26,33 +25,39 @@
             </div>
             <div class="card-body">
               <form [formGroup]="merchantForm" (ngSubmit)="submit()">
-              <div class="mb-3">
-                <label class="form-label">Name</label>
-                <input formControlName="name" class="form-control" disabled>
-              </div>
                 <div class="mb-3">
-                <label class="form-label">Address</label>
-                <input formControlName="address" class="form-control" disabled>
-              </div>
+                  <label class="form-label">Tên cửa hàng</label>
+                  <input formControlName="name" class="form-control" disabled>
+                </div>
                 <div class="mb-3">
-                <label class="form-label">Phone</label>
-                <input formControlName="phone" class="form-control" disabled>
-              </div>
+                  <label class="form-label">Email</label>
+                  <input formControlName="user" class="form-control" disabled>
+                </div>
                 <div class="mb-3">
-                <label class="form-label">Open Time</label>
-                <input formControlName="openTime" class="form-control" disabled>
-              </div>
+                  <label class="form-label">Địa chỉ</label>
+                  <input formControlName="address" class="form-control" disabled>
+                </div>
                 <div class="mb-3">
-                <label class="form-label">Close Time</label>
-                <input formControlName="closeTime" class="form-control" disabled>
-              </div>
+                  <label class="form-label">Số điện thoại</label>
+                  <input formControlName="phone" class="form-control" disabled>
+                </div>
                 <div class="mb-3">
-                <label class="form-label">VSATTP</label>
-                <input formControlName="vsattp" class="form-control" disabled>
-              </div>
+                  <label class="form-label">Giờ mở cửa</label>
+                  <input formControlName="openTime" class="form-control" disabled>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Giờ đóng cửa</label>
+                  <input formControlName="closeTime" class="form-control" disabled>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Giấy chứng nhận VSATTP</label>
+                  <input formControlName="vsattp" class="form-control" disabled>
+                </div>
                 <tr>
                   <td></td>
-                  <td><button>Thoát</button></td>
+                  <td>
+                    <button>Thoát</button>
+                  </td>
                 </tr>
               </form>
             </div>
