@@ -1,12 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {CustomerComponent} from './customer.component';
+import {MerchantRegisterComponent} from './merchant-register/merchant-register.component';
 
 
 const routes: Routes = [
   {
     path: '',
     component: CustomerComponent
+  },
+  {
+    path: 'merchant-register',
+    component: MerchantRegisterComponent
   }
 ];
 
