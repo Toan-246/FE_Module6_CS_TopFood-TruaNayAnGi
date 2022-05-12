@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MerchantService} from '../../../service/merchant/merchant.service';
 import {Merchant} from '../../../model/merchant';
+
 declare var $: any;
 
 @Component({
@@ -10,8 +11,10 @@ declare var $: any;
 })
 export class MerchantListComponent implements OnInit {
   merchants: Merchant[] = [];
+  id: number;
 
-  constructor(private merchantService: MerchantService) { }
+  constructor(private merchantService: MerchantService) {
+  }
 
   ngOnInit() {
     this.getAllMerchant();
