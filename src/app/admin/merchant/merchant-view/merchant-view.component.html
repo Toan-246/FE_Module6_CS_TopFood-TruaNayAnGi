@@ -1,0 +1,68 @@
+<app-sidebar-admin></app-sidebar-admin>
+<app-navbar-admin></app-navbar-admin>
+<div class="content-wrapper">
+  <router-outlet></router-outlet>
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>List merchant</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a routerLink="/admin">Home</a></li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
+
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+            </div>
+            <div class="card-body">
+              <form [formGroup]="merchantForm" (ngSubmit)="submit()">
+              <div class="mb-3">
+                <label class="form-label">Name</label>
+                <input formControlName="name" class="form-control" disabled>
+              </div>
+                <div class="mb-3">
+                <label class="form-label">Address</label>
+                <input formControlName="address" class="form-control" disabled>
+              </div>
+                <div class="mb-3">
+                <label class="form-label">Phone</label>
+                <input formControlName="phone" class="form-control" disabled>
+              </div>
+                <div class="mb-3">
+                <label class="form-label">Open Time</label>
+                <input formControlName="openTime" class="form-control" disabled>
+              </div>
+                <div class="mb-3">
+                <label class="form-label">Close Time</label>
+                <input formControlName="closeTime" class="form-control" disabled>
+              </div>
+                <div class="mb-3">
+                <label class="form-label">VSATTP</label>
+                <input formControlName="vsattp" class="form-control" disabled>
+              </div>
+                <tr>
+                  <td></td>
+                  <td><button>Thoát</button></td>
+                </tr>
+              </form>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+  </section>
