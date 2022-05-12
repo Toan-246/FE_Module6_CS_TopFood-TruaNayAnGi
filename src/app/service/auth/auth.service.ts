@@ -11,7 +11,7 @@ const API_URL = environment.apiUrl;
   providedIn: 'root'
 })
 export class AuthService {
-  private currentUserSubject: BehaviorSubject<UserToken>;
+  public currentUserSubject: BehaviorSubject<UserToken>;
   public currentUser: Observable<UserToken>;
 
   constructor(private http: HttpClient) {
@@ -22,16 +22,17 @@ export class AuthService {
   login(email: string, password: string) {
     return this.http.post<any>(API_URL + '/login', {email, password})
       .pipe(map(user => {
-        localStorage.setItem('user', JSON.stringify(user));
+        sessionStorage.setItem('user', JSON.stringify(user));
         this.currentUserSubject.next(user);
         return user;
       }));
   }
-
-
+  public get currentUserValue(){
+    return this.currentUserSubject.value;
+  }
 
   logout() {
-    localStorage.removeItem('user');
+    sessionStorage.removeItem('user');
     this.currentUserSubject.next(null);
   }
 }
