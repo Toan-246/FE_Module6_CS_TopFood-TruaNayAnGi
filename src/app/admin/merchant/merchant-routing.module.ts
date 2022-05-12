@@ -5,9 +5,10 @@ import {MerchantListComponent} from './merchant-list/merchant-list.component';
 
 const routes: Routes = [
   {
-    path: 'list',
+    path: '',
     component: MerchantListComponent
   }
+
 ];
 
 @NgModule({

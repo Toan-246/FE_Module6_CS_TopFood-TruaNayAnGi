@@ -5,6 +5,7 @@ import {AdminRoutingModule} from './admin-routing.module';
 import {AdminComponent} from './admin.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MerchantModule} from './merchant/merchant.module';
+import {SharedModule} from '../shared/shared.module';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import {MerchantModule} from './merchant/merchant.module';
     AdminComponent,
   ],
   imports: [
+    SharedModule,
     CommonModule,
     ReactiveFormsModule,
     AdminRoutingModule,
