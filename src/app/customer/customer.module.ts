@@ -6,6 +6,7 @@ import {CustomerComponent} from './customer.component';
 import {FooterComponent} from './shared/footer/footer.component';
 import { InfoComponent } from './shared/info/info.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
+import {SharedModule} from '../shared/shared.module';
 
 
 @NgModule({
@@ -13,9 +14,10 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
     exports: [
         NavbarComponent
     ],
-    imports: [
-        CommonModule,
-        CustomerRoutingModule,
-    ]
+  imports: [
+    CommonModule,
+    CustomerRoutingModule,
+    SharedModule,
+  ]
 })
 export class CustomerModule { }
