@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MerchantService} from '../../../service/merchant/merchant.service';
 import {Merchant} from '../../../model/merchant';
+import {FormGroup} from '@angular/forms';
 
 declare var $: any;
 
@@ -11,7 +12,6 @@ declare var $: any;
 })
 export class MerchantListComponent implements OnInit {
   merchants: Merchant[] = [];
-  id: number;
 
   constructor(private merchantService: MerchantService) {
   }
@@ -20,21 +20,17 @@ export class MerchantListComponent implements OnInit {
     this.getAllMerchant();
   }
 
+  toggleMerchant(merchant: Merchant) {
+    merchant.active = !merchant.active;
+    this.merchantService.updateActiveMerchant(merchant.id,merchant).subscribe(()=>{
+      this.getAllMerchant();
+    });
+  }
+
   getAllMerchant() {
     this.merchantService.getAll().subscribe((merchantsFromBE) => {
       this.merchants = merchantsFromBE;
       console.log(this.merchants);
-      $(function() {
-        $('#merchant-list').DataTable({
-          'paging': true,
-          'lengthChange': false,
-          'searching': false,
-          'ordering': true,
-          'info': true,
-          'autoWidth': false,
-        });
-      });
     });
   }
-
 }
