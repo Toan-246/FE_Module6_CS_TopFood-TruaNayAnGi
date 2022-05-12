@@ -34,7 +34,7 @@ export class MerchantViewComponent implements OnInit {
         openTime: new FormControl(merchant.openTime),
         closeTime: new FormControl(merchant.closeTime),
         vsattp: new FormControl(merchant.vsattp),
-        user: new FormControl(merchant.user.role.name),
+        user: new FormControl(merchant.user.email),
       });
     });
   }
