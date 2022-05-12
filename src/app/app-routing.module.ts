@@ -24,10 +24,6 @@ const routes: Routes = [
     path: '',
     loadChildren: () => import('./auth/auth.module').then(module => module.AuthModule)
   },
-  {
-    path: '',
-    loadChildren: () => import('./auth/auth.module').then(module => module.AuthModule)
-  }
 ];
 
 @NgModule({

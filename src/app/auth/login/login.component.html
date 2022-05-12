@@ -7,23 +7,24 @@
           <div class="row">
             <div class="col-md-9 col-lg-8 mx-auto pl-5 pr-5">
               <h3 class="login-heading mb-4">Wellcome back!</h3>
-              <form>
+              <form [formGroup]="loginForm" (ngSubmit)="login()">
                 <div class="form-label-group">
                   <input type="email" id="inputEmail" class="form-control"
-                         placeholder="Email address">
+                         placeholder="Email address" formControlName="email">
                   <label for="inputEmail">Email</label>
                 </div>
                 <div class="form-label-group">
                   <input type="password" id="inputPassword" class="form-control"
-                         placeholder="Password">
+                         placeholder="Password" formControlName="password">
                   <label for="inputPassword">Password</label>
                 </div>
                 <div class="custom-control custom-checkbox mb-3">
                   <input type="checkbox" class="custom-control-input" id="customCheck1">
                   <label class="custom-control-label" for="customCheck1">Nhớ mật khẩu</label>
                 </div>
-                <a href="index.html"
-                   class="btn btn-lg btn-outline-primary btn-block btn-login text-uppercase font-weight-bold mb-2">Đăng nhập</a>
+                <button type="submit"
+                   class="btn btn-lg btn-outline-primary btn-block btn-login text-uppercase font-weight-bold mb-2">Đăng nhập
+                </button>
                 <div class="text-center pt-3">
                   Bạn chưa có tài khoản? <a class="font-weight-bold" href="register.html">Đăng ký ngay</a>
                 </div>
