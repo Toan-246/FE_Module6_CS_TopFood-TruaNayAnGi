@@ -17,4 +17,8 @@ export class MerchantService {
   getAll(): Observable<Merchant[]> {
     return this.http.get<Merchant[]>(`${API_URL}/merchants`);
   }
+
+  findById(id: number): Observable<Merchant> {
+    return this.http.get<Merchant>(`${API_URL}/merchants/${id}`);
+  }
 }
