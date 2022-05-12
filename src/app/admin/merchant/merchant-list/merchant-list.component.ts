@@ -22,7 +22,7 @@ export class MerchantListComponent implements OnInit {
       this.merchants = merchantsFromBE;
       console.log(this.merchants);
       $(function() {
-        $('#merchant-list-list').DataTable({
+        $('#merchant-list').DataTable({
           'paging': true,
           'lengthChange': false,
           'searching': false,

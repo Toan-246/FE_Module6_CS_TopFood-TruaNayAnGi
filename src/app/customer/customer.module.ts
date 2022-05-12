@@ -9,10 +9,13 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 
 
 @NgModule({
-  declarations: [CustomerComponent, FooterComponent, InfoComponent, NavbarComponent],
-  imports: [
-    CommonModule,
-    CustomerRoutingModule,
-  ]
+    declarations: [CustomerComponent, FooterComponent, InfoComponent, NavbarComponent],
+    exports: [
+        NavbarComponent
+    ],
+    imports: [
+        CommonModule,
+        CustomerRoutingModule,
+    ]
 })
 export class CustomerModule { }

@@ -1,18 +1,22 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {AdminComponent} from './admin.component';
-import {MerchantComponent} from './merchant/merchant.component';
 
 
 const routes: Routes = [
+{
+  path: 'merchant',
+    loadChildren: () => import('./merchant/merchant.module').then(module => module.MerchantModule)
+},
   {
     path: '',
-    loadChildren: () => import('./merchant/merchant.module').then(module => module.MerchantModule)
-  },
+    component: AdminComponent
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class AdminRoutingModule { }
+export class AdminRoutingModule {
+}
