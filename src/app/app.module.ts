@@ -14,6 +14,7 @@ import {MerchantRegisterModule} from './admin/merchant-register/merchant-registe
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
