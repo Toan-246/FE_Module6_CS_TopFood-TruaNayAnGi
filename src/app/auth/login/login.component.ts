@@ -4,6 +4,7 @@ import {AuthService} from '../../service/auth/auth.service';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {NotificationService} from '../../service/notification/notification.service';
 import {User} from '../../model/user';
+import {UserToken} from '../../model/user-token';
 
 @Component({
   selector: 'app-login',
@@ -20,6 +21,8 @@ export class LoginComponent implements OnInit {
   constructor(private authService: AuthService,
               private router: Router,
               private notificationService: NotificationService) {
+    this.authService.currentUser.subscribe(value => this.user = value);
+
   }
 
   get email() {
@@ -34,9 +37,19 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.authService.login(this.loginForm.get('email').value, this.loginForm.get('password').value).subscribe(() => {
+    this.authService.login(this.loginForm.get('email').value, this.loginForm.get('password').value).subscribe((data) => {
       this.notificationService.showMessage('success', 'Đăng nhập thành công');
-      this.router.navigateByUrl('/home');
+      sessionStorage.setItem('user', JSON.stringify(this.user));
+      switch (this.user.roles[0].authority) {
+        case 'ROLE_CUSTOMER': {
+          this.router.navigateByUrl('/home');
+          break;
+        }
+        case 'ROLE_ADMIN': {
+          this.router.navigateByUrl('/admin');
+          break;
+        }
+      }
     }, error => {
       this.notificationService.showMessage('error', error.error.message);
     });
