@@ -22,7 +22,7 @@ export class MerchantService {
     return this.http.get<Merchant>(`${API_URL}/merchants/${id}`);
   }
 
-  updateActiveMerchant(id: number, merchant: Merchant): Observable<Merchant>{
-    return this.http.put(`${API_URL}/merchants/${id}`,merchant);
+  updateActiveMerchant(id: number, merchant: Merchant): Observable<Merchant> {
+    return this.http.put(`${API_URL}/merchants/${id}`, merchant);
   }
 }

@@ -18,8 +18,23 @@ export class ListDishComponent implements OnInit {
   }
 
   getAllDishes() {
-    this.dishService.getAll().subscribe(listDish => {
-      this.dishes = listDish;
+    this.dishService.getAll().subscribe(allDishes => {
+      this.dishes = allDishes;
+      // $(function() {
+      //   $('#product-list').DataTable({
+      //     'paging': true,
+      //     'lengthChange': false,
+      //     'searching': false,
+      //     'ordering': true,
+      //     'info': true,
+      //     'autoWidth': false,
+      //   });
+    });
+  }
+
+  getAllMerchantDishes(userId) {
+    this.dishService.getAllMerchantDishes(userId).subscribe((merchantDishes) => {
+
     });
   }
 }
