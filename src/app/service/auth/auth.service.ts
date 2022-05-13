@@ -36,7 +36,4 @@ export class AuthService {
     sessionStorage.removeItem('user');
     this.currentUserSubject.next(null);
   }
-  getUserByEmail(email: string): Observable<User>{
-    return this.http.get<User>(`${API_URL}/user/${email}`)
-  }
 }
