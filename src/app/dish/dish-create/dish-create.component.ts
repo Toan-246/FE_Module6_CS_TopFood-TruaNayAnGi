@@ -58,5 +58,4 @@ export class DishCreateComponent implements OnInit {
     }
     this.router.navigateByUrl('/dishes');
   }
-
 }
