@@ -7,25 +7,30 @@
           <div class="row">
             <div class="col-md-9 col-lg-8 mx-auto pl-5 pr-5">
               <h3 class="login-heading mb-4">Đăng ký thành viên nhận ngay ưu đãi!</h3>
-              <form [formGroup]="registerForm">
+              <form [formGroup]="registerForm" (ngSubmit)="register()">
                 <div class="form-label-group">
                   <input type="email" id="inputEmail" class="form-control"
-                         placeholder="Email address">
-                  <label for="inputEmail">Email address / Mobile</label>
+                         placeholder="Email address" formControlName="email">
+                  <label for="inputEmail">Email address</label>
+                </div>
+                <div class="form-label-group">
+                  <input type="text" id="inputUsername" class="form-control"
+                         placeholder="Email address" formControlName="username">
+                  <label for="inputUsername">User name</label>
                 </div>
                 <div class="form-label-group">
                   <input type="password" id="inputPassword" class="form-control"
-                         placeholder="Password">
+                         placeholder="Password" formControlName="password">
                   <label for="inputPassword">Password</label>
                 </div>
                 <div class="form-label-group mb-4">
-                  <input type="text" id="ptext" class="form-control" placeholder="Promocode">
-                  <label for="ptext">Promocode</label>
+                  <input type="password" id="ptext" class="form-control" placeholder="Promocode" formControlName="confirmPassword">
+                  <label for="ptext">Confirm password</label>
                 </div>
-                <a href="index.html"
-                   class="btn btn-lg btn-outline-primary btn-block btn-login text-uppercase font-weight-bold mb-2">Đăng nhập</a>
+                <button type="submit"
+                   class="btn btn-lg btn-outline-primary btn-block btn-login text-uppercase font-weight-bold mb-2">Đăng Ký</button>
                 <div class="text-center pt-3">
-                  Bạn đã có tài khoản? <a class="font-weight-bold" href="login.html">Đăng nhập ngay</a>
+                  Bạn đã có tài khoản? <a class="font-weight-bold" routerLink="/login" >Đăng nhập ngay</a>
                 </div>
               </form>
             </div>
