@@ -12,11 +12,16 @@
                   <input type="email" id="inputEmail" class="form-control"
                          placeholder="Email address" formControlName="email">
                   <label for="inputEmail">Email</label>
+                  <div class="validate" [hidden]="email.valid || !email.touched">
+                    <div *ngIf="email.errors?.required">Nhập địa chỉ Email</div>
+                    <div *ngIf="email.errors?.email">Sai định dang email</div>
+                  </div>
                 </div>
                 <div class="form-label-group">
                   <input type="password" id="inputPassword" class="form-control"
                          placeholder="Password" formControlName="password">
                   <label for="inputPassword">Password</label>
+                  <p class="validate" [hidden]="password.valid || !password.touched">Nhập password</p>
                 </div>
                 <div class="custom-control custom-checkbox mb-3">
                   <input type="checkbox" class="custom-control-input" id="customCheck1">

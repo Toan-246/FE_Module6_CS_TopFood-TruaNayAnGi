@@ -12,20 +12,33 @@
                   <input type="email" id="inputEmail" class="form-control"
                          placeholder="Email address" formControlName="email">
                   <label for="inputEmail">Email address</label>
+                  <div class="validate" [hidden]="email.valid || !email.touched">
+                    <div *ngIf="email.errors?.required">Nhập địa chỉ Email</div>
+                    <div *ngIf="email.errors?.email">Sai định dang email</div>
+                  </div>
                 </div>
                 <div class="form-label-group">
                   <input type="text" id="inputUsername" class="form-control"
-                         placeholder="Email address" formControlName="username">
+                         placeholder="User name" formControlName="username">
                   <label for="inputUsername">User name</label>
+                  <p class="validate" [hidden]="username.valid || !username.touched">Nhập username</p>
                 </div>
                 <div class="form-label-group">
                   <input type="password" id="inputPassword" class="form-control"
                          placeholder="Password" formControlName="password">
                   <label for="inputPassword">Password</label>
+                  <div class="validate" [hidden]="password.valid || !password.touched">
+                    <div *ngIf="password.errors?.required">Nhập password</div>
+                    <div *ngIf="password.errors?.pattern">Mật khẩu ít nhất tám ký tự, ít nhất một chữ cái và một số</div>
+                  </div>
                 </div>
                 <div class="form-label-group mb-4">
                   <input type="password" id="ptext" class="form-control" placeholder="Promocode" formControlName="confirmPassword">
                   <label for="ptext">Confirm password</label>
+                  <div class="validate" [hidden]="confirmPassword.valid || !confirmPassword.touched">
+                    <div *ngIf="password.errors?.required">Nhập confirm password</div>
+                    <!--                    <div *ngIf="password.errors?.">Sai định dang email</div>-->
+                  </div>
                 </div>
                 <button type="submit"
                    class="btn btn-lg btn-outline-primary btn-block btn-login text-uppercase font-weight-bold mb-2">Đăng Ký</button>
