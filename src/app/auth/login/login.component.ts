@@ -17,12 +17,11 @@ export class LoginComponent implements OnInit {
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', Validators.required)
   });
-  currentUser: UserToken;
 
   constructor(private authService: AuthService,
               private router: Router,
               private notificationService: NotificationService) {
-    this.authService.currentUser.subscribe(value => this.currentUser = value);
+    this.authService.currentUser.subscribe(value => this.user = value);
 
   }
 
@@ -40,8 +39,8 @@ export class LoginComponent implements OnInit {
   login() {
     this.authService.login(this.loginForm.get('email').value, this.loginForm.get('password').value).subscribe((data) => {
       this.notificationService.showMessage('success', 'Đăng nhập thành công');
-      sessionStorage.setItem('currentUser', JSON.stringify(this.currentUser))
-      switch (this.currentUser.roles[0].authority){
+      sessionStorage.setItem('user', JSON.stringify(this.user))
+      switch (this.user.roles[0].authority){
         case "ROLE_CUSTOMER": {
           this.router.navigateByUrl('/home');
           break;
