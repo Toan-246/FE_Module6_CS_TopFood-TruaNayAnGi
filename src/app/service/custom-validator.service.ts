@@ -7,7 +7,7 @@ import {AbstractControl} from '@angular/forms';
 export class CustomValidatorService {
 
   phoneRegex = RegExp(
-    /^\+84\d{9,10}$/
+    /^\+84\d{10,11}$/
   );
 
   constructor() {

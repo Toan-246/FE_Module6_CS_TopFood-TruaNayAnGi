@@ -34,26 +34,28 @@ export class MerchantRegisterComponent implements OnInit {
   submitForm() {
     const currentUser = JSON.parse(sessionStorage.getItem('user'));
     const userId = currentUser.id;
-
-    const merchantRequest = {
-      user: {
-        id: userId
-      },
-      name: this.registerForm.get('name').value,
-      description: this.registerForm.get('description').value,
-      address: this.registerForm.get('address').value,
-      phone: this.registerForm.get('phone').value,
-      openTime: this.registerForm.get('openTime').value,
-      closeTime: this.registerForm.get('closeTime').value
-    };
-    this.merchantRequestService.saveMerchantRequest(merchantRequest).subscribe(() => {
+    if (this.registerForm.valid) {
+      const merchantRequest = {
+        user: {
+          id: userId
+        },
+        name: this.registerForm.get('name').value,
+        description: this.registerForm.get('description').value,
+        address: this.registerForm.get('address').value,
+        phone: this.registerForm.get('phone').value,
+        openTime: this.registerForm.get('openTime').value,
+        closeTime: this.registerForm.get('closeTime').value
+      };
+      this.merchantRequestService.saveMerchantRequest(merchantRequest).subscribe(() => {
         this.notificationService.showMessage('success', 'Đã gửi yêu cầu, vui lòng chờ xét duyệt');
         this.router.navigateByUrl('/home');
-      },
-      (error) => {
+      }, error => {
         console.log(error);
-        this.notificationService.showMessage('error', 'Gửi yêu cầu thất bại');
+        this.notificationService.showMessage('error', error.error.message);
       });
+    } else {
+      this.notificationService.showMessage('error', 'Bạn chưa điền đầy đủ thông tin ');
+    }
   }
 
   get userControl() {
