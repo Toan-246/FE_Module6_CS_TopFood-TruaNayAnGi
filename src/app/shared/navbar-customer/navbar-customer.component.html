@@ -8,33 +8,30 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="home.html">Trang chủ <span class="sr-only">(current)</span></a>
+          <a class="nav-link" routerLink="/home">Trang chủ <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="home.html">Đăng ký <span class="sr-only"></span></a>
+          <a class="nav-link" routerLink="/login" *ngIf="!loggedIn">Đăng nhập <span class="sr-only"></span></a>
         </li>
-        <li class="nav-item dropdown dropdown-cart">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/register" *ngIf="!loggedIn">Đăng ký <span class="sr-only"></span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/register" *ngIf="loggedIn">{{currentUser.username}}<span class="sr-only"></span></a>
+        </li>
+
+        <li class="nav-item dropdown dropdown-cart" *ngIf="loggedIn">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
              aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-shopping-basket"></i> Giỏ hàng
-            <span class="badge badge-success">5</span>
+            <span class="badge badge-success">{{cart.length}}</span>
           </a>
           <div class="dropdown-menu dropdown-cart-top p-0 dropdown-menu-right shadow-sm border-0">
             <div class="dropdown-cart-top-body border-top p-4">
-              <p class="mb-2"><i class="icofont-ui-press text-danger food-item"></i> Chicken Tikka
-                Sub
-                12" (30 cm) x 1 <span class="float-right text-secondary">314.000</span></p>
-              <p class="mb-2"><i class="icofont-ui-press text-success food-item"></i> Corn & Peas
-                Salad x 1 <span class="float-right text-secondary">209.000</span></p>
-              <p class="mb-2"><i class="icofont-ui-press text-success food-item"></i> Veg Seekh
-                Sub 6"
-                (15 cm) x 1 <span class="float-right text-secondary">133.000</span></p>
-              <p class="mb-2"><i class="icofont-ui-press text-danger food-item"></i> Chicken Tikka
-                Sub
-                12" (30 cm) x 1 <span class="float-right text-secondary">314.000</span></p>
-              <p class="mb-2"><i class="icofont-ui-press text-danger food-item"></i> Corn & Peas
-                Salad
-                x 1 <span class="float-right text-secondary">209.000</span></p>
+              <p class="mb-2" *ngFor="let cartDetail of cart">
+                <i class="icofont-ui-press text-danger food-item"></i>{{cartDetail.dish.name}}
+                <span class="float-right text-secondary">314.000</span>
+              </p>
             </div>
             <div class="dropdown-cart-top-footer border-top p-4">
               <p class="mb-0 font-weight-bold text-secondary">Tổng tiền <span
@@ -46,6 +43,11 @@
             </div>
           </div>
         </li>
+
+        <li class="nav-item">
+          <a class="nav-link" *ngIf="loggedIn" (click)="logout()">Đăng xuất <span class="sr-only"></span></a>
+        </li>
+
       </ul>
     </div>
   </div>
