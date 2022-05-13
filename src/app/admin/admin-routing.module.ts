@@ -4,10 +4,14 @@ import {AdminComponent} from './admin.component';
 
 
 const routes: Routes = [
-{
-  path: 'merchant',
+  {
+    path: 'merchant',
     loadChildren: () => import('./merchant/merchant.module').then(module => module.MerchantModule)
-},
+  },
+  {
+    path: 'merchant-register',
+    loadChildren: () => import('./merchant-register/merchant-register.module').then(module => module.MerchantRegisterModule)
+  },
   {
     path: '',
     component: AdminComponent
