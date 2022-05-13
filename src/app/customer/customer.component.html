@@ -112,7 +112,7 @@
                 <div id="collapsetwo" class="collapse show" aria-labelledby="headingTwo"
                      data-parent="#accordion">
                   <div class="filters-card-body card-shop-filters">
-                    <form class="filters-search mb-3">
+                    <form #searchForm="ngForm" class="filters-search mb-3">
                       <div class="form-group">
                         <i class="icofont-search"></i>
                         <input type="text" class="form-control"
@@ -649,7 +649,7 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-12">
-        <h5 class="m-0">Bạn có cửa hàng? <a href="login.html">Gia nhập với chúng tôi cùng cung cấp sản phẩm tốt nhất cho khách hàng</a></h5>
+        <h5 class="m-0">Bạn có cửa hàng? <a routerLink="merchant-register">Gia nhập với chúng tôi cùng cung cấp sản phẩm tốt nhất cho khách hàng</a></h5>
       </div>
     </div>
   </div>
