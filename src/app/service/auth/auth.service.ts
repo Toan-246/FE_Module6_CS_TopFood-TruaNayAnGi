@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {UserToken} from '../../model/user-token';
 import {map} from 'rxjs/operators';
+import {User} from '../../model/user';
 
 const API_URL = environment.apiUrl;
 
@@ -34,5 +35,8 @@ export class AuthService {
   logout() {
     sessionStorage.removeItem('user');
     this.currentUserSubject.next(null);
+  }
+  getUserByEmail(email: string): Observable<User>{
+    return this.http.get<User>(`${API_URL}/user/${email}`)
   }
 }

@@ -13,10 +13,10 @@ import {UseService} from '../../service/use/use.service';
 })
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup = new FormGroup({
-    email: new FormControl('', Validators.required),
+    email: new FormControl('', [Validators.required, Validators.email]),
     username: new FormControl('', Validators.required),
-    password: new FormControl('', Validators.required),
-    confirmPassword: new FormControl('', Validators.required),
+    password: new FormControl('', [Validators.required, Validators.pattern("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$")]),
+    confirmPassword: new FormControl('', [Validators.required, Validators.pattern("^^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$")]),
   });
 
   constructor(private userService: UseService,
@@ -24,18 +24,27 @@ export class RegisterComponent implements OnInit {
               private notificationService: NotificationService) {
   }
 
+  get email (){
+    return this.registerForm.get('email')
+  }
+  get username (){
+    return this.registerForm.get('username')
+  }
+  get password (){
+    return this.registerForm.get('password')
+  }
+  get confirmPassword (){
+    return this.registerForm.get('confirmPassword')
+  }
+
   ngOnInit() {
   }
 
   register() {
-    if (this.registerForm.value.password != this.registerForm.value.confirmPassword) {
-      this.notificationService.showMessage('error','Mật khẩu nhập lại không đúng');
-    }
-
     if (this.registerForm.valid) {
       const user = {
         email: this.registerForm.value.email,
-        username: this.registerForm.value.email,
+        username: this.registerForm.value.username,
         password: this.registerForm.value.password,
         confirmPassword: this.registerForm.value.confirmPassword
       };
@@ -43,11 +52,13 @@ export class RegisterComponent implements OnInit {
         this.registerForm.reset();
         this.notificationService.showMessage('success', 'Đăng ký thành công')
         this.router.navigateByUrl('/login')
+      }, error => {
+        console.log(error)
+        this.notificationService.showMessage('error', error.error.message);
       })
     }
     else {
       this.notificationService.showMessage('error','Đăng ký thất bại')
     }
-
   }
 }
