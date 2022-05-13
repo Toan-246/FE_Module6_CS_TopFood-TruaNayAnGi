@@ -29,13 +29,16 @@
           <div class="dropdown-menu dropdown-cart-top p-0 dropdown-menu-right shadow-sm border-0">
             <div class="dropdown-cart-top-body border-top p-4">
               <p class="mb-2" *ngFor="let cartDetail of cart">
-                <i class="icofont-ui-press text-danger food-item"></i>{{cartDetail.dish.name}}
-                <span class="float-right text-secondary">314.000</span>
+                <i class="icofont-ui-press text-green food-item"></i>
+                {{cartDetail.dish.name}}
+                <span class="ml-3 float-right text-secondary">
+                  {{cartDetail.quantity}} x {{cartDetail.dish.price | number}} =
+                  {{cartDetail.quantity * cartDetail.dish.price | number}}</span>
               </p>
             </div>
             <div class="dropdown-cart-top-footer border-top p-4">
               <p class="mb-0 font-weight-bold text-secondary">Tổng tiền <span
-                class="float-right text-dark">499.000</span></p>
+                class="float-right text-dark">{{total | number}}</span></p>
               <!-- <small class="text-info">Extra charges may apply</small> -->
             </div>
             <div class="dropdown-cart-top-footer border-top p-2">

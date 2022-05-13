@@ -15,6 +15,7 @@ export class NavbarCustomerComponent implements OnInit {
   currentUser: any;
   loggedIn: boolean;
   cart: CartDetail[] = [];
+  total: number;
 
   constructor(private authService: AuthService,
               private cartService: CartService
@@ -45,7 +46,10 @@ export class NavbarCustomerComponent implements OnInit {
 
   getCart() {
     this.cartService.getCurrentUserCart().subscribe(
-      (response) => this.cart = (response as Cart).cartDetails
+      (response) => {
+        this.cart = (response as Cart).cartDetails;
+        this.total = (response as Cart).total;
+      }
     );
   }
 }
