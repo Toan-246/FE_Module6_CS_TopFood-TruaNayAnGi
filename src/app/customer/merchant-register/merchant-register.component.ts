@@ -16,7 +16,8 @@ export class MerchantRegisterComponent implements OnInit {
       name: new FormControl('', Validators.required),
       description: new FormControl('', Validators.required),
       address: new FormControl('', Validators.required),
-      phone: new FormControl('', [this.customValidator.validatePhoneFn]),
+      phone: new FormControl('', [Validators.required, Validators.pattern
+      ('^[0](\\+\\d{1,3}\\s?)?((\\(\\d{3}\\)\\s?)|(\\d{3})(\\s|-?))(\\d{3}(\\s|-?))(\\d{3})(\\s?(([E|e]xt[:|.|]?)|x|X)(\\s?\\d+))?')]),
       openTime: new FormControl(''),
       closeTime: new FormControl(''),
     }
@@ -71,7 +72,7 @@ export class MerchantRegisterComponent implements OnInit {
   }
 
   get addressControl() {
-    return this.registerForm.get('addressControl');
+    return this.registerForm.get('address');
   }
 
   get phoneControl() {
