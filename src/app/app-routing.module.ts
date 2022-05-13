@@ -24,6 +24,10 @@ const routes: Routes = [
     path: '',
     loadChildren: () => import('./auth/auth.module').then(module => module.AuthModule)
   },
+  {
+    path: 'dish',
+    loadChildren: () => import('./dish/dish.module').then(module => module.DishModule)
+  }
 ];
 
 @NgModule({

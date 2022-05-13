@@ -17,4 +17,8 @@ export class MerchantRegisterService {
   saveMerchantRequest(merchantRegister): Observable<MerchantRegister> {
     return this.http.post<MerchantRegister>(API_URL + '/registerMerchant', merchantRegister);
   }
+
+  getAllMerchantRequest(): Observable<MerchantRegister[]> {
+    return this.http.get<MerchantRegister[]>(API_URL + '/registerMerchant');
+  }
 }
