@@ -1,5 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../service/auth/auth.service';
+import {CartDetail} from '../../model/cart-detail';
+import {CartService} from '../../service/cart/cart.service';
+import {Cart} from '../../model/cart';
+import {User} from '../../model/user';
 
 @Component({
   selector: 'app-navbar-customer',
@@ -8,10 +12,13 @@ import {AuthService} from '../../service/auth/auth.service';
 })
 export class NavbarCustomerComponent implements OnInit {
 
-  user: any;
+  currentUser: any;
   loggedIn: boolean;
+  cart: CartDetail[] = [];
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService,
+              private cartService: CartService
+  ) {
   }
 
   ngOnInit() {
@@ -19,17 +26,26 @@ export class NavbarCustomerComponent implements OnInit {
   }
 
   getCurrentUser() {
-    const currentUser = JSON.parse(sessionStorage.getItem('user'));
+    this.currentUser = JSON.parse(sessionStorage.getItem('user'));
     let userId;
-    if (currentUser) {
-      userId = currentUser.id;
+    if (this.currentUser) {
+      userId = this.currentUser.id;
     }
 
-    this.loggedIn = !!(currentUser && userId);
+    this.loggedIn = !!(this.currentUser && userId);
+    if (this.loggedIn) {
+      this.getCart();
+    }
   }
 
-  logout(){
+  logout() {
     this.authService.logout();
     this.getCurrentUser();
+  }
+
+  getCart() {
+    this.cartService.getCurrentUserCart().subscribe(
+      (response) => this.cart = (response as Cart).cartDetails
+    );
   }
 }
