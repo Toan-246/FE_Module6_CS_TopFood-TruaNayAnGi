@@ -7,11 +7,12 @@ import {FooterComponent} from './shared/footer/footer.component';
 import { InfoComponent } from './shared/info/info.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import {SharedModule} from '../shared/shared.module';
+import { MerchantRegisterComponent } from './merchant-register/merchant-register.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { MostPurchasedDishesComponent } from './most-purchased-dishes/most-purchased-dishes.component';
 
-
 @NgModule({
-    declarations: [CustomerComponent, FooterComponent, InfoComponent, NavbarComponent, MostPurchasedDishesComponent],
+    declarations: [CustomerComponent, FooterComponent, InfoComponent, NavbarComponent, MerchantRegisterComponent, MostPurchasedDishesComponent],
     exports: [
         NavbarComponent
     ],
@@ -19,6 +20,8 @@ import { MostPurchasedDishesComponent } from './most-purchased-dishes/most-purch
     CommonModule,
     CustomerRoutingModule,
     SharedModule,
+    ReactiveFormsModule,
+    FormsModule,
   ]
 })
 export class CustomerModule { }

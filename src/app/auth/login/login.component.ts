@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../../service/auth/auth.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {NotificationService} from '../../service/notification/notification.service';
+import {User} from '../../model/user';
 
 @Component({
   selector: 'app-login',
@@ -10,9 +11,10 @@ import {NotificationService} from '../../service/notification/notification.servi
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  user: User = {};
   loginForm: FormGroup = new FormGroup({
-    email: new FormControl(),
-    password: new FormControl()
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', Validators.required)
   });
 
   constructor(private authService: AuthService,
@@ -20,14 +22,23 @@ export class LoginComponent implements OnInit {
               private notificationService: NotificationService) {
   }
 
+  get email() {
+    return this.loginForm.get('email');
+  }
+
+  get password() {
+    return this.loginForm.get('password');
+  }
+
   ngOnInit() {
   }
 
   login() {
     this.authService.login(this.loginForm.get('email').value, this.loginForm.get('password').value).subscribe(() => {
-      this.notificationService.showMessage('success', 'Đăng nhập thành công')
+      this.notificationService.showMessage('success', 'Đăng nhập thành công');
       this.router.navigateByUrl('/home');
     }, error => {
-      this.notificationService.showMessage('error', 'Đăng nhập thất bại')    });
+      this.notificationService.showMessage('error', error.error.message);
+    });
   }
 }
