@@ -10,7 +10,7 @@ import {MerchantModule} from './merchant/merchant.module';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {JwtInterceptor} from './helper/jwt-interceptor';
 import {ErrorInterceptor} from './helper/error-interceptor';
-import {MerchantRegisterModule} from './admin/merchant-register/merchant-register.module';
+
 
 
 

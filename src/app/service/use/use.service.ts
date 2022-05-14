@@ -17,4 +17,5 @@ export class UseService {
   register(user: User): Observable<User> {
     return this.http.post<User>(API_URL + '/register', user);
   }
+
 }

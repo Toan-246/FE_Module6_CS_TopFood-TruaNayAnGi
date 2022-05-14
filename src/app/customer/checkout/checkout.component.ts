@@ -1,17 +1,18 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthService} from '../../service/auth/auth.service';
+import {Merchant} from '../../model/merchant';
 import {CartDetail} from '../../model/cart-detail';
+import {AuthService} from '../../service/auth/auth.service';
 import {CartService} from '../../service/cart/cart.service';
 import {Cart} from '../../model/cart';
-import {User} from '../../model/user';
 
 @Component({
-  selector: 'app-navbar-customer',
-  templateUrl: './navbar-customer.component.html',
-  styleUrls: ['./navbar-customer.component.css']
+  selector: 'app-checkout',
+  templateUrl: './checkout.component.html',
+  styleUrls: ['./checkout.component.css']
 })
-export class NavbarCustomerComponent implements OnInit {
+export class CheckoutComponent implements OnInit {
 
+  merchant: Merchant;
   currentUser: any;
   loggedIn: boolean;
   cart: CartDetail[] = [];
@@ -34,10 +35,6 @@ export class NavbarCustomerComponent implements OnInit {
     }
   }
 
-  logout() {
-    this.authService.logout();
-    this.loggedIn = false;
-  }
 
   getCart() {
     this.cartService.getCurrentUserCart().subscribe(
@@ -47,4 +44,5 @@ export class NavbarCustomerComponent implements OnInit {
       }
     );
   }
+
 }
