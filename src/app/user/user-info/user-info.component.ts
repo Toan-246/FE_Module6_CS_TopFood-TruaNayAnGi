@@ -12,7 +12,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 })
 export class UserInfoComponent implements OnInit {
   user: User = {};
-  currentUser: any = {};
+  currentUser: User = {};
   loggedIn: boolean;
 
   // userForm: FormGroup = new FormGroup({
@@ -55,7 +55,7 @@ export class UserInfoComponent implements OnInit {
   // }
 
   ngOnInit() {
-    this.checkLoginAndGetInfo()
+    this.checkLoginAndGetInfo();
   }
 
   checkLoginAndGetInfo() {
