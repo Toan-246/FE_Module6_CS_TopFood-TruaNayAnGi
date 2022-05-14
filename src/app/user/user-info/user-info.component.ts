@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {User} from '../../model/user';
+import {UseService} from '../../service/use/use.service';
+import {ActivatedRoute, ParamMap} from '@angular/router';
+import {AuthService} from '../../service/auth/auth.service';
 
 @Component({
   selector: 'app-user-info',
@@ -6,10 +10,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-info.component.css']
 })
 export class UserInfoComponent implements OnInit {
+  user: User = {};
 
-  constructor() { }
+  constructor(private userService: UseService,
+              private activatedRoute: ActivatedRoute,
+              private authService: AuthService) {
+    this.authService.currentUser.subscribe(value => this.user = value);
+    this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
+      const id = paramMap.get('id');
+      this.getUserInfo(id);
+    });
+  }
 
   ngOnInit() {
   }
 
+  private getUserInfo(id) {
+    sessionStorage.setItem('user', JSON.stringify(this.user));
+  }
 }
