@@ -39,13 +39,13 @@ export class LoginComponent implements OnInit {
   login() {
     this.authService.login(this.loginForm.get('email').value, this.loginForm.get('password').value).subscribe((data) => {
       this.notificationService.showMessage('success', 'Đăng nhập thành công');
-      sessionStorage.setItem('user', JSON.stringify(this.user))
-      switch (this.user.roles[0].authority){
-        case "ROLE_CUSTOMER": {
+      sessionStorage.setItem('user', JSON.stringify(this.user));
+      switch (this.user.roles[0].authority) {
+        case 'ROLE_CUSTOMER': {
           this.router.navigateByUrl('/home');
           break;
         }
-        case "ROLE_ADMIN": {
+        case 'ROLE_ADMIN': {
           this.router.navigateByUrl('/admin');
           break;
         }
