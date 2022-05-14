@@ -31,11 +31,10 @@
                   <th>#</th>
                   <th>Tên cửa hàng</th>
                   <th>Địa chỉ</th>
+                  <th>Mô tả</th>
                   <th>Số điện thoại</th>
                   <th>Giờ mở cửa</th>
                   <th>Giờ đóng cửa</th>
-                  <th>Giấy chứng nhận VSATTP</th>
-                  <th>Tài khoản</th>
                   <th colspan="2">Chức năng</th>
                 </tr>
                 </thead>
@@ -48,7 +47,7 @@
                   <td>{{merchantRegister.phone}}</td>
                   <td>{{merchantRegister.openTime}}</td>
                   <td>{{merchantRegister.closeTime}}</td>
-                  <td><button>Duyệt</button></td>
+                  <td><button (click)="submitAcceptRegisterRequest(merchantRegister)" >Duyệt</button></td>
                   <td><button>Từ chối</button></td>
                 </tr>
                 </tbody>

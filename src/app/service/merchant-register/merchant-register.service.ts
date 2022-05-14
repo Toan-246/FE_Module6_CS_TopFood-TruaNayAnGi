@@ -21,4 +21,8 @@ export class MerchantRegisterService {
   getAllMerchantRequest(): Observable<MerchantRegister[]> {
     return this.http.get<MerchantRegister[]>(API_URL + '/registerMerchant');
   }
+
+  acceptRegisterRequest(id: number, merchantRegister: MerchantRegister) {
+    return this.http.post(`${API_URL}/registerMerchant/accept/${id}`, merchantRegister);
+  }
 }

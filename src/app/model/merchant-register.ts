@@ -1,6 +1,6 @@
 export interface MerchantRegister {
   id?: number;
-  user?: string;
+  user?: any;
   name?: string;
   description?: string;
   address?: string;
