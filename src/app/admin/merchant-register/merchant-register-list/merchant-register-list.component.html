@@ -48,7 +48,7 @@
                   <td>{{merchantRegister.openTime}}</td>
                   <td>{{merchantRegister.closeTime}}</td>
                   <td><button (click)="submitAcceptRegisterRequest(merchantRegister)" >Duyệt</button></td>
-                  <td><button>Từ chối</button></td>
+                  <td><button (click)="submitRefuseRegisterRequest(merchantRegister)">Từ chối</button></td>
                 </tr>
                 </tbody>
               </table>
