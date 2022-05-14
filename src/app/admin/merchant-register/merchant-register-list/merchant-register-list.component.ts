@@ -17,6 +17,14 @@ export class MerchantRegisterListComponent implements OnInit {
     this.getAllMerchantRegisterRequest();
   }
 
+
+  submitAcceptRegisterRequest(merchantRegister: MerchantRegister) {
+    merchantRegister.user;
+    this.merchantRegisterService.acceptRegisterRequest(merchantRegister.id, merchantRegister).subscribe(() => {
+      this.getAllMerchantRegisterRequest();
+    });
+  }
+
   getAllMerchantRegisterRequest() {
     this.merchantRegisterService.getAllMerchantRequest().subscribe((merchantRegisterFromBE) => {
       this.merchantRegisters = merchantRegisterFromBE;
