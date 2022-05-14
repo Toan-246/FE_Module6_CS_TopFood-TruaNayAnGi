@@ -21,4 +21,12 @@ export class NotificationService {
       });
     });
   }
+
+  showErrorMessage(title){
+    this.showMessage('error', title);
+  }
+
+  showSuccessMessage(tittle){
+    this.showMessage('success', tittle);
+  }
 }
