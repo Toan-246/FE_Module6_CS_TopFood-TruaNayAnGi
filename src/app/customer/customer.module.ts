@@ -8,9 +8,10 @@ import {SharedModule} from '../shared/shared.module';
 import {MerchantRegisterComponent} from './merchant-register/merchant-register.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MostPurchasedDishesComponent} from './most-purchased-dishes/most-purchased-dishes.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 @NgModule({
-  declarations: [CustomerComponent, FooterComponent, MerchantRegisterComponent, MostPurchasedDishesComponent],
+  declarations: [CustomerComponent, FooterComponent, MerchantRegisterComponent, MostPurchasedDishesComponent, CheckoutComponent],
   exports: [],
   imports: [
     CommonModule,

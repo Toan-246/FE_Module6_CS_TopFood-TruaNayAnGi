@@ -1,9 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MerchantService} from '../../../service/merchant/merchant.service';
 import {Merchant} from '../../../model/merchant';
-import {FormGroup} from '@angular/forms';
-
-declare var $: any;
 
 @Component({
   selector: 'app-merchant-list',

@@ -4,7 +4,6 @@ import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {UserToken} from '../../model/user-token';
 import {map} from 'rxjs/operators';
-import {User} from '../../model/user';
 
 const API_URL = environment.apiUrl;
 
@@ -28,12 +27,23 @@ export class AuthService {
         return user;
       }));
   }
-  public get currentUserValue(){
+
+  public get currentUserValue() {
     return this.currentUserSubject.value;
   }
 
   logout() {
     sessionStorage.removeItem('user');
     this.currentUserSubject.next(null);
+  }
+
+  isLoggedIn() {
+    const currentUser = this.getCurrentUser();
+    const loggedIn = !!(currentUser);
+    return loggedIn;
+  }
+
+  getCurrentUser() {
+    return JSON.parse(sessionStorage.getItem('user'));
   }
 }

@@ -6,6 +6,7 @@ import {AdminComponent} from './admin.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MerchantModule} from './merchant/merchant.module';
 import {SharedModule} from '../shared/shared.module';
+import {MerchantRegisterModule} from './merchant-register/merchant-register.module';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import {SharedModule} from '../shared/shared.module';
     CommonModule,
     ReactiveFormsModule,
     AdminRoutingModule,
-    MerchantModule
+    MerchantModule,
+    MerchantRegisterModule
   ]
 })
 export class AdminModule { }
