@@ -4,11 +4,13 @@ import { NavbarAdminComponent } from './navbar-admin/navbar-admin.component';
 import { SidebarAdminComponent } from './sidebar-admin/sidebar-admin.component';
 import {RouterModule} from '@angular/router';
 import { NavbarCustomerComponent } from './navbar-customer/navbar-customer.component';
+import { NavbarMerchantComponent } from './navbar-merchant/navbar-merchant.component';
+import { SidebarMerchantComponent } from './sidebar-merchant/sidebar-merchant.component';
 
 
 
 @NgModule({
-  declarations: [NavbarAdminComponent, SidebarAdminComponent, NavbarCustomerComponent],
+  declarations: [NavbarAdminComponent, SidebarAdminComponent, NavbarCustomerComponent, NavbarMerchantComponent, SidebarMerchantComponent],
   imports: [
     CommonModule,
     RouterModule
@@ -16,7 +18,9 @@ import { NavbarCustomerComponent } from './navbar-customer/navbar-customer.compo
   exports: [
     SidebarAdminComponent,
     NavbarAdminComponent,
-    NavbarCustomerComponent
+    NavbarCustomerComponent,
+    SidebarMerchantComponent,
+    NavbarMerchantComponent
   ]
 })
 export class SharedModule { }

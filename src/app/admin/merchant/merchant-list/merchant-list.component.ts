@@ -22,7 +22,7 @@ export class MerchantListComponent implements OnInit {
 
   toggleMerchant(merchant: Merchant) {
     merchant.active = !merchant.active;
-    this.merchantService.updateActiveMerchant(merchant.id,merchant).subscribe(()=>{
+    this.merchantService.updateActiveMerchant(merchant.id, merchant).subscribe(() => {
       this.getAllMerchant();
     });
   }
