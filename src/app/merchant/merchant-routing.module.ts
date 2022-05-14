@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {MerchantComponent} from './merchant.component';
+import {DishListComponent} from './dish-list/dish-list.component';
 
 
 const routes: Routes = [
   {
-    path: '',
-    component: MerchantComponent
+    path: 'dishes',
+    component: DishListComponent
   }
 ];
 

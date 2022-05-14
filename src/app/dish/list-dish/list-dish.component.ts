@@ -31,10 +31,4 @@ export class ListDishComponent implements OnInit {
       //   });
     });
   }
-
-  getAllMerchantDishes(userId) {
-    this.dishService.getAllMerchantDishes(userId).subscribe((merchantDishes) => {
-
-    });
-  }
 }
