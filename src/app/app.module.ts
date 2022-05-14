@@ -10,8 +10,7 @@ import {MerchantModule} from './merchant/merchant.module';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {JwtInterceptor} from './helper/jwt-interceptor';
 import {ErrorInterceptor} from './helper/error-interceptor';
-import { UserEditComponent } from './user/user-edit/user-edit.component';
-import { UserInfoComponent } from './user/user-info/user-info.component';
+
 
 
 
