@@ -24,6 +24,7 @@ export class MerchantListComponent implements OnInit {
     });
   }
 
+
   getAllMerchant() {
     this.merchantService.getAll().subscribe((merchantsFromBE) => {
       this.merchants = merchantsFromBE;
