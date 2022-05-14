@@ -43,7 +43,6 @@ export class NavbarCustomerComponent implements OnInit {
     this.cartService.getCurrentUserCart().subscribe(
       (response) => {
         this.cart = (response as Cart).cartDetails;
-        this.total = (response as Cart).total;
       }
     );
   }
