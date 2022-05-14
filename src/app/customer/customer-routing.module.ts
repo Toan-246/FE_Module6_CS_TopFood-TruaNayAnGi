@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import {CustomerComponent} from './customer.component';
 import {MerchantRegisterComponent} from './merchant-register/merchant-register.component';
 import {CheckoutComponent} from './checkout/checkout.component';
+import {DetailFoodComponent} from './detail-food/detail-food.component';
+import {CartTableComponent} from './cart-table/cart-table.component';
 
 
 const routes: Routes = [
@@ -17,6 +19,14 @@ const routes: Routes = [
   {
     path: 'checkout',
     component: CheckoutComponent
+  },
+  {
+    path: 'food/:id',
+    component: DetailFoodComponent
+  },
+  {
+    path: 'test',
+    component: CartTableComponent
   }
 ];
 

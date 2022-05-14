@@ -1,0 +1,72 @@
+<div class="generator-bg rounded shadow-sm mb-4 p-4 osahan-cart-item">
+  <div class="d-flex mb-4 osahan-cart-item-profile">
+    <img class="img-fluid mr-3 rounded-pill" alt="osahan" src="img/2.jpg">
+    <div class="d-flex flex-column">
+      <h6 class="mb-1 text-white">{{merchant.name}}
+      </h6>
+      <p class="mb-0 text-white"><i class="icofont-location-pin"></i>  {{merchant.address}}</p>
+    </div>
+  </div>
+  <div class="bg-white rounded shadow-sm mb-2">
+
+    <div class="gold-members p-2 border-bottom" *ngFor="let cartDetail of cart">
+      <p class="text-gray mb-0 float-right ml-2">{{cartDetail.quantity * cartDetail.dish.price | number}}</p>
+      <span class="count-number float-right">
+                                    <button class="btn btn-outline-secondary  btn-sm left dec"> <i
+                                      class="icofont-minus"></i> </button>
+                                    <input class="count-number-input" type="text" value="{{cartDetail.quantity}}" readonly="">
+                                    <button class="btn btn-outline-secondary btn-sm right inc"> <i
+                                      class="icofont-plus"></i> </button>
+                                </span>
+      <div class="media">
+        <div class="mr-2"><i class="icofont-ui-press text-danger food-item"></i></div>
+        <div class="media-body">
+          <p class="mt-1 mb-0 text-black">{{cartDetail.dish.name}}</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="mb-2 bg-white rounded p-2 clearfix">
+    <div class="input-group input-group-sm mb-2">
+      <input type="text" class="form-control" placeholder="Mã giảm giá">
+      <div class="input-group-append">
+        <button class="btn btn-primary" type="button" id="button-addon2"><i
+          class="icofont-sale-discount"></i> APPLY</button>
+      </div>
+    </div>
+    <div class="input-group mb-0">
+      <div class="input-group-prepend">
+        <span class="input-group-text"><i class="icofont-comment"></i></span>
+      </div>
+      <textarea class="form-control" placeholder="Cửa hàng cần chú ý..."
+                aria-label="With textarea"></textarea>
+    </div>
+  </div>
+  <div class="mb-2 bg-white rounded p-2 clearfix">
+    <p class="mb-1">Tổng tiền hàng <span class="float-right text-dark">330.000</span></p>
+    <p class="mb-1">Mã giảm giá <span class="float-right text-dark">25.000</span></p>
+    <p class="mb-1">Phí dịch vụ <span class="text-info" data-toggle="tooltip"
+                                      data-placement="top" title="Total discount breakup">
+                                    <i class="icofont-info-circle"></i>
+                                </span> <span class="float-right text-dark">15.000</span>
+    </p>
+    <p class="mb-1">Phí vận chuyển <span class="text-info" data-toggle="tooltip"
+                                         data-placement="top" title="Total discount breakup">
+                                <i class="icofont-info-circle"></i>
+                            </span> <span class="float-right text-dark">20.000</span>
+    </p>
+    <p class="mb-1 text-success">Tổng giảm giá
+      <span class="float-right text-success">34.000</span>
+    </p>
+    <hr />
+    <h6 class="font-weight-bold mb-0">Tổng thanh toán <span class="float-right">325.000</span></h6>
+  </div>
+  <a href="thanks.html" class="btn btn-success btn-block btn-lg">Thanh toán 325.000
+    <i class="icofont-long-arrow-right"></i></a>
+</div>
+<div class="pt-2"></div>
+<!-- <div class="alert alert-success" role="alert">
+    You have saved <strong>$1,884</strong> on the bill
+</div> -->
+<div class="pt-2"></div>

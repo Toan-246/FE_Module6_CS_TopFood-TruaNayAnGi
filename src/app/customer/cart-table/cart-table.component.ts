@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {Merchant} from '../../model/merchant';
 import {CartDetail} from '../../model/cart-detail';
 import {AuthService} from '../../service/auth/auth.service';
@@ -6,11 +6,11 @@ import {CartService} from '../../service/cart/cart.service';
 import {Cart} from '../../model/cart';
 
 @Component({
-  selector: 'app-checkout',
-  templateUrl: './checkout.component.html',
-  styleUrls: ['./checkout.component.css']
+  selector: 'app-cart-table',
+  templateUrl: './cart-table.component.html',
+  styleUrls: ['./cart-table.component.css']
 })
-export class CheckoutComponent implements OnInit {
+export class CartTableComponent implements OnInit {
 
   merchant: Merchant;
   currentUser: any;
