@@ -16,11 +16,11 @@ export class UserEditComponent implements OnInit {
   loggedIn: boolean;
 
   userForm: FormGroup = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
+    email: new FormControl(''),
     phone: new FormControl('',[Validators.pattern("^[0](\\+\\d{1,3}\\s?)?((\\(\\d{3}\\)\\s?)|(\\d{3})(\\s|-?))(\\d{3}(\\s|-?))(\\d{3})(\\s?(([E|e]xt[:|.|]?)|x|X)(\\s?\\d+))?")]),
     fullName: new FormControl('', Validators.required),
     address: new FormControl(''),
-    username: new FormControl('', Validators.required),
+    username: new FormControl(''),
     image: new FormControl('')
   });
 
@@ -81,11 +81,11 @@ export class UserEditComponent implements OnInit {
   updateUser() {
     if (this.userForm.valid){
       let user = new FormData();
-      user.append('email', this.userForm.value.email);
+      user.append('email', this.currentUser.email);
       user.append('phone', this.userForm.value.phone);
       user.append('fullName', this.userForm.value.fullName);
       user.append('address', this.userForm.value.address);
-      user.append('username', this.userForm.value.username);
+      user.append('username', this.currentUser.username);
       const files = (document.getElementById('image') as HTMLInputElement).files;
       if (files.length > 0) {
         user.append('image', files[0]);
