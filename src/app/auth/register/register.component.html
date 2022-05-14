@@ -27,11 +27,12 @@
                   <label for="inputUsername">Họ và tên</label>
                   <input type="text" id="fullName" class="form-control"
                          placeholder="Nhập họ tên" formControlName="fullName">
+                  <p class="validate" [hidden]="fullName.valid || !fullName.touched">Nhập Họ và tên</p>
                 </div>
                 <div class="mt-3">
                   <label for="inputUsername">Địa chỉ</label>
                   <input type="text" id="address" class="form-control"
-                         placeholder="Nhập họ tên" formControlName="address">
+                         placeholder="Nhập địa chỉ" formControlName="address">
                 </div>
                 <div class="mt-3">
                   <label for="inputPassword">Mật khẩu</label>

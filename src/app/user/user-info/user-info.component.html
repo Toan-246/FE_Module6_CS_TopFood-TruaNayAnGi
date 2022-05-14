@@ -5,7 +5,7 @@
     <nav aria-label="breadcrumb" class="main-breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a routerLink="/home">Home</a></li>
-        <li class="breadcrumb-item"><a routerLink="/user/{{currentUser.id}}">User</a></li>
+        <li class="breadcrumb-item"><a routerLink="/users/{{currentUser.id}}">User</a></li>
         <li class="breadcrumb-item active" aria-current="page">User Profile</li>
       </ol>
     </nav>
@@ -101,7 +101,7 @@
             <hr>
             <div class="row">
               <div class="col-sm-12">
-                <a class="btn btn-info " routerLink="/users/{{currentUser.id}}/edit">Edit</a>
+                <a class="btn btn-info " routerLink="/users/edit/{{currentUser.id}}">Edit</a>
               </div>
             </div>
           </div>
