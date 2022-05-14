@@ -24,6 +24,16 @@
                   <p class="validate" [hidden]="username.valid || !username.touched">Nhập tên đăng nhập</p>
                 </div>
                 <div class="mt-3">
+                  <label for="inputUsername">Họ và tên</label>
+                  <input type="text" id="fullName" class="form-control"
+                         placeholder="Nhập họ tên" formControlName="fullName">
+                </div>
+                <div class="mt-3">
+                  <label for="inputUsername">Địa chỉ</label>
+                  <input type="text" id="address" class="form-control"
+                         placeholder="Nhập họ tên" formControlName="address">
+                </div>
+                <div class="mt-3">
                   <label for="inputPassword">Mật khẩu</label>
                   <input type="password" id="inputPassword" class="form-control"
                          placeholder="Nhập mật khẩu" formControlName="password">
