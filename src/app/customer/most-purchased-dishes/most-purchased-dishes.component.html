@@ -9,22 +9,22 @@
       <div class="col-md-3 col-sm-6 mb-4" *ngFor="let dish of mostPurchasedDishes">
         <div class="list-card bg-white rounded overflow-hidden position-relative shadow-sm">
           <div class="list-card-image">
-            <div class="favourite-heart text-danger position-absolute"><a href="#"><i
+            <div class="favourite-heart text-danger position-absolute"><a routerLink="/home/food/{{dish.id}}"><i
               class="icofont-heart"></i></a></div>
             <div class="member-plan position-absolute"><span class="badge badge-info">Đã bán {{dish.sold}}</span>
             </div>
-            <a href="#">
+            <a routerLink="/home/food/{{dish.id}}">
               <img src="http://localhost:8080/image/{{dish.image}}" class="img-fluid item-img">
             </a>
           </div>
           <div class="p-3 position-relative">
             <div class="list-card-body">
-              <h6 class="mb-1"><a href="#" class="text-black">{{dish.name}}</a></h6>
+              <h6 class="mb-1"><a routerLink="/home/food/{{dish.id}}" class="text-black">{{dish.name}}</a></h6>
               <p class="text-gray mb-2">{{dish.merchant.address}}</p>
               <p class="text-gray mb-3 time"><span
                 class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i
                 class="icofont-wall-clock"></i> 20–25 min</span> <span
-                class="float-right text-black-50">{{dish.price}}</span></p>
+                class="float-right text-black-50">{{dish.price | number}}</span></p>
             </div>
             <div class="list-card-badge">
               <span class="badge badge-success">Giảm</span> <small>65% | Coupon

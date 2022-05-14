@@ -9,7 +9,8 @@
             <h4 class="mb-1">Thanh toán đơn hàng</h4>
           </div>
           <div class="pt-2"></div>
-          <div class="bg-white rounded shadow-sm p-4 mb-4">
+
+          <div class="bg-white rounded shadow-sm p-4 mb-4" id="select-address-div">
             <h4 class="mb-1">Chọn địa chỉ giao hàng</h4>
             <!-- <h6 class="mb-3 text-black-50">Multiple addresses in this location</h6> -->
             <div class="row">
@@ -150,7 +151,7 @@
         </div>
       </div>
       <div class="col-md-4">
-        <app-cart-table></app-cart-table>
+        <app-cart-table [cart]="cart" [showCheckoutButton]="false"></app-cart-table>
 
       </div>
     </div>

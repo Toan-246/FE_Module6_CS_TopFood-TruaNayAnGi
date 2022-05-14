@@ -15,7 +15,7 @@ export class CheckoutComponent implements OnInit {
   merchant: Merchant;
   currentUser: any;
   loggedIn: boolean;
-  cart: CartDetail[] = [];
+  cart: Cart;
   total: number;
 
   constructor(private authService: AuthService,
@@ -24,6 +24,8 @@ export class CheckoutComponent implements OnInit {
   }
 
   ngOnInit() {
+    document.getElementById('select-address-div').scrollIntoView(true);
+
     this.checkLoginAndGetInfo();
   }
 
@@ -39,21 +41,10 @@ export class CheckoutComponent implements OnInit {
   getCart() {
     this.cartService.getCurrentUserCart().subscribe(
       (response) => {
-        this.cart = (response as Cart).cartDetails;
-        this.total = (response as Cart).total;
-        this.getMerchant();
+        this.cart = (response as Cart);
+        this.merchant = this.cart.merchant;
       }
     );
-  }
-
-  getMerchant() {
-    if (this.cart.length == 0){
-      this.merchant = {
-        name: '-',
-        address: '-'
-      };
-    }
-    this.merchant = this.cart[0].dish.merchant;
   }
 
 }
