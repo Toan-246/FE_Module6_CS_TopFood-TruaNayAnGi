@@ -17,7 +17,7 @@
           <a class="nav-link" routerLink="/register" *ngIf="!loggedIn">Đăng ký <span class="sr-only"></span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/register" *ngIf="loggedIn">{{currentUser.username}}<span class="sr-only"></span></a>
+          <a class="nav-link" routerLink="/merchant/edit/:id" *ngIf="loggedIn">{{currentUser.username}}<span class="sr-only"></span></a>
         </li>
 
         <li class="nav-item dropdown dropdown-cart" *ngIf="loggedIn">

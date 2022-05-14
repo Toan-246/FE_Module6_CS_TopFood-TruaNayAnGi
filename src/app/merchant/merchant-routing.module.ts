@@ -5,7 +5,7 @@ import {MerchantComponent} from './merchant.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'edit/:id',
     component: MerchantComponent
   }
 ];
