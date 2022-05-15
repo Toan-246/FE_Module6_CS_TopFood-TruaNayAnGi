@@ -13,7 +13,6 @@ export class FoodListComponent implements OnInit {
   dishes: Dish[] = [];
   user: User = {};
   userId: number;
-  categoriesToString;
 
   constructor(private dishService: DishService,
               private authService: AuthService) {
