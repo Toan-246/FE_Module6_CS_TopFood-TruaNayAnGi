@@ -93,7 +93,7 @@ export class CheckoutComponent implements OnInit {
       (order) => {
         this.router.navigateByUrl(`/order-success/${order.id}`);
       }
-    )
+    );
   }
 
 }

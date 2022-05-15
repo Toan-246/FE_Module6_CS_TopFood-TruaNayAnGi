@@ -26,7 +26,8 @@
             <i class="fas fa-shopping-basket"></i> Giỏ hàng
             <span class="badge badge-success">{{cart.length}}</span>
           </a>
-          <div class="dropdown-menu dropdown-cart-top p-0 dropdown-menu-right shadow-sm border-0">
+          <div class="dropdown-menu dropdown-cart-top p-0 dropdown-menu-right shadow-sm border-0"
+                *ngIf="!isCartEmpty">
             <div class="dropdown-cart-top-body border-top p-4">
               <p class="mb-2" *ngFor="let cartDetail of cart">
                 <i class="icofont-ui-press text-green food-item"></i>
