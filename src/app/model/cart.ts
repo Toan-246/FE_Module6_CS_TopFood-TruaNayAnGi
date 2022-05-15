@@ -9,5 +9,5 @@ export interface Cart {
   discountAmount?: number;
   serviceFee?: number;
   shippingFee?: number;
-  feeTotal?: number;
+  totalFee?: number;
 }

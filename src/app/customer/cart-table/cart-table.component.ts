@@ -20,6 +20,9 @@ export class CartTableComponent implements OnInit {
   @Input()
   showCheckoutButton: boolean;
 
+  @Input()
+  showRestaurantNote: boolean;
+
   currentUser: any;
   loggedIn: boolean;
 
