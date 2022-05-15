@@ -4,6 +4,38 @@
   <h6 class="text-white-50">Tìm món ngon quanh bạn</h6>
 </section>
 <section class="section pt-5 pb-5 products-listing">
+
+<!--  Form tìm kiếm -->
+  <div class="container">
+    <div class="homepage-search-form">
+      <div class="form-noborder">
+        <div class="form-row">
+          <div class="col-lg-3 col-md-3 col-sm-12 form-group">
+            <div class="location-dropdown">
+              <select class="custom-select form-control-lg">
+                <option> Tìm kiếm nhanh </option>
+                <option> Ăn sáng </option>
+                <option> Ăn trưa </option>
+                <option> Ăn tối </option>
+                <option> Cafés </option>
+              </select>
+            </div>
+          </div>
+          <div class="col-lg-7 col-md-7 col-sm-12 form-group">
+            <input type="text" placeholder="Chọn món theo sở thích" id="q"
+                   class="form-control form-control-lg">
+            <!-- <a class="locate-me" href="#"><i class="icofont-ui-pointer"></i> Locate Me</a> -->
+          </div>
+          <div class="col-lg-2 col-md-2 col-sm-12 form-group">
+            <button class="btn btn-primary btn-block btn-lg btn-gradient" (click)="doSearch()"
+            >Tìm kiếm</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="container">
     <div class="row d-none-m">
       <div class="col-md-12">
