@@ -13,6 +13,7 @@ export class FoodListComponent implements OnInit {
   dishes: Dish[] = [];
   user: User = {};
   userId: number;
+  categoriesToString;
 
   constructor(private dishService: DishService,
               private authService: AuthService) {
@@ -26,8 +27,7 @@ export class FoodListComponent implements OnInit {
   getAllMerchantDishes() {
     this.userId = this.authService.getCurrentUserId();
     this.dishService.getAllMerchantDishes(this.userId).subscribe(dishesFromBE => {
-      this.dishes = dishesFromBE;
-      console.log(this.dishes);
+      this.dishes = dishesFromBE as Dish[];
     });
   }
 
