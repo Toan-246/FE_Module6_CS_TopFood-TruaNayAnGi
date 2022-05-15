@@ -7,10 +7,10 @@ import {NotificationService} from '../../service/notification/notification.servi
 
 @Component({
   selector: 'app-merchant-edit',
-  templateUrl: './merchat-edit.component.html',
-  styleUrls: ['./merchat-edit.component.css']
+  templateUrl: './merchant-edit.component.html',
+  styleUrls: ['./merchant-edit.component.css']
 })
-export class MerchatEditComponent implements OnInit {
+export class MerchantEditComponent implements OnInit {
   merchant: Merchant = {};
   merchantForm: FormGroup = new FormGroup({
     name: new FormControl('', Validators.required),
@@ -52,8 +52,6 @@ export class MerchatEditComponent implements OnInit {
               private router: Router,
               private notificationService: NotificationService) {
     this.activateRoute.paramMap.subscribe((paramMap: ParamMap) => {
-      // const currentUser = JSON.parse(sessionStorage.getItem('user'));
-      // const userId = currentUser.id;
       const id = paramMap.get('id');
       this.getMerchant(id);
     });

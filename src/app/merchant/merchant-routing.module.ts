@@ -1,12 +1,17 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import {MerchantComponent} from './merchant.component';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {MerchantEditComponent} from './merchant-edit/merchant-edit.component';
+import {FoodListComponent} from './food-list/food-list.component';
 
 
 const routes: Routes = [
   {
-    path: 'edit/:id',
-    component: MerchantComponent
+    path: '',
+    component: FoodListComponent
+  },
+  {
+    path: 'edit',
+    component: MerchantEditComponent
   }
 ];
 

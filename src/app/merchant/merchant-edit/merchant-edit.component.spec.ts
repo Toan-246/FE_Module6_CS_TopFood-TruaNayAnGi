@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MerchatEditComponent } from './merchat-edit.component';
+import { MerchatEditComponent } from './merchant-edit.component';
 
 describe('MerchatEditComponent', () => {
   let component: MerchatEditComponent;
