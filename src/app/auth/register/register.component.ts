@@ -14,6 +14,8 @@ import {UseService} from '../../service/use/use.service';
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
+    fullName: new FormControl('', Validators.required),
+    address: new FormControl(''),
     username: new FormControl('', Validators.required),
     password: new FormControl('', [Validators.required, Validators.pattern('^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$')]),
     confirmPassword: new FormControl('', [Validators.required, Validators.pattern('^^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$')]),
@@ -32,6 +34,13 @@ export class RegisterComponent implements OnInit {
     return this.registerForm.get('username');
   }
 
+  get fullName() {
+    return this.registerForm.get('fullName');
+  }
+  get address() {
+    return this.registerForm.get('address');
+  }
+
   get password() {
     return this.registerForm.get('password');
   }
@@ -48,6 +57,8 @@ export class RegisterComponent implements OnInit {
       const user = {
         email: this.registerForm.value.email,
         username: this.registerForm.value.username,
+        fullName: this.registerForm.value.fullName,
+        address: this.registerForm.value.address,
         password: this.registerForm.value.password,
         confirmPassword: this.registerForm.value.confirmPassword
       };
@@ -59,8 +70,6 @@ export class RegisterComponent implements OnInit {
         console.log(error);
         this.notificationService.showMessage('error', error.error.message);
       });
-    } else {
-      this.notificationService.showMessage('error', 'Đăng ký thất bại');
     }
   }
 }

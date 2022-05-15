@@ -18,4 +18,11 @@ export class UseService {
     return this.http.post<User>(API_URL + '/register', user);
   }
 
+  viewUserInfo (id: number): Observable<User>{
+    return this.http.get<User>(`${API_URL}/users/${id}`)
+  }
+
+  updateUser(id: number, user): Observable<User> {
+    return this.http.post<User>(`${API_URL}/users/${id}`, user);
+  }
 }

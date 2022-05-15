@@ -8,11 +8,11 @@ import {UserEditComponent} from './user-edit/user-edit.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: ':id',
     component: UserInfoComponent
   },
   {
-    path: ':id',
+    path: 'edit/:id',
     component: UserEditComponent
   },
 ];

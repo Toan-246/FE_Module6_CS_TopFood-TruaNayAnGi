@@ -49,6 +49,10 @@ export class LoginComponent implements OnInit {
           this.router.navigateByUrl('/admin');
           break;
         }
+        case 'ROLE_MERCHANT': {
+          this.router.navigateByUrl('/merchant');
+          break;
+        }
       }
     }, error => {
       this.notificationService.showMessage('error', error.error.message);
