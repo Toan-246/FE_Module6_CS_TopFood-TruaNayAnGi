@@ -1,4 +1,4 @@
-<app-navbar-customer></app-navbar-customer>
+<app-navbar-customer id="app-navbar-customer"></app-navbar-customer>
 
 <section class="offer-dedicated-body mt-4 mb-4 pt-2 pb-2">
   <div class="container">
@@ -132,8 +132,9 @@
                           </div>
                         </div>
                         <div class="form-group col-md-12 mb-0">
-                          <button class="btn btn-success btn-block btn-lg" (click)="submitOrder()">
-                            Thanh toán {{cart.feeTotal | number}}
+                          <button class="btn btn-success btn-block btn-lg"
+                                  (click)="submitOrder()">
+                            Thanh toán {{cart.totalFee | number}}
                             <i class="icofont-long-arrow-right"></i></button>
                         </div>
                       </div>
@@ -146,7 +147,9 @@
         </div>
       </div>
       <div class="col-md-4">
-        <app-cart-table [cart]="cart" [showCheckoutButton]="false"></app-cart-table>
+        <app-cart-table [cart]="cart" [showCheckoutButton]="false"
+        [showRestaurantNote]="true"
+        ></app-cart-table>
 
       </div>
     </div>

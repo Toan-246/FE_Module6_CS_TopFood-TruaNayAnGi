@@ -5,6 +5,7 @@ import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {CartService} from '../../service/cart/cart.service';
 import {NotificationService} from '../../service/notification/notification.service';
 import {Cart} from '../../model/cart';
+import {AuthService} from '../../service/auth/auth.service';
 
 @Component({
   selector: 'app-detail-food',
@@ -24,7 +25,8 @@ export class DetailFoodComponent implements OnInit {
               private activatedRoute: ActivatedRoute,
               private cartService: CartService,
               private notificationService: NotificationService,
-              private router: Router
+              private router: Router,
+              private authService: AuthService
   ) {
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
       this.id = +paramMap.get('id');
@@ -72,6 +74,11 @@ export class DetailFoodComponent implements OnInit {
   }
 
   addToCart() {
+    if (!this.authService.isLoggedIn()) {
+      document.getElementById('app-navbar-customer').scrollIntoView(true);
+      this.notificationService.showErrorMessage('Hãy đăng nhập để có thể đặt món');
+      return;
+    }
     const cartDetail = {
       dish: this.dish,
       quantity: this.quantity
@@ -83,7 +90,7 @@ export class DetailFoodComponent implements OnInit {
           this.notificationService.showSuccessMessage(`Đã thêm vào giỏ hàng </br> (${this.dish.name}) x ${this.quantity}`);
         },
         error: (error) => {
-          this.notificationService.showSuccessMessage('Có lỗi xảy ra!');
+          this.notificationService.showErrorMessage('Có lỗi xảy ra!');
           console.log(error.error.message);
         }
       }

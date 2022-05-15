@@ -1,7 +1,7 @@
-<app-navbar-customer></app-navbar-customer>
-<app-merchant-banner [merchant]="dish.merchant" ></app-merchant-banner>
+<app-navbar-customer id="app-navbar-customer"></app-navbar-customer>
+<app-merchant-banner [merchant]="dish.merchant"></app-merchant-banner>
 
-<section  class="offer-dedicated-body pt-2 pb-2 mt-4 mb-4">
+<section class="offer-dedicated-body pt-2 pb-2 mt-4 mb-4">
   <div class="container">
     <div class="row">
       <div class="col-md-8">
@@ -26,9 +26,9 @@
                 <div class="mt-4">
                   <table class="table">
                     <tr>
-                    <td class="text-center">Số lượng</td>
-                    <td>Thành tiền</td>
-                    <td></td>
+                      <td class="text-center">Số lượng</td>
+                      <td>Thành tiền</td>
+                      <td></td>
                     </tr>
                     <td class="text-center">
                       <div class="handle-counter d-inline-block" id="handleCounter">
@@ -37,7 +37,7 @@
                         <button class="counter-plus btn btn-counter" (click)="increaseQuantity()">+</button>
                       </div>
                     </td>
-                    <td> <span class="text-black font-weight-bolder dish-total">{{dishTotal | number}}</span></td>
+                    <td><span class="text-black font-weight-bolder dish-total">{{dishTotal | number}}</span></td>
                     <td>
                       <button class="btn btn-primary" (click)="addToCart()">Thêm vào giỏ hàng</button>
                     </td>
@@ -113,7 +113,10 @@
       <div class="col-md-4">
         <app-merchant-vsattp></app-merchant-vsattp>
 
-        <app-cart-table [cart]="cart" [showCheckoutButton]="true"></app-cart-table>
+        <app-cart-table [cart]="cart"
+                        [showCheckoutButton]="true"
+                        [showRestaurantNote]="false"
+        ></app-cart-table>
 
       </div>
     </div>

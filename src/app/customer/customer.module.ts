@@ -17,9 +17,11 @@ import { MerchantVsattpComponent } from './merchant-vsattp/merchant-vsattp.compo
 import { PeopleAlsoLikeComponent } from './people-also-like/people-also-like.component';
 import { ExclusivelyForYouComponent } from './exclusively-for-you/exclusively-for-you.component';
 import { MerchantCouponComponent } from './merchant-coupon/merchant-coupon.component';
+import { OrderSuccessComponent } from './order-success/order-success.component';
+import { TrackOrderComponent } from './track-order/track-order.component';
 
 @NgModule({
-  declarations: [CustomerComponent, FooterComponent, MerchantRegisterComponent, MostPurchasedDishesComponent, CheckoutComponent, DetailFoodComponent, MerchantBannerComponent, MerchantSecondNavbarComponent, CartTableComponent, MerchantVsattpComponent, PeopleAlsoLikeComponent, ExclusivelyForYouComponent, MerchantCouponComponent],
+  declarations: [CustomerComponent, FooterComponent, MerchantRegisterComponent, MostPurchasedDishesComponent, CheckoutComponent, DetailFoodComponent, MerchantBannerComponent, MerchantSecondNavbarComponent, CartTableComponent, MerchantVsattpComponent, PeopleAlsoLikeComponent, ExclusivelyForYouComponent, MerchantCouponComponent, OrderSuccessComponent, TrackOrderComponent],
   exports: [],
   imports: [
     CommonModule,
