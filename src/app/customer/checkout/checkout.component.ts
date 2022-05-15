@@ -85,7 +85,7 @@ export class CheckoutComponent implements OnInit {
 
   submitOrder() {
     const orderDto = {
-      cartDto: this.cart,
+      cart: this.cart,
       deliveryInfo: this.defaultDeliveryInfo
     };
     console.log(orderDto);
