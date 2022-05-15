@@ -8,6 +8,8 @@ import {OrderDto} from '../../model/order-dto';
 import {DeliveryInfo} from '../../model/delivery-info';
 import {UseService} from '../../service/use/use.service';
 import {DeliveryInfoService} from '../../service/delivery-info/delivery-info.service';
+import {OrderService} from '../../service/order/order.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-checkout',
@@ -31,7 +33,9 @@ export class CheckoutComponent implements OnInit {
 
   constructor(private authService: AuthService,
               private cartService: CartService,
-              private deliveryInfoService: DeliveryInfoService
+              private deliveryInfoService: DeliveryInfoService,
+              private orderService: OrderService,
+              private router: Router
   ) {
   }
 
@@ -72,14 +76,24 @@ export class CheckoutComponent implements OnInit {
   }
 
   editDeliveryInfo(deliveryInfoId: number) {
-
+    console.log(`edit delivery info: id=${deliveryInfoId}`);
   }
 
   chooseDeliveryInfo(deliveryInfoId: number) {
-    
+    console.log(`make delivery info default:  id=${deliveryInfoId}`);
   }
 
   submitOrder() {
+    const orderDto = {
+      cartDto: this.cart,
+      deliveryInfo: this.defaultDeliveryInfo
+    };
+    console.log(orderDto);
+    this.orderService.createOrder(orderDto).subscribe(
+      (order) => {
+        this.router.navigateByUrl(`/order-success/${order.id}`);
+      }
+    );
   }
 
 }

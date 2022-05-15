@@ -5,6 +5,8 @@ import {MerchantRegisterComponent} from './merchant-register/merchant-register.c
 import {CheckoutComponent} from './checkout/checkout.component';
 import {DetailFoodComponent} from './detail-food/detail-food.component';
 import {CartTableComponent} from './cart-table/cart-table.component';
+import {OrderSuccessComponent} from './order-success/order-success.component';
+import {TrackOrderComponent} from './track-order/track-order.component';
 
 
 const routes: Routes = [
@@ -25,8 +27,12 @@ const routes: Routes = [
     component: DetailFoodComponent
   },
   {
-    path: 'test',
-    component: CartTableComponent
+    path: 'order-success/:orderId',
+    component: OrderSuccessComponent
+  },
+  {
+    path: 'track-order/:orderId',
+    component: TrackOrderComponent
   }
 ];
 
