@@ -78,6 +78,9 @@ export class UserInfoComponent implements OnInit {
         this.username.setValue(this.currentUser.username);
       })
     }
+    else {
+      this.router.navigateByUrl('/login')
+    }
   }
   updateUser() {
     if (this.userForm.valid){
