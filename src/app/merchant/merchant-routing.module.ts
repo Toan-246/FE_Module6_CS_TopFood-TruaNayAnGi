@@ -12,6 +12,10 @@ const routes: Routes = [
   {
     path: 'edit',
     component: MerchantEditComponent
+  },
+  {
+    path: ':id/edit',
+    component: FoodListComponent
   }
 ];
 
