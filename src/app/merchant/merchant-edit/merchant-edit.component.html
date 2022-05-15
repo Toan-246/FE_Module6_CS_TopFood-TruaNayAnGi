@@ -1,10 +1,13 @@
 <div class="hold-transition sidebar-mini">
+  <app-sidebar-merchant></app-sidebar-merchant>
+  <app-navbar-merchant></app-navbar-merchant>
   <div class="wrapper">
-    <app-navbar-merchant></app-navbar-merchant>
-    <app-sidebar-user></app-sidebar-user>
+
     <div class="content-wrapper">
+
+<!--      Bat dau o day -->
       <div class="container mt-3">
-        <form [formGroup]="registerForm" role="form" (ngSubmit)="submitForm()">
+        <form [formGroup]="merchantForm" (ngSubmit)="editMerchant()" role="form">
           <div class="mb-3">
             <label for="name" class="form-label">Tên cửa hàng</label>
             <input type="text" class="form-control" id="name" formControlName="name">
@@ -16,7 +19,7 @@
             <label for="description" class="form-label">Mô tả cửa hàng</label>
             <input type="text" class="form-control" id="description" formControlName="description">
             <div class="validate" [hidden]="descriptionControl.valid || !descriptionControl.touched">
-              <div *ngIf="descriptionControl.errors?.required">Nhập mô tả cửa hàng</div>
+              <div *ngIf="descriptionControl.errors?.required">Nhập tên mô tả</div>
             </div>
           </div>
           <div class="mb-3">
@@ -44,7 +47,13 @@
           </div>
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
+
       </div>
+<!--      Ket thuc o day-->
+
     </div>
   </div>
 </div>
+
+
+
