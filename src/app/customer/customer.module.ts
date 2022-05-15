@@ -20,7 +20,9 @@ import { MerchantCouponComponent } from './merchant-coupon/merchant-coupon.compo
 
 @NgModule({
   declarations: [CustomerComponent, FooterComponent, MerchantRegisterComponent, MostPurchasedDishesComponent, CheckoutComponent, DetailFoodComponent, MerchantBannerComponent, MerchantSecondNavbarComponent, CartTableComponent, MerchantVsattpComponent, PeopleAlsoLikeComponent, ExclusivelyForYouComponent, MerchantCouponComponent],
-  exports: [],
+    exports: [
+        FooterComponent
+    ],
   imports: [
     CommonModule,
     CustomerRoutingModule,
