@@ -38,7 +38,7 @@ export class DishService {
     return this.httpClient.get(`${API_URL}/dishes/most-purchased/8`);
   }
 
-  getAllMerchantDishes(id: number): Observable<Dish[]> {
-    return this.httpClient.get<Dish[]>(`${API_URL}/merchants/${id}/dishes`);
+  getAllMerchantDishes(userId: number): Observable<Dish[]> {
+    return this.httpClient.get<Dish[]>(`${API_URL}/merchants/user/${userId}/merchant/dishes`);
   }
 }

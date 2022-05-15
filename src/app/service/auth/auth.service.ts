@@ -46,4 +46,10 @@ export class AuthService {
   getCurrentUser() {
     return JSON.parse(sessionStorage.getItem('user'));
   }
+
+  getCurrentUserId() {
+    const currentUser = JSON.parse(sessionStorage.getItem('user'));
+    if (!currentUser) return null;
+    return currentUser.id;
+  }
 }

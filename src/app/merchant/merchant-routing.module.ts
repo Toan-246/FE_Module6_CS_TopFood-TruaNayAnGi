@@ -5,7 +5,7 @@ import {DishListComponent} from './dish-list/dish-list.component';
 
 const routes: Routes = [
   {
-    path: 'dishes',
+    path: ':id/dishes',
     component: DishListComponent
   }
 ];
