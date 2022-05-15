@@ -34,7 +34,6 @@ export class TrackOrderComponent implements OnInit {
     this.orderService.getOrder(this.orderId).subscribe(
       (order) => {
         this.orderDto = order;
-        this.orderDto.cart.user = {};
         console.log("this.orderDto");
         console.log(this.orderDto);
       }

@@ -1,6 +1,126 @@
-<app-navbar-customer id="app-navbar-customer" [refreshNum]="refreshNum"></app-navbar-customer>
-<app-merchant-banner [merchant]="merchant" ></app-merchant-banner>
+<app-navbar-customer id="app-navbar-customer"></app-navbar-customer>
+<app-merchant-banner [merchant]="dish.merchant"></app-merchant-banner>
 
-<app-add-to-cart [id]="id" (refreshCart)="refreshNavbar($event)"></app-add-to-cart>
+<section class="offer-dedicated-body pt-2 pb-2 mt-4 mb-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="offer-dedicated-body-left">
+          <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-order-online" role="tabpanel"
+                 aria-labelledby="pills-order-online-tab">
+              <div id="#menu" class="bg-white rounded shadow-sm p-4 mb-4">
+                <div class="address-map float-right ml-5">
+                  <div class="mapouter">
+                    <img width="300" height="170" class="img-fluid" src="{{dishImage}}" id="dish-image">
+                  </div>
+                </div>
+                <h5 class="mb-4">{{dish.name}}</h5>
+                <p class="mb-2 text-gray-dark font-weight-bold">{{dish.price | number}}đ / suất</p>
+                <p class="mb-3">
+                  <span class="badge badge-primary mr-1"
+                        *ngFor="let category of dish.categories">{{category.name}}</span>
+                </p>
+                <p class="text-black mb-0"> {{dish.description}} </p>
+
+                <div class="mt-4">
+                  <table class="table">
+                    <tr>
+                      <td class="text-center">Số lượng</td>
+                      <td>Thành tiền</td>
+                      <td></td>
+                    </tr>
+                    <td class="text-center">
+                      <div class="handle-counter d-inline-block" id="handleCounter">
+                        <button class="counter-minus btn btn-counter" (click)="decreaseQuantity()">-</button>
+                        <input type="text" class="input-quantity" [(ngModel)]="quantity">
+                        <button class="counter-plus btn btn-counter" (click)="increaseQuantity()">+</button>
+                      </div>
+                    </td>
+                    <td><span class="text-black font-weight-bolder dish-total">{{dishTotal | number}}</span></td>
+                    <td>
+                      <button class="btn btn-primary" (click)="addToCart()">Thêm vào giỏ hàng</button>
+                    </td>
+                    <tr>
+                    </tr>
+                  </table>
+                </div>
+                <hr class="clearfix">
+
+                <div
+                  class="owl-carousel owl-theme owl-carousel-five offers-interested-carousel mb-3">
+                  <div class="item">
+                    <div class="mall-category-item">
+                      <a href="#">
+                        <img class="img-fluid" src="img/list/1.png">
+                        <h6>Burgers</h6>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <div class="mall-category-item">
+                      <a href="#">
+                        <img class="img-fluid" src="img/list/2.png">
+                        <h6>Sandwiches</h6>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <div class="mall-category-item">
+                      <a href="#">
+                        <img class="img-fluid" src="img/list/3.png">
+                        <h6>Soups</h6>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <div class="mall-category-item">
+                      <a href="#">
+                        <img class="img-fluid" src="img/list/4.png">
+                        <h6>Pizzas</h6>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <div class="mall-category-item">
+                      <a href="#">
+                        <img class="img-fluid" src="img/list/5.png">
+                        <h6>Pastas</h6>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <div class="mall-category-item">
+                      <a href="#">
+                        <img class="img-fluid" src="img/list/6.png">
+                        <h6>Chinese</h6>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <app-merchant-coupon></app-merchant-coupon>
+
+              </div>
+              <app-exclusively-for-you></app-exclusively-for-you>
+
+              <app-people-also-like></app-people-also-like>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <app-merchant-vsattp></app-merchant-vsattp>
+
+        <app-cart-table [cart]="cart"
+                        [showCheckoutButton]="true"
+                        [showRestaurantNote]="false"
+        ></app-cart-table>
+
+      </div>
+    </div>
+  </div>
+</section>
 
 <app-merchant-second-navbar></app-merchant-second-navbar>

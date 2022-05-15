@@ -19,10 +19,9 @@ import { ExclusivelyForYouComponent } from './exclusively-for-you/exclusively-fo
 import { MerchantCouponComponent } from './merchant-coupon/merchant-coupon.component';
 import { OrderSuccessComponent } from './order-success/order-success.component';
 import { TrackOrderComponent } from './track-order/track-order.component';
-import { AddToCartComponent } from './add-to-cart/add-to-cart.component';
 
 @NgModule({
-    declarations: [CustomerComponent, FooterComponent, MerchantRegisterComponent, MostPurchasedDishesComponent, CheckoutComponent, DetailFoodComponent, MerchantBannerComponent, MerchantSecondNavbarComponent, CartTableComponent, MerchantVsattpComponent, PeopleAlsoLikeComponent, ExclusivelyForYouComponent, MerchantCouponComponent, OrderSuccessComponent, TrackOrderComponent, AddToCartComponent, AddToCartComponent],
+  declarations: [CustomerComponent, FooterComponent, MerchantRegisterComponent, MostPurchasedDishesComponent, CheckoutComponent, DetailFoodComponent, MerchantBannerComponent, MerchantSecondNavbarComponent, CartTableComponent, MerchantVsattpComponent, PeopleAlsoLikeComponent, ExclusivelyForYouComponent, MerchantCouponComponent, OrderSuccessComponent, TrackOrderComponent],
   exports: [],
   imports: [
     CommonModule,
