@@ -5,9 +5,79 @@
 
     <div class="content-wrapper">
 
-      <!--      Bat dau o day -->
-      <h1> code food list o day </h1>
-      <!--      Ket thuc o day-->
+      <section class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1>Danh sách món ăn</h1>
+            </div>
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a routerLink="/">Trang chủ</a></li>
+                <li class="breadcrumb-item active">Danh sách món ăn</li>
+              </ol>
+            </div>
+          </div>
+        </div><!-- /.container-fluid -->
+      </section>
+
+      <section class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">Danh sách sản phẩm</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                  <table id="example2" class="table table-bordered table-hover">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Tên món ăn</th>
+                        <th>Giá</th>
+                        <th>Loại món</th>
+                        <th>Đã bán</th>
+                        <th>Mô tả</th>
+                        <th>Ảnh món ăn</th>
+                        <th colspan="2">Hành động</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let dish of dishes; index as i">
+                        <td>{{i + 1}}</td>
+                        <td>{{dish.name}}</td>
+                        <td>{{dish.price}}</td>
+                        <td>{{dish.categories}}</td>
+                        <td>{{dish.sold}}</td>
+                        <td>{{dish.description}}</td>
+                        <td>{{dish.image}}</td>
+                        <td class="text-center">
+                          <a class="btn btn-warning" routerLink="/edit/{{dish.id}}">
+                            <i class="fa fa-edit"></i>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a class="btn btn-danger" routerLink="['/dishes/delete',dish.id]">
+                            <i class="fa fa-trash"></i>
+                          </a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <!-- /.card-body -->
+              </div>
+              <!-- /.card -->
+            </div>
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+      </section>
+
 
     </div>
   </div>
