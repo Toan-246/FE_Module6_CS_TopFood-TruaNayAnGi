@@ -4,6 +4,10 @@ import {CartDetail} from '../../model/cart-detail';
 import {AuthService} from '../../service/auth/auth.service';
 import {CartService} from '../../service/cart/cart.service';
 import {Cart} from '../../model/cart';
+import {OrderDto} from '../../model/order-dto';
+import {DeliveryInfo} from '../../model/delivery-info';
+import {UseService} from '../../service/use/use.service';
+import {DeliveryInfoService} from '../../service/delivery-info/delivery-info.service';
 
 @Component({
   selector: 'app-checkout',
@@ -15,16 +19,28 @@ export class CheckoutComponent implements OnInit {
   merchant: Merchant;
   currentUser: any;
   loggedIn: boolean;
-  cart: CartDetail[] = [];
+  userId: number;
+  cart: Cart;
   total: number;
 
+  defaultDeliveryInfo: DeliveryInfo;
+  otherDeliveryInfo: DeliveryInfo[] = [];
+  restaurantNote: string;
+  shippingNote: string;
+
+
   constructor(private authService: AuthService,
-              private cartService: CartService
+              private cartService: CartService,
+              private deliveryInfoService: DeliveryInfoService
   ) {
   }
 
   ngOnInit() {
+    document.getElementById('checkout-info-div').scrollIntoView(true);
+
     this.checkLoginAndGetInfo();
+
+    this.getDeliveryInfo();
   }
 
   checkLoginAndGetInfo() {
@@ -39,10 +55,31 @@ export class CheckoutComponent implements OnInit {
   getCart() {
     this.cartService.getCurrentUserCart().subscribe(
       (response) => {
-        this.cart = (response as Cart).cartDetails;
-        this.total = (response as Cart).total;
+        this.cart = (response as Cart);
+        this.merchant = this.cart.merchant;
       }
     );
+  }
+
+  getDeliveryInfo() {
+    this.deliveryInfoService.getDefaultDeliveryInfo(this.authService.getCurrentUserId()).subscribe(
+      (response) => this.defaultDeliveryInfo = response as DeliveryInfo
+    );
+
+    this.deliveryInfoService.getOtherDeliveryInfos(this.authService.getCurrentUserId()).subscribe(
+      (response) => this.otherDeliveryInfo = response as DeliveryInfo[]
+    );
+  }
+
+  editDeliveryInfo(deliveryInfoId: number) {
+
+  }
+
+  chooseDeliveryInfo(deliveryInfoId: number) {
+    
+  }
+
+  submitOrder() {
   }
 
 }

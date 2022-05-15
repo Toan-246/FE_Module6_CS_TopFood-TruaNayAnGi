@@ -8,4 +8,5 @@ export interface User {
   token?: string;
   fullName?: string;
   address?: string;
+  image?: string;
 }

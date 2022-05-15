@@ -4,9 +4,9 @@
     <!-- Breadcrumb -->
     <nav aria-label="breadcrumb" class="main-breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a routerLink="/home">Home</a></li>
-        <li class="breadcrumb-item"><a routerLink="/user/{{currentUser.id}}">User</a></li>
-        <li class="breadcrumb-item active" aria-current="page">User Profile</li>
+        <li class="breadcrumb-item"><a routerLink="/home">Trang chủ</a></li>
+        <li class="breadcrumb-item"><a routerLink="/users/{{currentUser.id}}">Người dùng</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{currentUser.username}}</li>
       </ol>
     </nav>
     <!-- /Breadcrumb -->
@@ -101,7 +101,7 @@
             <hr>
             <div class="row">
               <div class="col-sm-12">
-                <a class="btn btn-info " routerLink="/users/{{currentUser.id}}/edit">Edit</a>
+                <a class="btn btn-info " routerLink="/users/edit/{{currentUser.id}}">Edit</a>
               </div>
             </div>
           </div>

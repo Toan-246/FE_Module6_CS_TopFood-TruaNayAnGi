@@ -618,6 +618,8 @@ span.count-number.float-right {
     overflow: hidden;
     box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
 }
+
+
 .count-number-input {
     width: 24px;
     text-align: center;
