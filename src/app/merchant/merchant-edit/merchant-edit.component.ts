@@ -4,6 +4,8 @@ import {Merchant} from '../../model/merchant';
 import {MerchantService} from '../../service/merchant/merchant.service';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {NotificationService} from '../../service/notification/notification.service';
+import {AuthService} from '../../service/auth/auth.service';
+import {UseService} from '../../service/use/use.service';
 
 @Component({
   selector: 'app-merchant-edit',
@@ -11,7 +13,9 @@ import {NotificationService} from '../../service/notification/notification.servi
   styleUrls: ['./merchant-edit.component.css']
 })
 export class MerchantEditComponent implements OnInit {
+  userId: number;
   merchant: Merchant = {};
+  loggedIn: boolean;
   merchantForm: FormGroup = new FormGroup({
     name: new FormControl('', Validators.required),
     description: new FormControl('', Validators.required),
@@ -48,28 +52,37 @@ export class MerchantEditComponent implements OnInit {
   }
 
   constructor(private merchantService: MerchantService,
+              private userService: UseService,
               private activateRoute: ActivatedRoute,
+              private authService: AuthService,
               private router: Router,
               private notificationService: NotificationService) {
-    this.activateRoute.paramMap.subscribe((paramMap: ParamMap) => {
-      const id = paramMap.get('id');
-      this.getMerchant(id);
-    });
   }
 
   ngOnInit() {
+    this.checkLoginAndGetMerchant();
   }
 
-  getMerchant(id) {
-    this.merchantService.findById(id).subscribe(merchantBE => {
-      this.merchant = merchantBE;
-      this.nameControl.setValue(this.merchant.name);
-      this.descriptionControl.setValue(this.merchant.description);
-      this.addressControl.setValue(this.merchant.address);
-      this.phoneControl.setValue(this.merchant.phone);
-      this.openTimeControl.setValue(this.merchant.openTime);
-      this.closeTimeControl.setValue(this.merchant.closeTime);
-    });
+  getMerchant() {
+    this.userService.viewMerchantInfo(this.userId).subscribe(
+      (merchant) => {
+        this.merchant = merchant;
+        this.nameControl.setValue(this.merchant.name);
+        this.descriptionControl.setValue(this.merchant.description);
+        this.addressControl.setValue(this.merchant.address);
+        this.phoneControl.setValue(this.merchant.phone);
+        this.openTimeControl.setValue(this.merchant.openTime);
+        this.closeTimeControl.setValue(this.merchant.closeTime);
+      }
+    );
+  }
+
+  checkLoginAndGetMerchant() {
+    this.loggedIn = this.authService.isLoggedIn();
+    this.userId = this.authService.getCurrentUserId();
+    if (this.loggedIn) {
+      this.getMerchant();
+    }
   }
 
   editMerchant() {
