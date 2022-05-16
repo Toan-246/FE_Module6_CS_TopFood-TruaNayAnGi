@@ -77,7 +77,7 @@ export class CheckoutComponent implements OnInit {
     );
   }
 
-  changeCartFromChildComponent($event){
+  changeCartFromChildComponent($event) {
     this.cart = $event;
   }
 
