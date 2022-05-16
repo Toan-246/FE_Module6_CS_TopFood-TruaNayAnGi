@@ -1,12 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {Merchant} from '../../model/merchant';
-import {CartDetail} from '../../model/cart-detail';
 import {AuthService} from '../../service/auth/auth.service';
 import {CartService} from '../../service/cart/cart.service';
 import {Cart} from '../../model/cart';
-import {OrderDto} from '../../model/order-dto';
 import {DeliveryInfo} from '../../model/delivery-info';
-import {UseService} from '../../service/use/use.service';
 import {DeliveryInfoService} from '../../service/delivery-info/delivery-info.service';
 import {OrderService} from '../../service/order/order.service';
 import {Router} from '@angular/router';
@@ -77,7 +74,7 @@ export class CheckoutComponent implements OnInit {
     );
   }
 
-  changeCartFromChildComponent($event){
+  changeCartFromChildComponent($event) {
     this.cart = $event;
   }
 
