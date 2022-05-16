@@ -10,6 +10,7 @@ import {UseService} from '../../service/use/use.service';
 import {DeliveryInfoService} from '../../service/delivery-info/delivery-info.service';
 import {OrderService} from '../../service/order/order.service';
 import {Router} from '@angular/router';
+import {NotificationService} from '../../service/notification/notification.service';
 
 @Component({
   selector: 'app-checkout',
@@ -35,7 +36,8 @@ export class CheckoutComponent implements OnInit {
               private cartService: CartService,
               private deliveryInfoService: DeliveryInfoService,
               private orderService: OrderService,
-              private router: Router
+              private router: Router,
+              private notificationService: NotificationService
   ) {
   }
 
@@ -75,6 +77,10 @@ export class CheckoutComponent implements OnInit {
     );
   }
 
+  changeCartFromChildComponent($event){
+    this.cart = $event;
+  }
+
   editDeliveryInfo(deliveryInfoId: number) {
     console.log(`edit delivery info: id=${deliveryInfoId}`);
   }
@@ -83,15 +89,19 @@ export class CheckoutComponent implements OnInit {
     console.log(`make delivery info default:  id=${deliveryInfoId}`);
   }
 
+
   submitOrder() {
     const orderDto = {
-      cartDto: this.cart,
+      cart: this.cart,
       deliveryInfo: this.defaultDeliveryInfo
     };
     console.log(orderDto);
     this.orderService.createOrder(orderDto).subscribe(
       (order) => {
         this.router.navigateByUrl(`/order-success/${order.id}`);
+      },
+      error => {
+        this.notificationService.showErrorMessage(`Không thể tạo đơn hàng: <br> ${error.error.message}`);
       }
     );
   }

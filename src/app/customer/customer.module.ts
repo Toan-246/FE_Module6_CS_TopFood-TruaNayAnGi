@@ -23,7 +23,9 @@ import { AddToCartComponent } from './add-to-cart/add-to-cart.component';
 
 @NgModule({
   declarations: [CustomerComponent, FooterComponent, MerchantRegisterComponent, MostPurchasedDishesComponent, CheckoutComponent, DetailFoodComponent, MerchantBannerComponent, MerchantSecondNavbarComponent, CartTableComponent, MerchantVsattpComponent, PeopleAlsoLikeComponent, ExclusivelyForYouComponent, MerchantCouponComponent, OrderSuccessComponent, TrackOrderComponent, AddToCartComponent, AddToCartComponent],
-  exports: [],
+  exports: [
+    FooterComponent
+  ],
 
   imports: [
     CommonModule,
