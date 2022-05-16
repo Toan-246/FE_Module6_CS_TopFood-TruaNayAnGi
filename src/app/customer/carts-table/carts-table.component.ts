@@ -8,23 +8,14 @@ import {NotificationService} from '../../service/notification/notification.servi
 import {Router} from '@angular/router';
 
 @Component({
-  selector: 'app-cart-table',
-  templateUrl: './cart-table.component.html',
-  styleUrls: ['./cart-table.component.css']
+  selector: 'app-carts-table',
+  templateUrl: './carts-table.component.html',
+  styleUrls: ['./carts-table.component.css']
 })
-export class CartTableComponent implements OnInit {
+export class CartsTableComponent implements OnInit {
 
   @Input()
-  cart: Cart;
-
-  @Input()
-  showCheckoutButton: boolean;
-
-  @Input()
-  showRestaurantNote: boolean;
-
-  @Output()
-  changeCart =  new EventEmitter();
+  carts: Cart[] = [];
 
   currentUser: any;
   loggedIn: boolean;
@@ -39,7 +30,7 @@ export class CartTableComponent implements OnInit {
 
   ngOnInit() {
     this.checkLoginAndGetInfo();
-    this.getCurrentUserCart();
+    this.getCurrentUserCarts();
   }
 
   checkLoginAndGetInfo() {
@@ -49,37 +40,32 @@ export class CartTableComponent implements OnInit {
     }
   }
 
-  getCurrentUserCart() {
+  getCurrentUserCarts() {
     this.cartService.getCurrentUserCarts().subscribe(
       (response) => {
-        this.cart = response as Cart;
+        this.carts = response as Cart[];
+        console.log(this.carts);
       }
     );
   }
 
-  increaseDishQuantity(dishId: number) {
-    this.cartService.increaseDishQuantity(dishId).subscribe(
-      (cartDto) => {
-        this.cart = cartDto;
-        this.changeCart.emit(this.cart);
+  increaseDishQuantity(cartId: number, dishId: number) {
+    this.cartService.increaseDishQuantity(cartId, dishId).subscribe(
+      (response) => {
+        this.carts = response as Cart[];
       }
     );
   }
 
-  decreaseDishQuantity(dishId: number) {
-    this.cartService.decreaseDishQuantity(dishId).subscribe(
-      (cartDto) => {
-        this.cart = cartDto;
-        this.changeCart.emit(this.cart);
+  decreaseDishQuantity(cartId: number, dishId: number) {
+    this.cartService.increaseDishQuantity(cartId, dishId).subscribe(
+      (response) => {
+        this.carts = response as Cart[];
       }
     );
   }
 
-  checkOut() {
-    if (this.cart.cartDetails.length === 0) {
-      this.notificationService.showErrorMessage('Giỏ hàng trống <br> Hãy thêm hàng vào giỏ trước khi checkout!');
-    } else {
-      this.router.navigateByUrl('checkout');
-    }
+  checkOut(merchantId: number) {
+    this.router.navigateByUrl(`/home/checkout/${merchantId}`);
   }
 }

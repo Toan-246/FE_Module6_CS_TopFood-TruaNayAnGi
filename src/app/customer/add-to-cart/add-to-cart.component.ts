@@ -16,11 +16,11 @@ export class AddToCartComponent implements OnInit {
 
   @Input()
   id: number;
-  dish: Dish;
+  dish: Dish = {};
   dishTotal: number;
   dishImage: string;
   quantity: number;
-  cart: Cart;
+  cart: Cart = {};
 
   refreshNum = 0;
   @Output() refreshCart = new EventEmitter();

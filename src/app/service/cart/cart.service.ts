@@ -27,11 +27,11 @@ export class CartService {
     return this.httpClient.post(`${API_URL}/carts/add-dish-to-cart`, cartDetail);
   }
 
-  increaseDishQuantity(dishId: number) {
-    return this.httpClient.get(`${API_URL}/carts/increase-dish-quantity/${dishId}`);
+  increaseDishQuantity(cartId: number, dishId: number) {
+    return this.httpClient.get(`${API_URL}/carts/${cartId}/increase-dish-quantity/${dishId}`);
   }
 
-  decreaseDishQuantity(dishId: number) {
-    return this.httpClient.get(`${API_URL}/carts/decrease-dish-quantity/${dishId}`);
+  decreaseDishQuantity(cartId: number, dishId: number) {
+    return this.httpClient.get(`${API_URL}/carts/${cartId}/decrease-dish-quantity/${dishId}`);
   }
 }

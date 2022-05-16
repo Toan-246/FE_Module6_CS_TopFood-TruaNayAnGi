@@ -15,7 +15,7 @@ export class NavbarCustomerComponent implements OnInit, OnChanges {
 
   currentUser: any;
   loggedIn: boolean;
-  carts: Cart[];
+  carts: Cart[] = [];
 
   isMerchant: boolean;
 
