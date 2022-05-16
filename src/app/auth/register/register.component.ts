@@ -64,7 +64,7 @@ export class RegisterComponent implements OnInit {
       };
       this.userService.register(user).subscribe(() => {
         this.registerForm.reset();
-        this.notificationService.showMessage('success', 'Đăng ký thành công');
+        this.notificationService.showTopRightMessage('success', 'Đăng ký thành công');
         this.router.navigateByUrl('/login');
       }, error => {
         console.log(error);
