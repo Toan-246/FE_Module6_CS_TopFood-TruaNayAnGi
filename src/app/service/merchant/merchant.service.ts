@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {Merchant} from '../../model/merchant';
 import {Observable} from 'rxjs';
+import {Order} from '../../model/order';
 
 const API_URL = `${environment.apiUrl}`;
 
@@ -36,5 +37,8 @@ export class MerchantService {
 
   getCurrentUserMerchant(): Observable<Merchant> {
     return this.http.get<Merchant>(`${API_URL}/merchants/my-merchant`);
+  }
+  getAllOrderByDishId (id: number): Observable<Order[]>{
+    return this.http.get<Order[]>(`${API_URL}/orders/dishes/${id}`)
   }
 }

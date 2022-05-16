@@ -9,10 +9,11 @@ import {MyMerchantBannerComponent} from './my-merchant-banner/my-merchant-banner
 import {SecondNavbarComponent} from './second-navbar/second-navbar.component';
 import {DishesComponent} from './dishes/dishes.component';
 import {InfoComponent} from './info/info.component';
+import { ListOrderByDishComponent } from './list-order-by-dish/list-order-by-dish.component';
 
 @NgModule({
   declarations: [FoodListComponent, MyMerchantBannerComponent,
-    SecondNavbarComponent, DishesComponent, InfoComponent],
+    SecondNavbarComponent, DishesComponent, InfoComponent, ListOrderByDishComponent],
   imports: [
     SharedModule,
     CommonModule,
