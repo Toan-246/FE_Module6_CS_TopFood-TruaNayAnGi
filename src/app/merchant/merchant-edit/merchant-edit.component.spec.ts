@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MerchatEditComponent } from './merchant-edit.component';
+import { MerchantEditComponent } from './merchant-edit.component';
 
-describe('MerchatEditComponent', () => {
-  let component: MerchatEditComponent;
-  let fixture: ComponentFixture<MerchatEditComponent>;
+describe('MerchantEditComponent', () => {
+  let component: MerchantEditComponent;
+  let fixture: ComponentFixture<MerchantEditComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MerchatEditComponent ]
+      declarations: [ MerchantEditComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MerchatEditComponent);
+    fixture = TestBed.createComponent(MerchantEditComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
