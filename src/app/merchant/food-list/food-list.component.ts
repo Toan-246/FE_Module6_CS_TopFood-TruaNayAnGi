@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Dish} from '../../model/dish';
 import {DishService} from '../../service/dish/dish.service';
 import {User} from '../../model/user';

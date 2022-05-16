@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Merchant} from '../../model/merchant';
 import {CartDetail} from '../../model/cart-detail';
 import {AuthService} from '../../service/auth/auth.service';
@@ -22,6 +22,9 @@ export class CartTableComponent implements OnInit {
 
   @Input()
   showRestaurantNote: boolean;
+
+  @Output()
+  changeCart =  new EventEmitter();
 
   currentUser: any;
   loggedIn: boolean;
@@ -58,6 +61,7 @@ export class CartTableComponent implements OnInit {
     this.cartService.increaseDishQuantity(dishId).subscribe(
       (cartDto) => {
         this.cart = cartDto;
+        this.changeCart.emit(this.cart);
       }
     );
   }
@@ -66,13 +70,14 @@ export class CartTableComponent implements OnInit {
     this.cartService.decreaseDishQuantity(dishId).subscribe(
       (cartDto) => {
         this.cart = cartDto;
+        this.changeCart.emit(this.cart);
       }
     );
   }
 
   checkOut() {
     if (this.cart.cartDetails.length === 0) {
-      this.notificationService.showErrorMessage("Giỏ hàng trống <br> Hãy thêm hàng vào giỏ trước khi checkout!")
+      this.notificationService.showErrorMessage('Giỏ hàng trống <br> Hãy thêm hàng vào giỏ trước khi checkout!');
     } else {
       this.router.navigateByUrl('checkout');
     }

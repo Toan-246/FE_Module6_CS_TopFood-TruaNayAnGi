@@ -22,8 +22,13 @@ import { TrackOrderComponent } from './track-order/track-order.component';
 import { AddToCartComponent } from './add-to-cart/add-to-cart.component';
 
 @NgModule({
-    declarations: [CustomerComponent, FooterComponent, MerchantRegisterComponent, MostPurchasedDishesComponent, CheckoutComponent, DetailFoodComponent, MerchantBannerComponent, MerchantSecondNavbarComponent, CartTableComponent, MerchantVsattpComponent, PeopleAlsoLikeComponent, ExclusivelyForYouComponent, MerchantCouponComponent, OrderSuccessComponent, TrackOrderComponent, AddToCartComponent, AddToCartComponent],
-  exports: [],
+  declarations: [CustomerComponent, FooterComponent, MerchantRegisterComponent,
+    MostPurchasedDishesComponent, CheckoutComponent, DetailFoodComponent, MerchantBannerComponent,
+    MerchantSecondNavbarComponent, CartTableComponent, MerchantVsattpComponent, PeopleAlsoLikeComponent, ExclusivelyForYouComponent, MerchantCouponComponent, OrderSuccessComponent, TrackOrderComponent, AddToCartComponent, AddToCartComponent],
+  exports: [
+    FooterComponent
+  ],
+
   imports: [
     CommonModule,
     CustomerRoutingModule,
