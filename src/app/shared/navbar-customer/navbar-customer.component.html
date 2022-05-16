@@ -11,7 +11,8 @@
           <a class="nav-link" routerLink="/home">Trang chủ <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" routerLink="/merchant" *ngIf="isMerchant">Quản lý cửa hàng <span class="sr-only"></span></a>
+          <a class="nav-link" routerLink="/merchant" *ngIf="isMerchant">Quản lý cửa hàng <span
+            class="sr-only"></span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/login" *ngIf="!loggedIn">Đăng nhập <span class="sr-only"></span></a>
@@ -20,34 +21,43 @@
           <a class="nav-link" routerLink="/register" *ngIf="!loggedIn">Đăng ký <span class="sr-only"></span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/users/{{currentUser.id}}" *ngIf="loggedIn">{{currentUser.username}}<span class="sr-only"></span></a>
+          <a class="nav-link" routerLink="/users/{{currentUser.id}}" *ngIf="loggedIn">{{currentUser.username}}<span
+            class="sr-only"></span></a>
         </li>
 
         <li class="nav-item dropdown dropdown-cart" *ngIf="loggedIn">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
              aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-shopping-basket"></i> Giỏ hàng
-            <span class="badge badge-success">{{cart.length}}</span>
+            <span class="badge badge-success">{{carts.length}}</span>
           </a>
           <div class="dropdown-menu dropdown-cart-top p-0 dropdown-menu-right shadow-sm border-0"
-                *ngIf="!isCartEmpty">
-            <div class="dropdown-cart-top-body border-top p-4">
-              <p class="mb-2" *ngFor="let cartDetail of cart">
-                <i class="icofont-ui-press text-green food-item"></i>
-                {{cartDetail.dish.name}}
-                <span class="ml-3 float-right text-secondary">
-                  {{cartDetail.quantity}} x {{cartDetail.dish.price | number}} =
-                  {{cartDetail.quantity * cartDetail.dish.price | number}}</span>
-              </p>
+               >
+            <div class="dropdown-cart-top-body border-top p-4" *ngIf="carts.length < 1">
+              <h5>Giỏ hàng trống</h5>
             </div>
-            <div class="dropdown-cart-top-footer border-top p-4">
-              <p class="mb-0 font-weight-bold text-secondary">Tổng tiền <span
-                class="float-right text-dark">{{total | number}}</span></p>
-              <!-- <small class="text-info">Extra charges may apply</small> -->
+            <div class="dropdown-cart-top-body border-top p-4"
+                 *ngFor="let cart of carts">
+                  <p class="mb-4 ml-1 text-black">
+                    <i class="icofont-shopping-cart"></i>
+                    {{cart.merchant.name}}
+                    <span class="ml-3 float-right text-black">{{cart.foodTotal | number}}đ
+                      <button class="ml-3 btn btn-success" routerLink="/home/checkout/{{cart.merchant.id}}">Thanh toán</button>
+                    </span>
+                  </p>
+                  <p class="mb-2" *ngFor="let cartDetail of cart.cartDetails">
+                    <i class="icofont-restaurant text-green food-item"></i>
+                      {{cartDetail.dish.name}}
+                    <span class="ml-3 float-right text-secondary">
+                    {{cartDetail.quantity}} x {{cartDetail.dish.price | number}} =
+                    {{cartDetail.quantity * cartDetail.dish.price | number}}</span>
+                  </p>
             </div>
-            <div class="dropdown-cart-top-footer border-top p-2">
-              <a class="btn btn-success btn-block btn-lg" routerLink="/home/checkout"> Thanh toán</a>
-            </div>
+            <!--            <div class="dropdown-cart-top-footer border-top p-4">-->
+            <!--              <p class="mb-0 font-weight-bold text-secondary">Tổng tiền <span-->
+            <!--                class="float-right text-dark">{{total | number}}</span></p>-->
+            <!--              &lt;!&ndash; <small class="text-info">Extra charges may apply</small> &ndash;&gt;-->
+            <!--            </div>-->
           </div>
         </li>
 

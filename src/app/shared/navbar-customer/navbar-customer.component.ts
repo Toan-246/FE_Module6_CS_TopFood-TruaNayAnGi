@@ -15,10 +15,8 @@ export class NavbarCustomerComponent implements OnInit, OnChanges {
 
   currentUser: any;
   loggedIn: boolean;
-  cart: CartDetail[] = [];
-  total: number;
+  carts: Cart[];
 
-  isCartEmpty: boolean;
   isMerchant: boolean;
 
   constructor(private authService: AuthService,
@@ -35,7 +33,7 @@ export class NavbarCustomerComponent implements OnInit, OnChanges {
     this.isMerchant = this.authService.isMerchant();
     if (this.loggedIn) {
       this.currentUser = this.authService.getCurrentUser();
-      this.getCart();
+      this.getCarts();
     }
   }
 
@@ -44,16 +42,16 @@ export class NavbarCustomerComponent implements OnInit, OnChanges {
     this.loggedIn = false;
   }
 
-  getCart() {
-    this.cartService.getCurrentUserCart().subscribe(
+  getCarts() {
+    this.cartService.getCurrentUserCarts().subscribe(
       (response) => {
-        this.cart = (response as Cart).cartDetails;
-        this.isCartEmpty = this.cart.length === 0;
+        this.carts = (response as Cart[]);
+        console.log(this.carts);
       }
     );
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-      this.getCart();
+      this.getCarts();
   }
 }

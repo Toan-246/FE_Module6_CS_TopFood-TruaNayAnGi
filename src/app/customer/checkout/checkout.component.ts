@@ -56,7 +56,7 @@ export class CheckoutComponent implements OnInit {
 
 
   getCart() {
-    this.cartService.getCurrentUserCart().subscribe(
+    this.cartService.getCurrentUserCarts().subscribe(
       (response) => {
         this.cart = (response as Cart);
         this.merchant = this.cart.merchant;

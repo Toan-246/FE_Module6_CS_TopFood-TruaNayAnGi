@@ -3,6 +3,8 @@ import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {CartDetail} from '../../model/cart-detail';
 import {Cart} from '../../model/cart';
+import {AuthService} from '../auth/auth.service';
+import {Observable} from 'rxjs';
 
 const API_URL = environment.apiUrl;
 
@@ -11,11 +13,14 @@ const API_URL = environment.apiUrl;
 })
 export class CartService {
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient,
+              private authService: AuthService
+              ) {
   }
 
-  getCurrentUserCart() {
-    return this.httpClient.get(`${API_URL}/carts`);
+  getCurrentUserCarts() {
+    const currentUserId = this.authService.getCurrentUserId();
+    return this.httpClient.get(`${API_URL}/carts/users/${currentUserId}`);
   }
 
   addDishToCart(cartDetail: CartDetail) {
