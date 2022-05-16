@@ -97,7 +97,6 @@ export class CheckoutComponent implements OnInit {
       cart: this.cart,
       deliveryInfo: this.defaultDeliveryInfo
     };
-    console.log(orderDto);
     this.orderService.createOrder(orderDto).subscribe(
       (order) => {
         this.router.navigateByUrl(`/order-success/${order.id}`);

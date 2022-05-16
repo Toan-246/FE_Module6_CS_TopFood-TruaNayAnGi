@@ -46,7 +46,6 @@ export class NavbarCustomerComponent implements OnInit, OnChanges {
     this.cartService.getCurrentUserCarts().subscribe(
       (response) => {
         this.carts = (response as Cart[]);
-        console.log(this.carts);
       }
     );
   }
