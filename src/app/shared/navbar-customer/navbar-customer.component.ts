@@ -19,6 +19,7 @@ export class NavbarCustomerComponent implements OnInit, OnChanges {
   total: number;
 
   isCartEmpty: boolean;
+  isMerchant: boolean;
 
   constructor(private authService: AuthService,
               private cartService: CartService
@@ -31,6 +32,7 @@ export class NavbarCustomerComponent implements OnInit, OnChanges {
 
   checkLoginAndGetInfo() {
     this.loggedIn = this.authService.isLoggedIn();
+    this.isMerchant = this.authService.isMerchant();
     if (this.loggedIn) {
       this.currentUser = this.authService.getCurrentUser();
       this.getCart();
