@@ -14,6 +14,8 @@ export class CartTableCheckoutComponent implements OnInit {
 
 
   @Input()
+  merchantId: number;
+
   cart: Cart;
 
   @Input()
@@ -37,7 +39,29 @@ export class CartTableCheckoutComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getCart();
   }
 
+  increaseDishQuantity(cartId: number, dishId: number) {
+    this.cartService.increaseDishQuantity(cartId, dishId).subscribe(
+      (response) => {
+        this.getCart();
+      }
+    );
+  }
+
+  decreaseDishQuantity(cartId: number, dishId: number) {
+    this.cartService.decreaseDishQuantity(cartId, dishId).subscribe(
+      (response) => {
+        this.getCart();
+      }
+    );
+  }
+
+  getCart() {
+    this.cartService.getCurrentUserCartByMerchant(this.merchantId).subscribe(
+      (response) => this.cart = response as Cart
+    )
+  }
 
 }
