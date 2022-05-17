@@ -53,7 +53,7 @@
                 <div class="gold-members p-4" *ngFor="let order of orders">
                   <a>
                     <div class="media">
-                      <img class="mr-4" src="img/3.jpg" alt="Generic placeholder image">
+                      <img class="mr-4" src="http://localhost:8080/image/{{order.merchant.avatar}}" alt="Hình ảnh cửa hàng">
                       <div class="media-body">
                                                     <span
                                                       class="float-right text-info">{{order.createDate | date: 'dd/MM/yyyy hh:mm'}}
@@ -83,7 +83,7 @@
                   </a>
                 </div>
               </div>
-              
+
             </div>
           </div>
         </div>
