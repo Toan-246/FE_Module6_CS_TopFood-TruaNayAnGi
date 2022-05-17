@@ -6,7 +6,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Danh sách đăng ký cửa hàng</h1>
+          <h1>Danh sách người vận chuyển</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -25,31 +25,30 @@
             <div class="card-header">
             </div>
             <div class="card-body">
-              <table id="merchant-list" class="table table-bordered table-hover">
+              <table id="shipper-list" class="table table-bordered table-hover">
                 <thead>
                 <tr>
                   <th>#</th>
-                  <th>Tên cửa hàng</th>
-                  <th>Địa chỉ</th>
-                  <th>Mô tả</th>
+                  <th>Tên người vận chuyển</th>
                   <th>Số điện thoại</th>
-                  <th>Giờ mở cửa</th>
-                  <th>Giờ đóng cửa</th>
+                  <th>Biển số xe</th>
+                  <th>Tên xe</th>
+                  <th>Trạng thái</th>
                   <th colspan="2">Chức năng</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr *ngFor="let merchantRegister of merchantRegisters; index as i">
+                <tr *ngFor="let shipper of shippers; index as i" >
                   <td>{{i + 1}}</td>
-                  <td>{{merchantRegister.name}}</td>
-                  <td>{{merchantRegister.address}}</td>
-                  <td>{{merchantRegister.description}}</td>
-                  <td>{{merchantRegister.phone}}</td>
-                  <td>{{merchantRegister.openTime}}</td>
-                  <td>{{merchantRegister.closeTime}}</td>
-                  <td><button (click)="submitAcceptRegisterRequest(merchantRegister)" class="btn btn-success">Duyệt</button></td>
-                  <td><button (click)="submitRefuseRegisterRequest(merchantRegister)" class="btn btn-danger">Từ chối</button></td>
-
+                  <td>{{shipper.name}}</td>
+                  <td>{{shipper.phone}}</td>
+                  <td>{{shipper.licensePlates}}</td>
+                  <td>{{shipper.carName}}</td>
+                  <td>{{shipper.active? 'Đang hoạt đông' : 'Đã khóa'}}</td>
+                  <td>
+                    <button *ngIf="shipper.active" class="btn btn-danger" (click)="toggleShipper(shipper)">Khóa</button>
+                    <button *ngIf="!shipper.active" class="btn btn-success" (click)="toggleShipper(shipper)">Mở</button>
+                  </td>
                 </tr>
                 </tbody>
               </table>
@@ -64,4 +63,3 @@
     </div>
     <!-- /.container-fluid -->
   </section>
-</div>
