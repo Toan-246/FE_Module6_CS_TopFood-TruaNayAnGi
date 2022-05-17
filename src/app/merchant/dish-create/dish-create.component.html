@@ -1,17 +1,21 @@
+<app-navbar-customer></app-navbar-customer>
+<app-my-merchant-banner></app-my-merchant-banner>
+<app-second-navbar></app-second-navbar>
+
 <div class="hold-transition sidebar-mini">
-  <app-sidebar-merchant></app-sidebar-merchant>
-  <app-navbar-merchant></app-navbar-merchant>
   <div class="wrapper">
     <div class="content-wrapper">
+      <!--      Bat dau o day -->
       <div class="container mt-3">
-        <form [formGroup]="dishForm" (ngSubmit)="createDish()">
+        <form [formGroup]="dishForm" (ngSubmit)="createDish()" role="form">
           <div class="mb-3">
             <label for="name" class="form-label">Tên món ăn</label>
             <input type="text" class="form-control" id="name" formControlName="name">
             <div class="validate" [hidden]="nameControl.valid || !nameControl.touched">
-              <div *ngIf="nameControl.errors?.required">Nhập tên cửa hàng</div>
+              <div *ngIf="nameControl.errors?.required">Nhập tên món ăn</div>
             </div>
           </div>
+
           <div class="mb-3">
             <label for="price" class="form-label">Giá món ăn</label>
             <input type="text" class="form-control" id="price" formControlName="price">
@@ -19,6 +23,7 @@
               <div *ngIf="priceControl.errors?.required">Nhập giá món ăn</div>
             </div>
           </div>
+
           <div class="mb-3">
             <label for="description" class="form-label">Mô tả món ăn</label>
             <input type="text" class="form-control" id="description" formControlName="description">
@@ -26,18 +31,28 @@
               <div *ngIf="descriptionControl.errors?.required">Nhập mô tả món ăn</div>
             </div>
           </div>
-<!--          <div class="mb-3">-->
-<!--            <label for="categories" class="form-label">Phân loại món ăn</label>-->
-<!--          </div>-->
-<!--          <div class="mb-3">-->
-<!--            <label for="image" class="form-label">Ảnh món ăn</label>-->
-<!--          </div>-->
-          <button type="submit" class="btn btn-primary">Submit</button>
+
+          <div class="mb-3">
+            <label class="form-label">Chọn phân loại món ăn</label>
+            <div class="row">
+              <div class="col-3" *ngFor="let category of allCategories; index as i">
+                <input (click)="toggleCategory(category.id)" style="margin-right: 5px" type="checkbox" id='cb-category-{{category.id}}' value="{{category.name}}">
+                <label for="{{category.name}}" class="form-label">{{category.name}}</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <label for="image" class="form-label">Ảnh món ăn</label>
+            <input type="file" class="form-control" multiple id="image" (change)="changeFile($event)">
+          </div>
+          <button type="submit" class="btn btn-info">Lưu món ăn mới</button>
+          <button type="button" class="btn btn-danger ml-3" routerLink="/merchant">Không tạo nữa</button>
         </form>
       </div>
+      <!--      Ket thuc o day-->
     </div>
   </div>
 </div>
-
-
-
+<hr>
+<app-footer></app-footer>
