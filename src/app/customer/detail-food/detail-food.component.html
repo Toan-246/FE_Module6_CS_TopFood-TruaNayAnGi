@@ -1,0 +1,6 @@
+<app-navbar-customer id="app-navbar-customer" [refreshNum]="refreshNum"></app-navbar-customer>
+<app-merchant-banner [merchant]="merchant" ></app-merchant-banner>
+
+<app-add-to-cart [id]="id" (refreshCart)="refreshNavbar($event)"></app-add-to-cart>
+
+<app-merchant-second-navbar></app-merchant-second-navbar>

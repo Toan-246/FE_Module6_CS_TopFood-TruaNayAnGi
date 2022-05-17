@@ -6472,7 +6472,7 @@
       if (dir != "rtl") { dir = "ltr"; }
       if (dir == this.direction) { return }
       this.direction = dir;
-      this.iter(function (line) { return line.order = null; });
+      this.iter(function (line) { return line.orderDto = null; });
       if (this.cm) { directionChanged(this.cm); }
     })
   });

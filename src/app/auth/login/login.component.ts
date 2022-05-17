@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.authService.login(this.loginForm.get('email').value, this.loginForm.get('password').value).subscribe((data) => {
-      this.notificationService.showMessage('success', 'Đăng nhập thành công');
+      // this.notificationService.showMessage('success', 'Đăng nhập thành công');
       sessionStorage.setItem('user', JSON.stringify(this.user));
       switch (this.user.roles[0].authority) {
         case 'ROLE_CUSTOMER': {
@@ -47,6 +47,10 @@ export class LoginComponent implements OnInit {
         }
         case 'ROLE_ADMIN': {
           this.router.navigateByUrl('/admin');
+          break;
+        }
+        case 'ROLE_MERCHANT': {
+          this.router.navigateByUrl('/merchant');
           break;
         }
       }

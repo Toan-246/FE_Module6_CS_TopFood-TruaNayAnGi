@@ -3,6 +3,7 @@ import {environment} from '../../../environments/environment';
 import {Observable} from 'rxjs';
 import {Dish} from '../../model/dish';
 import {HttpClient} from '@angular/common/http';
+import {SearchForm} from '../../model/search-form';
 
 const API_URL = `${environment.apiUrl}`;
 
@@ -36,5 +37,13 @@ export class DishService {
 
   getMostPurchasedDishes() {
     return this.httpClient.get(`${API_URL}/dishes/most-purchased/8`);
+  }
+
+  getAllMerchantDishes(userId: number): Observable<Dish[]> {
+    return this.httpClient.get<Dish[]>(`${API_URL}/merchants/user/${userId}/merchant/dishes`);
+  }
+
+  searchDishes(searchForm: SearchForm){
+    return this.httpClient.post<Dish[]>(`${API_URL}/dishes/search`, searchForm);
   }
 }
