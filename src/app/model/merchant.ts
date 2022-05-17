@@ -9,4 +9,6 @@ export interface Merchant {
   vsattp?: string;
   active?: boolean;
   user?: any;
+  avatar?: string;
+  imageBanner?: string;
 }

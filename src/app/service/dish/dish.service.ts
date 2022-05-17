@@ -43,7 +43,7 @@ export class DishService {
     return this.httpClient.get<Dish[]>(`${API_URL}/merchants/user/${userId}/merchant/dishes`);
   }
 
-  searchDishes(searchForm: SearchForm){
+  searchDishes(searchForm: SearchForm) {
     return this.httpClient.post<Dish[]>(`${API_URL}/dishes/search`, searchForm);
   }
 }

@@ -12,7 +12,7 @@ import {AuthService} from '../../service/auth/auth.service';
 })
 export class DishesComponent implements OnInit {
 
-  merchant: Merchant;
+  merchant: Merchant = {};
   dishes: Dish[] = [];
 
   constructor(private merchantService: MerchantService,
