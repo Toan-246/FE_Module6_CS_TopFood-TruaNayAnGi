@@ -9,16 +9,20 @@ import {MyMerchantBannerComponent} from './my-merchant-banner/my-merchant-banner
 import {SecondNavbarComponent} from './second-navbar/second-navbar.component';
 import {DishesComponent} from './dishes/dishes.component';
 import {InfoComponent} from './info/info.component';
+import {CustomerModule} from '../customer/customer.module';
+import { DishEditComponent } from './dish-edit/dish-edit.component';
+import { DishCreateComponent } from './dish-create/dish-create.component';
 
 @NgModule({
   declarations: [FoodListComponent, MyMerchantBannerComponent,
-    SecondNavbarComponent, DishesComponent, InfoComponent],
-  imports: [
-    SharedModule,
-    CommonModule,
-    MerchantRoutingModule,
-    ReactiveFormsModule
-  ]
+    SecondNavbarComponent, DishesComponent, InfoComponent, DishEditComponent, DishCreateComponent],
+    imports: [
+        SharedModule,
+        CommonModule,
+        MerchantRoutingModule,
+        ReactiveFormsModule,
+        CustomerModule
+    ]
 })
 export class MerchantModule {
 }
