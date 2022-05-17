@@ -13,9 +13,11 @@ import {SearchForm} from '../model/search-form';
 })
 export class CustomerComponent implements OnInit {
 
-  categories: Category[];
+  categories: Category[] = [];
+  top5Categories: Category[] = [];
+  quickSearchCategoryId: number = null;
   q: string;
-  searchForm: SearchForm = {};
+  searchForm: SearchForm = {categories: []};
   pageDishes: Dish[] = [];
   resultTitle: string;
   endOfPage: boolean;
@@ -35,12 +37,22 @@ export class CustomerComponent implements OnInit {
     this.categoryService.getAllCategory().subscribe(
       (response) => this.categories = response as Category[]
     );
+
+    this.categoryService.getTop5Categories().subscribe((
+      response => this.top5Categories = response as Category[]
+    ));
   }
 
   doSearch() {
     this.resetSearchForm();
     this.searchForm.q = (document.getElementById('q') as HTMLInputElement).value;
+    if (this.quickSearchCategoryId != null) {
+      this.searchForm.categories.push(
+        {id: this.quickSearchCategoryId}
+      );
+    }
     this.getDishes();
+
   }
 
   getResultTittle() {
