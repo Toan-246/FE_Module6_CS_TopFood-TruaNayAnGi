@@ -5,6 +5,8 @@ import {InfoComponent} from './info/info.component';
 import {ListOrderByDishComponent} from './list-order-by-dish/list-order-by-dish.component';
 import {DishEditComponent} from './dish-edit/dish-edit.component';
 import {DishCreateComponent} from './dish-create/dish-create.component';
+import {OrderListComponent} from './order-list/order-list.component';
+import {CountOrdersByDishComponent} from './count-orders-by-dish/count-orders-by-dish.component';
 
 
 const routes: Routes = [
@@ -28,6 +30,15 @@ const routes: Routes = [
   {
     path: 'dish/create',
     component: DishCreateComponent
+  },
+  {
+    path: 'orders',
+    component: OrderListComponent
+  }
+  ,
+  {
+    path: 'orders/dishes',
+    component: CountOrdersByDishComponent
   }
 ];
 

@@ -13,11 +13,13 @@ import {ListOrderByDishComponent} from './list-order-by-dish/list-order-by-dish.
 import {CustomerModule} from '../customer/customer.module';
 import {DishEditComponent} from './dish-edit/dish-edit.component';
 import {DishCreateComponent} from './dish-create/dish-create.component';
+import { OrderListComponent } from './order-list/order-list.component';
+import { CountOrdersByDishComponent } from './count-orders-by-dish/count-orders-by-dish.component';
 
 @NgModule({
   declarations: [FoodListComponent, MyMerchantBannerComponent,
     SecondNavbarComponent, DishesComponent, InfoComponent,
-    ListOrderByDishComponent, DishCreateComponent, DishEditComponent
+    ListOrderByDishComponent, DishCreateComponent, DishEditComponent, OrderListComponent, CountOrdersByDishComponent
   ],
   imports: [
     SharedModule,
