@@ -2,11 +2,11 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Merchant} from '../../model/merchant';
 
 @Component({
-  selector: 'app-merchant-banner',
-  templateUrl: './merchant-banner.component.html',
-  styleUrls: ['./merchant-banner.component.css']
+  selector: 'app-my-merchant-banner',
+  templateUrl: './my-merchant-banner.component.html',
+  styleUrls: ['./my-merchant-banner.component.css']
 })
-export class MerchantBannerComponent implements OnInit {
+export class MyMerchantBannerComponent implements OnInit {
 
   @Input()
   merchant: Merchant = {};

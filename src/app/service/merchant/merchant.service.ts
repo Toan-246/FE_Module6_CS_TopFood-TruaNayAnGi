@@ -33,4 +33,8 @@ export class MerchantService {
   viewMerchantInfo(id: number): Observable<Merchant> {
     return this.http.get<Merchant>(`${API_URL}/merchants/${id}`);
   }
+
+  getCurrentUserMerchant(): Observable<Merchant> {
+    return this.http.get<Merchant>(`${API_URL}/merchants/my-merchant`);
+  }
 }

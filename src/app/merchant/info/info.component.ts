@@ -1,18 +1,19 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Merchant} from '../../model/merchant';
 import {MerchantService} from '../../service/merchant/merchant.service';
-import {ActivatedRoute, ParamMap, Router} from '@angular/router';
-import {NotificationService} from '../../service/notification/notification.service';
-import {AuthService} from '../../service/auth/auth.service';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {UseService} from '../../service/use/use.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {AuthService} from '../../service/auth/auth.service';
+import {NotificationService} from '../../service/notification/notification.service';
 
 @Component({
-  selector: 'app-merchant-edit',
-  templateUrl: './merchant-edit.component.html',
-  styleUrls: ['./merchant-edit.component.css']
+  selector: 'app-info',
+  templateUrl: './info.component.html',
+  styleUrls: ['./info.component.css']
 })
-export class MerchantEditComponent implements OnInit {
+export class InfoComponent implements OnInit {
+
   userId: number;
   merchant: Merchant = {};
   loggedIn: boolean;
