@@ -1,5 +1,5 @@
 /* tslint:disable:no-trailing-whitespace prefer-const */
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Dish} from '../../model/dish';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {DishService} from '../../service/dish/dish.service';
@@ -12,6 +12,7 @@ import {AuthService} from '../../service/auth/auth.service';
 import {MerchantService} from '../../service/merchant/merchant.service';
 
 declare var $: any;
+
 @Component({
   selector: 'app-dish-create',
   templateUrl: './dish-create.component.html',
@@ -20,14 +21,14 @@ declare var $: any;
 export class DishCreateComponent implements OnInit {
   dish: Dish = {};
   dishForm: FormGroup = new FormGroup({
-    name : new FormControl('', Validators.required),
+    name: new FormControl('', Validators.required),
     price: new FormControl('', Validators.required),
     description: new FormControl('', Validators.required),
-    categoryId: new FormControl(''),
     category: new FormControl('')
   });
 
   allCategories: Category[] = [];
+
   categories: Category[] = [];
   selectedFile: File[] = [];
   imageUrl: any;
@@ -38,7 +39,8 @@ export class DishCreateComponent implements OnInit {
               private categoryService: CategoryService,
               private router: Router,
               private authService: AuthService,
-              private merchantService: MerchantService) { }
+              private merchantService: MerchantService) {
+  }
 
   ngOnInit() {
     this.getMerchant();
@@ -76,11 +78,13 @@ export class DishCreateComponent implements OnInit {
       this.dishService.createDish(this.dish).subscribe(() => {
         this.notificationService.showMessage('success', 'Tạo món ăn thành công');
         console.log(this.dish);
-        // this.router.navigateByUrl('/merchant');
+        this.router.navigateByUrl('/merchant');
       }, error => {
         console.log(error);
         this.notificationService.showMessage('error', error.error.message);
       });
+    } else {
+      this.notificationService.showMessage('error', 'Vui lòng kiểm tra lại thông tin nhập');
     }
   }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Merchant} from '../../model/merchant';
 import {MerchantService} from '../../service/merchant/merchant.service';
 import {Dish} from '../../model/dish';
@@ -18,19 +18,19 @@ export class DishesComponent implements OnInit {
   constructor(private merchantService: MerchantService,
               private dishService: DishService,
               private authService: AuthService
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
     this.getMerchant();
     this.getAllMerchantDishes();
   }
 
-  getMerchant(){
+  getMerchant() {
     this.merchantService.getCurrentUserMerchant().subscribe(
       merchant => this.merchant = merchant
     );
   }
-
 
   getAllMerchantDishes() {
     const userId = this.authService.getCurrentUserId();
