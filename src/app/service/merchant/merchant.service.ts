@@ -38,7 +38,8 @@ export class MerchantService {
   getCurrentUserMerchant(): Observable<Merchant> {
     return this.http.get<Merchant>(`${API_URL}/merchants/my-merchant`);
   }
-  getAllOrderByDishId (id: number): Observable<Order[]>{
-    return this.http.get<Order[]>(`${API_URL}/orders/dishes/${id}`)
+
+  getAllOrderByDishId(id: number): Observable<Order[]> {
+    return this.http.get<Order[]>(`${API_URL}/orders/dishes/${id}`);
   }
 }

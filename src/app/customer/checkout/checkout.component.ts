@@ -17,7 +17,6 @@ import {NotificationService} from '../../service/notification/notification.servi
 export class CheckoutComponent implements OnInit {
 
   merchantId: number;
-  merchant: Merchant;
   currentUser: any;
   loggedIn: boolean;
   userId: number;
@@ -61,10 +60,9 @@ export class CheckoutComponent implements OnInit {
 
 
   getCart() {
-    this.cartService.getCurrentUserCarts().subscribe(
+    this.cartService.getCurrentUserCartByMerchant(this.merchantId).subscribe(
       (response) => {
         this.cart = (response as Cart);
-        this.merchant = this.cart.merchant;
       }
     );
   }

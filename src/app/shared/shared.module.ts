@@ -9,18 +9,20 @@ import { SidebarUserComponent } from './sidebar-user/sidebar-user.component';
 
 
 
+
 @NgModule({
   declarations: [NavbarAdminComponent, SidebarAdminComponent, NavbarCustomerComponent, SidebarMerchantComponent, SidebarUserComponent],
   imports: [
     CommonModule,
     RouterModule
   ],
-    exports: [
-        SidebarAdminComponent,
-        NavbarAdminComponent,
-        NavbarCustomerComponent,
-        SidebarMerchantComponent,
-        SidebarUserComponent
-    ]
+  exports: [
+    SidebarAdminComponent,
+    NavbarAdminComponent,
+    NavbarCustomerComponent,
+    SidebarMerchantComponent,
+    SidebarUserComponent,
+
+  ]
 })
 export class SharedModule { }

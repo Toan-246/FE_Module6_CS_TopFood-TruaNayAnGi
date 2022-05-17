@@ -20,10 +20,9 @@ export class AddToCartComponent implements OnInit {
   dishTotal: number;
   dishImage: string;
   quantity: number;
-  cart: Cart = {};
 
   refreshNum = 0;
-  @Output() refreshCart = new EventEmitter();
+  @Output() refreshCarts = new EventEmitter();
 
   constructor(private dishService: DishService,
               private cartService: CartService,
@@ -37,14 +36,9 @@ export class AddToCartComponent implements OnInit {
     document.getElementById('dish-image').scrollIntoView(true);
     this.quantity = 1;
     this.getDish();
-
   }
 
-  getCurrentUserCart() {
-    this.cartService.getCurrentUserCarts().subscribe(
-      (response) => this.cart = response as Cart
-    );
-  }
+
 
   getDish() {
     this.dishService.getById(this.id).subscribe(
@@ -85,7 +79,7 @@ export class AddToCartComponent implements OnInit {
     this.cartService.addDishToCart(cartDetail).subscribe(
       {
         next: (response) => {
-          this.cart = response as Cart;
+          console.log(response);
           this.notificationService.showSuccessMessage(`Đã thêm vào giỏ hàng </br> (${this.dish.name}) x ${this.quantity}`);
         },
         error: (error) => {
@@ -94,8 +88,9 @@ export class AddToCartComponent implements OnInit {
         },
         complete: () => {
           this.quantity = 1;
+          this.dishTotal = this.dish.price;
           this.refreshNum++;
-          this.refreshCart.emit(this.refreshNum);
+          this.refreshCarts.emit(this.refreshNum);
         }
       }
     );

@@ -1,7 +1,8 @@
-<div class="hold-transition sidebar-mini">
-  <div class="wrapper">
-    <div class="content-wrapper">
-      <div class="container mt-3">
+
+<app-navbar-customer></app-navbar-customer>
+<div >
+  <div class="container">
+    <div class="container mt-3 ">
         <form [formGroup]="registerForm" role="form" (ngSubmit)="submitForm()">
           <div class="mb-3">
             <label for="name" class="form-label">Tên cửa hàng</label>
@@ -45,4 +46,3 @@
       </div>
     </div>
   </div>
-</div>
