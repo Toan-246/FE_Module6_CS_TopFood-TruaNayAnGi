@@ -23,8 +23,8 @@ export class DishService {
     return this.httpClient.get<Dish>(`${API_URL}/dishes/${id}`);
   }
 
-  createDish(dish: Dish): Observable<Dish> {
-    return this.httpClient.post(`${API_URL}/dishes`, dish);
+  createMerchantDish(dish: Dish): Observable<Dish> {
+    return this.httpClient.post(`${API_URL}/merchants/dish/create`, dish);
   }
 
   updateDish(id: number, dish: Dish): Observable<Dish> {
