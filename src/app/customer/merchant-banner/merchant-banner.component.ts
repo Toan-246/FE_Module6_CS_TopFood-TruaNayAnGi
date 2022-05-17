@@ -9,7 +9,7 @@ import {Merchant} from '../../model/merchant';
 export class MerchantBannerComponent implements OnInit {
 
   @Input()
-  merchant: Merchant;
+  merchant: Merchant = {};
 
   constructor() { }
 
