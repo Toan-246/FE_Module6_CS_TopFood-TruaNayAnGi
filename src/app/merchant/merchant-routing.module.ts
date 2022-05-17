@@ -37,7 +37,7 @@ const routes: Routes = [
   }
   ,
   {
-    path: 'orders/dishes',
+    path: ':id/orders/dishes',
     component: CountOrdersByDishComponent
   }
 ];

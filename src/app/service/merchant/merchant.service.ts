@@ -4,6 +4,7 @@ import {environment} from '../../../environments/environment';
 import {Merchant} from '../../model/merchant';
 import {Observable} from 'rxjs';
 import {Order} from '../../model/order';
+import {Dish} from '../../model/dish';
 
 const API_URL = `${environment.apiUrl}`;
 
@@ -42,4 +43,6 @@ export class MerchantService {
   getAllOrderByDishId(id: number): Observable<Order[]> {
     return this.http.get<Order[]>(`${API_URL}/orders/dishes/${id}`);
   }
+
+  // countMerchantByDish (id: number): Observable<DishDTO>
 }
