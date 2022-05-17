@@ -1,0 +1,41 @@
+<app-navbar-customer></app-navbar-customer>
+<!--<div class="hold-transition sidebar-mini">-->
+  <div >
+    <div class="container">
+      <div class="container mt-3 ">
+        <form [formGroup]="registerForm" role="form" (ngSubmit)="submitForm()">
+          <div class="mb-3">
+            <label for="name" class="form-label">Tên người vận chuyển</label>
+            <input type="text" class="form-control" id="name" formControlName="name">
+            <div class="validate" [hidden]="nameControl.valid || !nameControl.touched">
+              <div *ngIf="nameControl.errors?.required">Nhập tên người vận chuyển</div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="licensePlates" class="form-label">Biển số xe</label>
+            <input type="text" class="form-control" id="licensePlates" formControlName="licensePlates">
+            <div class="validate" [hidden]="licensePlatesControl.valid || !licensePlatesControl.touched">
+              <div *ngIf="licensePlatesControl.errors?.required">Nhập biển số xe</div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="carName" class="form-label">Tên xe</label>
+            <input type="text" class="form-control" id="carName" formControlName="carName">
+            <div class="validate" [hidden]="carNameControl.valid || !carNameControl.touched">
+              <div *ngIf="carNameControl.errors?.required">Nhập tên xe</div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="phone" class="form-label">Số điện thoại</label>
+            <input type="text" class="form-control" id="phone" formControlName="phone">
+            <div class="validate" [hidden]="phoneControl.valid || !phoneControl.touched">
+              <div *ngIf="phoneControl.errors?.required">Nhập số điện thoại</div>
+              <div *ngIf="phoneControl.errors?.pattern">Sai định dạng số điện thoại</div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+<!--</div>-->

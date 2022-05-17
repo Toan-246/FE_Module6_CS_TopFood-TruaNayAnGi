@@ -48,7 +48,7 @@ export class DishCreateComponent implements OnInit {
 
   createDish() {
     if (this.dishForm.valid) {
-      this.dishService.createDish(this.dishForm.value).subscribe(() => {
+      this.dishService.createMerchantDish(this.dishForm.value).subscribe(() => {
         /// thong bao
       }, error => {
         // thong bao

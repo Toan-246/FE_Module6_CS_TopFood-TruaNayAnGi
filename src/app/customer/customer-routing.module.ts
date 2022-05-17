@@ -1,12 +1,12 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 import {CustomerComponent} from './customer.component';
 import {MerchantRegisterComponent} from './merchant-register/merchant-register.component';
 import {CheckoutComponent} from './checkout/checkout.component';
 import {DetailFoodComponent} from './detail-food/detail-food.component';
-import {CartTableComponent} from './cart-table/cart-table.component';
 import {OrderSuccessComponent} from './order-success/order-success.component';
 import {TrackOrderComponent} from './track-order/track-order.component';
+import {ShipperRegisterComponent} from './shipper-register/shipper-register/shipper-register.component';
 
 
 const routes: Routes = [
@@ -19,7 +19,11 @@ const routes: Routes = [
     component: MerchantRegisterComponent
   },
   {
-    path: 'checkout',
+    path: 'shipper-register',
+    component: ShipperRegisterComponent
+  },
+  {
+    path: 'checkout/:merchant-id',
     component: CheckoutComponent
   },
   {

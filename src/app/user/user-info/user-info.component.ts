@@ -5,8 +5,11 @@ import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {AuthService} from '../../service/auth/auth.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {NotificationService} from '../../service/notification/notification.service';
+import {OrderDto} from '../../model/order-dto';
+import {CartDetail} from '../../model/cart-detail';
 
-declare var $:any;
+
+declare var $: any;
 
 @Component({
   selector: 'app-user-info',
@@ -16,10 +19,13 @@ declare var $:any;
 export class UserInfoComponent implements OnInit {
   currentUser: User = {};
   loggedIn: boolean;
-
+  orders: OrderDto[] = [];
+  userId: number;
+  cartDetails: CartDetail[];
   userForm: FormGroup = new FormGroup({
     email: new FormControl(''),
-    phone: new FormControl('',[Validators.pattern("^[0](\\+\\d{1,3}\\s?)?((\\(\\d{3}\\)\\s?)|(\\d{3})(\\s|-?))(\\d{3}(\\s|-?))(\\d{3})(\\s?(([E|e]xt[:|.|]?)|x|X)(\\s?\\d+))?")]),
+    phone: new FormControl('', [Validators.pattern
+    ('^[0](\\+\\d{1,3}\\s?)?((\\(\\d{3}\\)\\s?)|(\\d{3})(\\s|-?))(\\d{3}(\\s|-?))(\\d{3})(\\s?(([E|e]xt[:|.|]?)|x|X)(\\s?\\d+))?')]),
     fullName: new FormControl('', Validators.required),
     address: new FormControl(''),
     username: new FormControl(''),
@@ -32,6 +38,7 @@ export class UserInfoComponent implements OnInit {
               private router: Router,
               private notificationService: NotificationService) {
   }
+
   get email() {
     return this.userForm.get('email');
   }
@@ -43,6 +50,7 @@ export class UserInfoComponent implements OnInit {
   get fullName() {
     return this.userForm.get('fullName');
   }
+
   get address() {
     return this.userForm.get('address');
   }
@@ -54,36 +62,37 @@ export class UserInfoComponent implements OnInit {
   get confirmPassword() {
     return this.userForm.get('confirmPassword');
   }
+
   get phone() {
     return this.userForm.get('phone');
   }
+
   get image() {
     return this.userForm.get('image');
   }
 
   ngOnInit() {
     this.checkLoginAndGetInfo();
+    this.getAllOrdersByUser();
   }
 
   checkLoginAndGetInfo() {
     this.loggedIn = this.authService.isLoggedIn();
     if (this.loggedIn) {
       this.currentUser = this.authService.getCurrentUser();
-      this.userService.viewUserInfo(this.currentUser.id).subscribe(userBE=>{
+      this.userService.viewUserInfo(this.currentUser.id).subscribe(userBE => {
         this.currentUser = userBE;
         this.email.setValue(this.currentUser.email);
         this.phone.setValue(this.currentUser.phone);
         this.fullName.setValue(this.currentUser.fullName);
         this.address.setValue(this.currentUser.address);
         this.username.setValue(this.currentUser.username);
-      })
-    }
-    else {
-      this.router.navigateByUrl('/login')
+      });
     }
   }
+
   updateUser() {
-    if (this.userForm.valid){
+    if (this.userForm.valid) {
       let user = new FormData();
       user.append('email', this.currentUser.email);
       user.append('phone', this.userForm.value.phone);
@@ -94,14 +103,21 @@ export class UserInfoComponent implements OnInit {
       if (files.length > 0) {
         user.append('image', files[0]);
       }
-      this.userService.updateUser(this.currentUser.id, user ).subscribe(() =>{
-        this.notificationService.showMessage('success', 'Cập nhật thành công')
-       this.checkLoginAndGetInfo();
+      this.userService.updateUser(this.currentUser.id, user).subscribe(() => {
+        this.notificationService.showMessage('success', 'Cập nhật thành công');
+        this.checkLoginAndGetInfo();
       }, error => {
         this.notificationService.showMessage('error', error.error.message);
-      },()=>{
-          $("edit-profile-modal").modal('hide');
+      }, () => {
+        $('edit-profile-modal').modal('hide');
       });
     }
+  }
+
+  getAllOrdersByUser() {
+    this.userId = this.authService.getCurrentUserId();
+    this.userService.getAllOrderByUserId(this.userId).subscribe(ordersBE => {
+      this.orders = ordersBE as OrderDto[];
+    });
   }
 }

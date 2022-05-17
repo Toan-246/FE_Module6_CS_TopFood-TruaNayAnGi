@@ -23,8 +23,8 @@ export class DishService {
     return this.httpClient.get<Dish>(`${API_URL}/dishes/${id}`);
   }
 
-  createDish(dish: Dish): Observable<Dish> {
-    return this.httpClient.post(`${API_URL}/dishes`, dish);
+  createMerchantDish(dish: Dish): Observable<Dish> {
+    return this.httpClient.post(`${API_URL}/merchants/dish/create`, dish);
   }
 
   updateDish(id: number, dish: Dish): Observable<Dish> {
@@ -43,7 +43,7 @@ export class DishService {
     return this.httpClient.get<Dish[]>(`${API_URL}/merchants/user/${userId}/merchant/dishes`);
   }
 
-  searchDishes(searchForm: SearchForm){
+  searchDishes(searchForm: SearchForm) {
     return this.httpClient.post<Dish[]>(`${API_URL}/dishes/search`, searchForm);
   }
 }

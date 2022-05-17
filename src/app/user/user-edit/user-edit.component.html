@@ -4,7 +4,7 @@
       <li class="breadcrumb-item"><a routerLink="/home">Trang chủ</a></li>
       <li class="breadcrumb-item"><a routerLink="/users/{{currentUser.id}}">Người dùng</a></li>
       <li class="breadcrumb-item active" aria-current="page">{{currentUser.username}}</li>
-      <li class="breadcrumb-item active" aria-current="page">Chỉn sửa thông tin</li>
+      <li class="breadcrumb-item active" aria-current="page">Chỉnh sửa thông tin</li>
     </ol>
   </nav>
   <form [formGroup]="userForm" (ngSubmit)="updateUser()">

@@ -147,10 +147,10 @@
         </div>
       </div>
       <div class="col-md-4">
-        <app-cart-table [cart]="cart" [showCheckoutButton]="false"
+        <app-cart-table-checkout [merchantId]="merchantId" [showCheckoutButton]="false"
         [showRestaurantNote]="true"
                         (changeCart)="changeCartFromChildComponent($event)"
-        ></app-cart-table>
+        ></app-cart-table-checkout>
 
       </div>
     </div>
