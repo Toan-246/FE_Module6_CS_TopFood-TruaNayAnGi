@@ -17,12 +17,12 @@
         <p class="text-gray mb-0 float-right ml-2">{{cartDetail.quantity * cartDetail.dish.price | number}}</p>
         <span class="count-number float-right">
                                     <button class="btn btn-outline-secondary  btn-sm left dec"
-                                            (click)="decreaseDishQuantity(cartDetail.dish.id)">
+                                            (click)="decreaseDishQuantity(cart.id, cartDetail.dish.id)">
                                       <i class="icofont-minus"></i> </button>
                                     <input class="count-number-input" type="text" value="{{cartDetail.quantity}}"
                                            readonly="">
                                     <button class="btn btn-outline-secondary btn-sm right inc"
-                                            (click)="increaseDishQuantity(cartDetail.dish.id)">
+                                            (click)="increaseDishQuantity(cart.id, cartDetail.dish.id)">
                                       <i class="icofont-plus"></i> </button>
                                 </span>
         <div class="media">

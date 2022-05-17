@@ -1,6 +1,22 @@
-<app-navbar-customer id="app-navbar-customer" [refreshNum]="refreshNum"></app-navbar-customer>
+<app-navbar-customer id="app-navbar-customer" [refreshNum]="countChanges"></app-navbar-customer>
 <app-merchant-banner [merchant]="merchant" ></app-merchant-banner>
 
-<app-add-to-cart [id]="id" (refreshCart)="refreshNavbar($event)"></app-add-to-cart>
+
+
+<section class="offer-dedicated-body pt-2 pb-2 mt-4 mb-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="offer-dedicated-body-left">
+          <app-add-to-cart [id]="id" (refreshCarts)="refreshCarts($event)"></app-add-to-cart>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <app-merchant-vsattp></app-merchant-vsattp>
+        <app-carts-table [refreshNum]="countChanges"></app-carts-table>
+      </div>
+    </div>
+  </div>
+</section>
 
 <app-merchant-second-navbar></app-merchant-second-navbar>

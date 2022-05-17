@@ -14,7 +14,7 @@ export class DetailFoodComponent implements OnInit {
   id: number;
   merchant: Merchant;
 
-  refreshNum = 0;
+  countChanges = 0;
 
   constructor(private dishService: DishService,
               private activatedRoute: ActivatedRoute,
@@ -38,7 +38,7 @@ export class DetailFoodComponent implements OnInit {
     );
   }
 
-  refreshNavbar($event) {
-    this.refreshNum = $event;
+  refreshCarts($event) {
+    this.countChanges = $event;
   }
 }
