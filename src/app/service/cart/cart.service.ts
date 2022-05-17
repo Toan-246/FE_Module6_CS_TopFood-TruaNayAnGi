@@ -24,7 +24,7 @@ export class CartService {
   }
 
   addDishToCart(cartDetail: CartDetail) {
-    return this.httpClient.post(`${API_URL}/carts/add-dish-to-cart`, cartDetail);
+    return this.httpClient.post(`${API_URL}/carts/users/current-user/add-dish-to-cart`, cartDetail);
   }
 
   increaseDishQuantity(cartId: number, dishId: number) {
