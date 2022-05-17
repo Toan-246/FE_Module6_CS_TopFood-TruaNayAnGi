@@ -21,13 +21,14 @@ import {OrderSuccessComponent} from './order-success/order-success.component';
 import {TrackOrderComponent} from './track-order/track-order.component';
 import {AddToCartComponent} from './add-to-cart/add-to-cart.component';
 import {CartTableCheckoutComponent} from './cart-table-checkout/cart-table-checkout.component';
+import { ShipperRegisterComponent } from './shipper-register/shipper-register/shipper-register.component';
 
 @NgModule({
   declarations: [CustomerComponent, FooterComponent, MerchantRegisterComponent,
     MostPurchasedDishesComponent, CheckoutComponent, DetailFoodComponent, MerchantBannerComponent,
     MerchantSecondNavbarComponent, CartsTableComponent, MerchantVsattpComponent,
     PeopleAlsoLikeComponent, ExclusivelyForYouComponent, MerchantCouponComponent, OrderSuccessComponent,
-    TrackOrderComponent, AddToCartComponent, AddToCartComponent, CartTableCheckoutComponent],
+    TrackOrderComponent, AddToCartComponent, AddToCartComponent, CartTableCheckoutComponent, ShipperRegisterComponent],
   exports: [
     FooterComponent
   ],
