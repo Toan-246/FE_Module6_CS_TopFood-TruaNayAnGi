@@ -28,7 +28,7 @@
               <tbody>
               <tr *ngFor="let dish of dishes; index as i">
                 <td>{{i + 1}}</td>
-                <td><a routerLink="/merchant/dishes/{{dish.id}}/orders">{{dish.name}}</a></td>
+                <td class="underline"><a routerLink="/merchant/dishes/{{dish.id}}/orders">{{dish.name}}</a></td>
                 <td>{{dish.price}}</td>
                 <td>
                           <span *ngFor="let category of dish.categories; index as i">
