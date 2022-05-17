@@ -34,4 +34,9 @@ export class CartService {
   decreaseDishQuantity(cartId: number, dishId: number) {
     return this.httpClient.get(`${API_URL}/carts/${cartId}/decrease-dish-quantity/${dishId}`);
   }
+
+  getCurrentUserCartByMerchant(merchantId: number){
+    const currentUserId = this.authService.getCurrentUserId();
+    return this.httpClient.get(`${API_URL}/carts/users/${currentUserId}/merchants/${merchantId}`);
+  }
 }
