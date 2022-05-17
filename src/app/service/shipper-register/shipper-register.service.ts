@@ -17,4 +17,8 @@ export class ShipperRegisterService {
   saveShipperRequest(shipperRegister): Observable<ShipperRegister> {
     return this.http.post<ShipperRegister>(API_URL + '/registerShipper', shipperRegister);
   }
+
+  getAllShipperRequest(): Observable<ShipperRegister[]> {
+    return this.http.get<ShipperRegister[]>(API_URL + '/registerShipper');
+  }
 }

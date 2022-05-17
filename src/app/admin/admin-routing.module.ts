@@ -17,6 +17,10 @@ const routes: Routes = [
     loadChildren: () => import('./merchant-register/merchant-register.module').then(module => module.MerchantRegisterModule)
   },
   {
+    path: 'shipper-register',
+    loadChildren: () => import('./shipper-register/shipper-register.module').then(module => module.ShipperRegisterModule)
+  },
+  {
     path: '',
     component: AdminComponent
   }
