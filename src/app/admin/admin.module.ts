@@ -7,10 +7,11 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {MerchantModule} from './merchant/merchant.module';
 import {SharedModule} from '../shared/shared.module';
 import {MerchantRegisterModule} from './merchant-register/merchant-register.module';
+import { ShipperComponent } from './shipper/shipper-list/shipper.component';
 
 
 @NgModule({
-  declarations: [AdminComponent],
+  declarations: [AdminComponent, ShipperComponent],
   exports: [
     AdminComponent,
   ],
