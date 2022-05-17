@@ -1,15 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {Merchant} from '../../model/merchant';
-import {CartDetail} from '../../model/cart-detail';
 import {AuthService} from '../../service/auth/auth.service';
 import {CartService} from '../../service/cart/cart.service';
 import {Cart} from '../../model/cart';
-import {OrderDto} from '../../model/order-dto';
 import {DeliveryInfo} from '../../model/delivery-info';
-import {UseService} from '../../service/use/use.service';
 import {DeliveryInfoService} from '../../service/delivery-info/delivery-info.service';
 import {OrderService} from '../../service/order/order.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, ParamMap, Router} from '@angular/router';
+import {NotificationService} from '../../service/notification/notification.service';
 
 @Component({
   selector: 'app-checkout',
@@ -18,6 +16,7 @@ import {Router} from '@angular/router';
 })
 export class CheckoutComponent implements OnInit {
 
+  merchantId: number;
   merchant: Merchant;
   currentUser: any;
   loggedIn: boolean;
@@ -35,8 +34,13 @@ export class CheckoutComponent implements OnInit {
               private cartService: CartService,
               private deliveryInfoService: DeliveryInfoService,
               private orderService: OrderService,
-              private router: Router
+              private router: Router,
+              private notificationService: NotificationService,
+              private activatedRoute: ActivatedRoute,
   ) {
+    this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
+      this.merchantId = +paramMap.get('merchant-id');
+    });
   }
 
   ngOnInit() {
@@ -57,7 +61,7 @@ export class CheckoutComponent implements OnInit {
 
 
   getCart() {
-    this.cartService.getCurrentUserCart().subscribe(
+    this.cartService.getCurrentUserCarts().subscribe(
       (response) => {
         this.cart = (response as Cart);
         this.merchant = this.cart.merchant;
@@ -75,6 +79,10 @@ export class CheckoutComponent implements OnInit {
     );
   }
 
+  changeCartFromChildComponent($event) {
+    this.cart = $event;
+  }
+
   editDeliveryInfo(deliveryInfoId: number) {
     console.log(`edit delivery info: id=${deliveryInfoId}`);
   }
@@ -83,15 +91,18 @@ export class CheckoutComponent implements OnInit {
     console.log(`make delivery info default:  id=${deliveryInfoId}`);
   }
 
+
   submitOrder() {
     const orderDto = {
-      cartDto: this.cart,
+      cart: this.cart,
       deliveryInfo: this.defaultDeliveryInfo
     };
-    console.log(orderDto);
     this.orderService.createOrder(orderDto).subscribe(
       (order) => {
         this.router.navigateByUrl(`/order-success/${order.id}`);
+      },
+      error => {
+        this.notificationService.showErrorMessage(`Không thể tạo đơn hàng: <br> ${error.error.message}`);
       }
     );
   }

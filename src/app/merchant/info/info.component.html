@@ -1,11 +1,13 @@
+<app-navbar-customer></app-navbar-customer>
+<app-my-merchant-banner [merchant]="merchant"></app-my-merchant-banner>
+<app-second-navbar></app-second-navbar>
+
 <div class="hold-transition sidebar-mini">
-  <app-sidebar-merchant></app-sidebar-merchant>
-  <app-navbar-merchant></app-navbar-merchant>
   <div class="wrapper">
 
     <div class="content-wrapper">
 
-<!--      Bat dau o day -->
+      <!--      Bat dau o day -->
       <div class="container mt-3">
         <form [formGroup]="merchantForm" (ngSubmit)="editMerchant()" role="form">
           <div class="mb-3">
@@ -45,15 +47,14 @@
             <label for="closeTime" class="form-label">Giờ đóng cửa</label>
             <input type="time" class="form-control" id="closeTime" formControlName="closeTime">
           </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" class="btn btn-info">Cập nhật thông tin</button>
         </form>
 
       </div>
-<!--      Ket thuc o day-->
+      <!--      Ket thuc o day-->
 
     </div>
   </div>
 </div>
 
-
-
+<router-outlet></router-outlet>

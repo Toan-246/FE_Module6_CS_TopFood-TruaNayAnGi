@@ -1,21 +1,28 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {MerchantEditComponent} from './merchant-edit/merchant-edit.component';
 import {FoodListComponent} from './food-list/food-list.component';
+import {DishesComponent} from './dishes/dishes.component';
+import {InfoComponent} from './info/info.component';
+import {ListOrderByDishComponent} from './list-order-by-dish/list-order-by-dish.component';
 
 
 const routes: Routes = [
+
   {
     path: '',
-    component: FoodListComponent
+    component: DishesComponent
   },
   {
-    path: 'edit',
-    component: MerchantEditComponent
+    path: 'info',
+    component: InfoComponent
   },
   {
     path: ':id/edit',
     component: FoodListComponent
+  },
+  {
+    path: 'dishes/:id/orders',
+    component: ListOrderByDishComponent
   }
 ];
 

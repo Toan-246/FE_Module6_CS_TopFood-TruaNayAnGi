@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {UserToken} from '../../model/user-token';
 import {map} from 'rxjs/operators';
+import {Router} from '@angular/router';
 
 const API_URL = environment.apiUrl;
 
@@ -14,7 +15,8 @@ export class AuthService {
   public currentUserSubject: BehaviorSubject<UserToken>;
   public currentUser: Observable<UserToken>;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+              private router: Router) {
     this.currentUserSubject = new BehaviorSubject<UserToken>(JSON.parse(sessionStorage.getItem('user')));
     this.currentUser = this.currentUserSubject.asObservable();
   }
@@ -35,12 +37,18 @@ export class AuthService {
   logout() {
     sessionStorage.removeItem('user');
     this.currentUserSubject.next(null);
+    this.router.navigateByUrl('login')
   }
 
   isLoggedIn() {
     const currentUser = this.getCurrentUser();
     const loggedIn = !!(currentUser);
     return loggedIn;
+  }
+
+  isMerchant() {
+    const isMerchant = this.getCurrentUser().roles[0].authority === `ROLE_MERCHANT`;
+    return isMerchant;
   }
 
   getCurrentUser() {
