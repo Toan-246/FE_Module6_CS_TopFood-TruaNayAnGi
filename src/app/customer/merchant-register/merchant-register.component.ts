@@ -45,7 +45,7 @@ export class MerchantRegisterComponent implements OnInit {
         address: this.registerForm.get('address').value,
         phone: this.registerForm.get('phone').value,
         openTime: this.registerForm.get('openTime').value,
-        closeTime: this.registerForm.get('closeTime').value
+        closeTime: this.registerForm.get('closeTime').value,
       };
       this.merchantRequestService.saveMerchantRequest(merchantRequest).subscribe(() => {
         this.notificationService.showMessage('success', 'Đã gửi yêu cầu, vui lòng chờ xét duyệt');
@@ -86,6 +86,8 @@ export class MerchantRegisterComponent implements OnInit {
   get closeTime() {
     return this.registerForm.get('closeTime');
   }
+
+
 
 
 }

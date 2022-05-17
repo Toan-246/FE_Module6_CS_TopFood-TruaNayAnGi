@@ -39,7 +39,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr *ngFor="let merchantRegister of merchantRegisters; index as i" >
+                <tr *ngFor="let merchantRegister of merchantRegisters; index as i">
                   <td>{{i + 1}}</td>
                   <td>{{merchantRegister.name}}</td>
                   <td>{{merchantRegister.address}}</td>
@@ -47,8 +47,9 @@
                   <td>{{merchantRegister.phone}}</td>
                   <td>{{merchantRegister.openTime}}</td>
                   <td>{{merchantRegister.closeTime}}</td>
-                  <td><button (click)="submitAcceptRegisterRequest(merchantRegister)" >Duyệt</button></td>
-                  <td><button (click)="submitRefuseRegisterRequest(merchantRegister)">Từ chối</button></td>
+                  <td><button (click)="submitAcceptRegisterRequest(merchantRegister)" class="btn btn-success">Duyệt</button></td>
+                  <td><button (click)="submitRefuseRegisterRequest(merchantRegister)" class="btn btn-danger">Từ chối</button></td>
+
                 </tr>
                 </tbody>
               </table>
@@ -63,3 +64,4 @@
     </div>
     <!-- /.container-fluid -->
   </section>
+</div>

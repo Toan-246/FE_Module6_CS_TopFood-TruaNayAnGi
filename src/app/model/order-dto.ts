@@ -1,6 +1,7 @@
 import {Cart} from './cart';
 import {DeliveryInfo} from './delivery-info';
 import {Merchant} from './merchant';
+import {User} from './user';
 
 export interface OrderDto {
 
@@ -10,4 +11,5 @@ export interface OrderDto {
   merchant?: Merchant;
   restaurantNote?: string;
   shippingNote?: string;
+  user?: User;
 }

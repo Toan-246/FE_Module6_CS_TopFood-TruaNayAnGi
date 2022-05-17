@@ -13,7 +13,7 @@ import {Order} from '../../model/order';
 })
 export class DishesComponent implements OnInit {
 
-  merchant: Merchant;
+  merchant: Merchant = {};
   dishes: Dish[] = [];
 
   constructor(private merchantService: MerchantService,
