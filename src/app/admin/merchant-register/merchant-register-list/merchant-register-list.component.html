@@ -8,11 +8,6 @@
         <div class="col-sm-6">
           <h1>Danh sách đăng ký cửa hàng</h1>
         </div>
-        <div class="col-sm-6">
-          <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a routerLink="/admin">Trang chủ</a></li>
-          </ol>
-        </div>
       </div>
     </div><!-- /.container-fluid -->
   </section>
@@ -29,6 +24,7 @@
                 <thead>
                 <tr>
                   <th>#</th>
+                  <th>Email</th>
                   <th>Tên cửa hàng</th>
                   <th>Địa chỉ</th>
                   <th>Mô tả</th>
@@ -41,6 +37,7 @@
                 <tbody>
                 <tr *ngFor="let merchantRegister of merchantRegisters; index as i">
                   <td>{{i + 1}}</td>
+                  <td>{{merchantRegister.user.email}}</td>
                   <td>{{merchantRegister.name}}</td>
                   <td>{{merchantRegister.address}}</td>
                   <td>{{merchantRegister.description}}</td>
