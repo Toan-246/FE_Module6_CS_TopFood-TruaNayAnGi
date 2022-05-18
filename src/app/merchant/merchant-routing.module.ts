@@ -9,7 +9,6 @@ import {OrderListComponent} from './order-list/order-list.component';
 import {CountOrdersByDishComponent} from './count-orders-by-dish/count-orders-by-dish.component';
 import {CountOrdersByUserComponent} from './count-orders-by-user/count-orders-by-user.component';
 
-
 const routes: Routes = [
 
   {
@@ -19,10 +18,6 @@ const routes: Routes = [
   {
     path: 'info',
     component: InfoComponent
-  },
-  {
-    path: ':id/edit',
-    component: DishEditComponent
   },
   {
     path: 'dishes/:id/orders',
@@ -35,8 +30,7 @@ const routes: Routes = [
   {
     path: 'orders',
     component: OrderListComponent
-  }
-  ,
+  },
   {
     path: ':id/orders/dishes',
     component: CountOrdersByDishComponent
@@ -44,6 +38,10 @@ const routes: Routes = [
   {
     path: ':id/orders/users',
     component: CountOrdersByUserComponent
+  },
+  {
+    path: 'dish/edit/:id',
+    component: DishEditComponent
   }
 ];
 
