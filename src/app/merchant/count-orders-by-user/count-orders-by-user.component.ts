@@ -10,7 +10,7 @@ import { CustomerDto } from 'src/app/model/customer-dto';
   styleUrls: ['./count-orders-by-user.component.css']
 })
 export class CountOrdersByUserComponent implements OnInit {
-  merchant: Merchant;
+  merchant: Merchant = {};
   customerDTOs: CustomerDto[] = [];
 
   constructor(private merchantService: MerchantService,

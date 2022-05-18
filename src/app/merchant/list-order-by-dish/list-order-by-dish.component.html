@@ -9,6 +9,9 @@
         <div class="card">
           <div class="card-header">
             <h3 class="card-title">{{dish.name}} có {{totalOrder}} đơn</h3>
+            <button class="btn btn-info float-right">
+              <a class="text-light" routerLink="/merchant/{{merchant.id}}/orders/dishes">Quản lý đơn hàng theo món</a>
+            </button>
           </div>
           <!-- /.card-header -->
           <div class="card-body">
@@ -39,5 +42,8 @@
   </div>
   <!-- /.container-fluid -->
 </section>
+
+<hr>
+<app-footer></app-footer>
 
 

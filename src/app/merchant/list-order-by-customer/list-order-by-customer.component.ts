@@ -1,24 +1,24 @@
 import {Component, OnInit} from '@angular/core';
-import {Dish} from '../../model/dish';
-import {MerchantService} from '../../service/merchant/merchant.service';
 import {Merchant} from '../../model/merchant';
-import {DishDto} from '../../model/dish-dto';
+import {MerchantService} from '../../service/merchant/merchant.service';
 import {ActivatedRoute, ParamMap} from '@angular/router';
+import {Order} from '../../model/order';
 
 @Component({
-  selector: 'app-count-orders-by-dish',
-  templateUrl: './count-orders-by-dish.component.html',
-  styleUrls: ['./count-orders-by-dish.component.css']
+  selector: 'app-list-order-by-customer',
+  templateUrl: './list-order-by-customer.component.html',
+  styleUrls: ['./list-order-by-customer.component.css']
 })
-export class CountOrdersByDishComponent implements OnInit {
+export class ListOrderByCustomerComponent implements OnInit {
   merchant: Merchant = {};
-  dishDTOs: DishDto[] = [];
+  orders: Order[] = [];
+  totalOrder: number;
 
   constructor(private merchantService: MerchantService,
               private activatedRoute: ActivatedRoute) {
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
       const id = paramMap.get('id');
-      this.getAllDishDto(id);
+      this.getAllOrderByCustomerId(id);
     });
   }
 
@@ -32,9 +32,10 @@ export class CountOrdersByDishComponent implements OnInit {
     );
   }
 
-  getAllDishDto(id) {
-    this.merchantService.countMerchantByDish(id).subscribe(dishBE => {
-      this.dishDTOs = dishBE;
+  getAllOrderByCustomerId(id) {
+    this.merchantService.getAllOrderByCustomerId(id).subscribe(ordersBE => {
+      this.orders = ordersBE;
+      this.totalOrder = this.orders.length;
     });
   }
 }
