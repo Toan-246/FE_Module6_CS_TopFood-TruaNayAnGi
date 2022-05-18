@@ -13,6 +13,7 @@ import {ListOrderByDishComponent} from './list-order-by-dish/list-order-by-dish.
 import {CustomerModule} from '../customer/customer.module';
 import {DishEditComponent} from './dish-edit/dish-edit.component';
 import {DishCreateComponent} from './dish-create/dish-create.component';
+import { DishCeaseComponent } from './dish-cease/dish-cease.component';
 import { OrderListComponent } from './order-list/order-list.component';
 import { CountOrdersByDishComponent } from './count-orders-by-dish/count-orders-by-dish.component';
 import { CountOrdersByUserComponent } from './count-orders-by-user/count-orders-by-user.component';
@@ -21,7 +22,8 @@ import { ListOrderByCustomerComponent } from './list-order-by-customer/list-orde
 @NgModule({
   declarations: [FoodListComponent, MyMerchantBannerComponent,
     SecondNavbarComponent, DishesComponent, InfoComponent,
-    ListOrderByDishComponent, DishCreateComponent, DishEditComponent, OrderListComponent, CountOrdersByDishComponent, CountOrdersByUserComponent, ListOrderByCustomerComponent
+    ListOrderByDishComponent, DishCreateComponent, DishEditComponent, DishCeaseComponent, OrderListComponent,
+    CountOrdersByDishComponent, CountOrdersByUserComponent, ListOrderByCustomerComponent
   ],
   imports: [
     SharedModule,
