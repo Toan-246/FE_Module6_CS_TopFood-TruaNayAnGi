@@ -29,8 +29,14 @@ export class ListOrderByDishComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.getMerchant();
   }
+  getMerchant() {
+    this.merchantService.getCurrentUserMerchant().subscribe(
+      merchant => this.merchant = merchant
+    );
+  }
+
   getDishById(id){
     this.dishService.getById(id).subscribe(dishBE => {
       this.dish = dishBE;
