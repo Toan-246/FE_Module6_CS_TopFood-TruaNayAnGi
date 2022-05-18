@@ -13,10 +13,10 @@
                   <span class="badge badge-primary mr-1"
                         *ngFor="let category of dish.categories">{{category.name}}</span>
       </p>
-      <p class="text-black mb-0"> {{dish.description}} </p>
-
+      <p class="text-black mb-2 food-description"> {{dish.description}} </p>
+      <a routerLink="/home/merchant/{{dish.merchant.id}}" class="mt-1 link-view-merchant">Xem cửa hàng</a>
       <div class="mt-4">
-        <table class="table">
+        <table class="table no-border">
           <tr>
             <td class="text-center">Số lượng</td>
             <td>Thành tiền</td>
