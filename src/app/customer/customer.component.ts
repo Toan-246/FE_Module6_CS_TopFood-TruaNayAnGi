@@ -15,8 +15,10 @@ export class CustomerComponent implements OnInit {
 
   categories: Category[] = [];
   selectedCategories: Category[] = [];
+  top5Categories: Category[] = [];
+  quickSearchCategoryId: number = null;
   q: string;
-  searchForm: SearchForm = {};
+  searchForm: SearchForm = {categories: []};
   pageDishes: Dish[] = [];
   resultTitle: string;
   endOfPage: boolean;
@@ -38,11 +40,20 @@ export class CustomerComponent implements OnInit {
         this.categories = response as Category[];
       }
     );
+
+    this.categoryService.getTop5Categories().subscribe((
+      response => this.top5Categories = response as Category[]
+    ));
   }
 
   submitSearchForm() {
     this.resetSearchForm();
     this.searchForm.q = (document.getElementById('q') as HTMLInputElement).value;
+    if (this.quickSearchCategoryId != null) {
+      this.searchForm.categories.push(
+        {id: this.quickSearchCategoryId}
+      );
+    }
     this.getDishes();
   }
 

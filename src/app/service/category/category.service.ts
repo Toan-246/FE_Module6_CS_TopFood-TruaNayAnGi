@@ -17,4 +17,8 @@ export class CategoryService {
   getAllCategory() {
     return this.httpClient.get(`${API_URL}/categories`);
   }
+
+  getTop5Categories() {
+    return this.httpClient.get(`${API_URL}/categories/top-five`);
+  }
 }
