@@ -16,12 +16,13 @@ export class CustomerComponent implements OnInit {
   categories: Category[] = [];
   selectedCategories: Category[] = [];
   top5Categories: Category[] = [];
-  quickSearchCategoryId: number = null;
+  quickSearchCategoryId = -1;
   q: string;
   searchForm: SearchForm = {categories: []};
   pageDishes: Dish[] = [];
   resultTitle: string;
   endOfPage: boolean;
+  isLoadMore = false;
 
   constructor(private categoryService: CategoryService,
               private dishService: DishService
@@ -32,6 +33,10 @@ export class CustomerComponent implements OnInit {
     this.resetSearchForm();
     this.getAllCategories();
     this.getDishes();
+  }
+
+  scrollBackToTop() {
+    document.getElementById(`app-navbar-customer`).scrollIntoView(true);
   }
 
   getAllCategories() {
@@ -46,14 +51,9 @@ export class CustomerComponent implements OnInit {
     ));
   }
 
-  submitSearchForm() {
-    this.resetSearchForm();
+  searchWithName() {
+    this.isLoadMore = false; // load từ đầu
     this.searchForm.q = (document.getElementById('q') as HTMLInputElement).value;
-    if (this.quickSearchCategoryId != null) {
-      this.searchForm.categories.push(
-        {id: this.quickSearchCategoryId}
-      );
-    }
     this.getDishes();
   }
 
@@ -68,17 +68,22 @@ export class CustomerComponent implements OnInit {
   }
 
   getDishes() {
-    console.clear();
-    console.log(this.searchForm);
+    if (this.quickSearchCategoryId !== -1) {
+      this.searchForm.categories.push(
+        {id: this.quickSearchCategoryId}
+      );
+    }
     this.dishService.searchDishes(this.searchForm).subscribe(
       dishes => {
-        if (dishes.length === this.pageDishes.length) { // kết quả trả về không đổi
-          this.endOfPage = true;
-        }
+        this.endOfPage = (dishes.length === this.pageDishes.length && this.isLoadMore);
         this.pageDishes = dishes;
+        console.clear();
+        console.log(this.searchForm);
+        console.log(this.pageDishes);
       }
     );
     this.getResultTittle();
+
   }
 
   resetSearchForm() {
@@ -91,9 +96,13 @@ export class CustomerComponent implements OnInit {
   loadMore() {
     this.searchForm.limit += 6;
     this.getDishes();
+    this.isLoadMore = true;
   }
 
   toggleCheckbox(categoryId: number) {
+    this.isLoadMore = false; // load từ đầu
+    this.endOfPage = false;
+    this.quickSearchCategoryId = -1;  // check box thì không quick search
     const index: number = this.findInSelectedCategory(categoryId);
     if (index === -1) {
       this.addToSelectedCategory(categoryId);
@@ -101,7 +110,6 @@ export class CustomerComponent implements OnInit {
       this.removeFromSelectedCategory(index);
     }
     this.searchForm.categories = this.selectedCategories;
-    this.endOfPage = false;
     this.getDishes();
   }
 

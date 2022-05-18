@@ -1,4 +1,4 @@
-<app-navbar-customer></app-navbar-customer>
+<app-navbar-customer id="app-navbar-customer"></app-navbar-customer>
 <section class="breadcrumb-osahan pt-5 pb-5 bg-dark position-relative text-center">
   <h1 class="text-white">Trưa nay ăn gì?</h1>
   <h6 class="text-white-50">Tìm món ngon quanh bạn</h6>
@@ -13,7 +13,7 @@
           <div class="col-lg-3 col-md-3 col-sm-12 form-group">
             <div class="location-dropdown">
               <select class="custom-select form-control-lg" [(ngModel)]="quickSearchCategoryId">
-                <option [value]="null"> Tìm kiếm nhanh </option>
+                <option [value]="-1"> Tìm kiếm nhanh </option>
                 <option *ngFor="let category of top5Categories" [value]="category.id"> {{category.name}} </option>
               </select>
             </div>
@@ -24,7 +24,7 @@
             <!-- <a class="locate-me" href="#"><i class="icofont-ui-pointer"></i> Locate Me</a> -->
           </div>
           <div class="col-lg-2 col-md-2 col-sm-12 form-group">
-            <button class="btn btn-primary btn-block btn-lg btn-gradient" (click)="submitSearchForm()"
+            <button class="btn btn-primary btn-block btn-lg btn-gradient" (click)="searchWithName()"
             >Tìm kiếm
             </button>
 
@@ -418,11 +418,12 @@
           </div>
           <div class="col-md-12 text-center load-more">
             <button class="btn btn-success" type="button" (click)="loadMore()" *ngIf="!endOfPage">
+<!--            <button class="btn btn-success" type="button" (click)="loadMore()">-->
               <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
               Xem thêm
             </button>
-            <button class="btn btn-secondary" type="button" *ngIf="endOfPage">
-              Hết
+            <button class="btn btn-secondary" type="button" *ngIf="endOfPage" (click)="scrollBackToTop()">
+              Trở về đầu trang
             </button>
 
           </div>
