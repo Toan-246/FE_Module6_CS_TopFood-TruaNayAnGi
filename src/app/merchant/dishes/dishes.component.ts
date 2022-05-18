@@ -35,7 +35,7 @@ export class DishesComponent implements OnInit {
 
   getAllMerchantDishes() {
     const userId = this.authService.getCurrentUserId();
-    this.dishService.getAllMerchantDishes(userId).subscribe(dishesFromBE => {
+    this.dishService.getAllMerchantDishesByOwnerId(userId).subscribe(dishesFromBE => {
       this.dishes = dishesFromBE as Dish[];
     });
   }
