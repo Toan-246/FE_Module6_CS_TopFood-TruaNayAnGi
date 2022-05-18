@@ -13,7 +13,7 @@ import {Order} from '../../model/order';
 })
 export class DishesComponent implements OnInit {
 
-  merchant: Merchant;
+  merchant: Merchant = {};
   dishes: Dish[] = [];
 
   constructor(private merchantService: MerchantService,
@@ -35,7 +35,7 @@ export class DishesComponent implements OnInit {
 
   getAllMerchantDishes() {
     const userId = this.authService.getCurrentUserId();
-    this.dishService.getAllMerchantDishes(userId).subscribe(dishesFromBE => {
+    this.dishService.getAllMerchantDishesByOwnerId(userId).subscribe(dishesFromBE => {
       this.dishes = dishesFromBE as Dish[];
     });
   }

@@ -24,7 +24,7 @@ export class CartService {
   }
 
   addDishToCart(cartDetail: CartDetail) {
-    return this.httpClient.post(`${API_URL}/carts/add-dish-to-cart`, cartDetail);
+    return this.httpClient.post(`${API_URL}/carts/users/current-user/add-dish-to-cart`, cartDetail);
   }
 
   increaseDishQuantity(cartId: number, dishId: number) {
@@ -33,5 +33,10 @@ export class CartService {
 
   decreaseDishQuantity(cartId: number, dishId: number) {
     return this.httpClient.get(`${API_URL}/carts/${cartId}/decrease-dish-quantity/${dishId}`);
+  }
+
+  getCurrentUserCartByMerchant(merchantId: number){
+    const currentUserId = this.authService.getCurrentUserId();
+    return this.httpClient.get(`${API_URL}/carts/users/${currentUserId}/merchants/${merchantId}`);
   }
 }

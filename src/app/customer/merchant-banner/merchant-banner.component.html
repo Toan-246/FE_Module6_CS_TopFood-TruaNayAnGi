@@ -1,14 +1,14 @@
 <section class="restaurant-detailed-banner">
   <div class="text-center">
-    <img class="img-fluid cover" src="assets/customer-template/img/mall-dedicated-banner.png">
+    <img class="img-fluid cover" src="http://localhost:8080/image/{{merchant.imageBanner}}">
   </div>
   <div class="restaurant-detailed-header">
     <div class="container">
       <div class="row d-flex align-items-end">
         <div class="col-md-8">
           <div class="restaurant-detailed-header-left">
-            <img class="img-fluid mr-3 float-left" alt="osahan" src="assets/customer-template/img/1.jpg">
-            <h2 class="text-white">{{merchant.name}}</h2>
+            <img class="img-fluid mr-3 float-left" alt="osahan" src="http://localhost:8080/image/{{merchant.avatar}}">
+            <a routerLink="/home/merchant/{{merchant.id}}"><h2 class="text-white">{{merchant.name}}</h2></a>
             <p class="text-white mb-1"><i class="icofont-location-pin"></i> {{merchant.address}} </p>
             <p class="text-white mb-0"><i class="icofont-phone-circle"></i> {{merchant.phone}}</p>
           </div>

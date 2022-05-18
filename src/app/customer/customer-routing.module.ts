@@ -6,6 +6,8 @@ import {CheckoutComponent} from './checkout/checkout.component';
 import {DetailFoodComponent} from './detail-food/detail-food.component';
 import {OrderSuccessComponent} from './order-success/order-success.component';
 import {TrackOrderComponent} from './track-order/track-order.component';
+import {ShipperRegisterComponent} from './shipper-register/shipper-register/shipper-register.component';
+import {MerchantComponent} from './merchant/merchant.component';
 
 
 const routes: Routes = [
@@ -16,6 +18,10 @@ const routes: Routes = [
   {
     path: 'merchant-register',
     component: MerchantRegisterComponent
+  },
+  {
+    path: 'shipper-register',
+    component: ShipperRegisterComponent
   },
   {
     path: 'checkout/:merchant-id',
@@ -32,6 +38,10 @@ const routes: Routes = [
   {
     path: 'track-order/:orderId',
     component: TrackOrderComponent
+  },
+  {
+    path: 'merchant/:id',
+    component: MerchantComponent
   }
 ];
 

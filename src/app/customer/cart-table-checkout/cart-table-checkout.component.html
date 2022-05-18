@@ -13,12 +13,12 @@
       <p class="text-gray mb-0 float-right ml-2">{{cartDetail.quantity * cartDetail.dish.price | number}}</p>
       <span class="count-number float-right">
                                     <button class="btn btn-outline-secondary  btn-sm left dec"
-                                            (click)="decreaseDishQuantity(cartDetail.dish.id)">
+                                            (click)="decreaseDishQuantity(cart.id, cartDetail.dish.id)">
                                       <i class="icofont-minus"></i> </button>
                                     <input class="count-number-input" type="text" value="{{cartDetail.quantity}}"
                                            readonly="">
                                     <button class="btn btn-outline-secondary btn-sm right inc"
-                                            (click)="increaseDishQuantity(cartDetail.dish.id)">
+                                            (click)="increaseDishQuantity(cart.id, cartDetail.dish.id)">
                                       <i class="icofont-plus"></i> </button>
                                 </span>
       <div class="media">
@@ -67,8 +67,6 @@
     <hr/>
     <h6 class="font-weight-bold mb-0">Tổng thanh toán <span class="float-right">{{cart.totalFee}}</span></h6>
   </div>
-  <a *ngIf="showCheckoutButton"  (click)="checkOut()" class="btn btn-success btn-block btn-lg">Thanh toán {{cart.totalFee}}
-    <i class="icofont-long-arrow-right"></i></a>
 </div>
 <div class="pt-2"></div>
 <!-- <div class="alert alert-success" role="alert">
