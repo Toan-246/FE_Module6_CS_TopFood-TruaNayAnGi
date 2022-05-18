@@ -6,7 +6,6 @@ import {ListOrderByDishComponent} from './list-order-by-dish/list-order-by-dish.
 import {DishEditComponent} from './dish-edit/dish-edit.component';
 import {DishCreateComponent} from './dish-create/dish-create.component';
 
-
 const routes: Routes = [
 
   {
@@ -18,16 +17,16 @@ const routes: Routes = [
     component: InfoComponent
   },
   {
-    path: ':id/edit',
-    component: DishEditComponent
-  },
-  {
     path: 'dishes/:id/orders',
     component: ListOrderByDishComponent
   },
   {
     path: 'dish/create',
     component: DishCreateComponent
+  },
+  {
+    path: 'dish/edit/:id',
+    component: DishEditComponent
   }
 ];
 
