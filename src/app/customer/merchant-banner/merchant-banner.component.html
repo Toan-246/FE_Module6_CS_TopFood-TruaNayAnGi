@@ -8,7 +8,7 @@
         <div class="col-md-8">
           <div class="restaurant-detailed-header-left">
             <img class="img-fluid mr-3 float-left" alt="osahan" src="http://localhost:8080/image/{{merchant.avatar}}">
-            <h2 class="text-white">{{merchant.name}}</h2>
+            <a routerLink="/home/merchant/{{merchant.id}}"><h2 class="text-white">{{merchant.name}}</h2></a>
             <p class="text-white mb-1"><i class="icofont-location-pin"></i> {{merchant.address}} </p>
             <p class="text-white mb-0"><i class="icofont-phone-circle"></i> {{merchant.phone}}</p>
           </div>

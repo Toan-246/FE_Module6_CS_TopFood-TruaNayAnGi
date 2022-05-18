@@ -39,3 +39,13 @@
 .dish-total{
   font-size: 115%;
 }
+
+.food-description {
+  font-size: 110%;
+}
+
+.link-view-merchant {
+  text-decoration: underline;
+  font-size: 120%;
+  font-style: italic;
+}
