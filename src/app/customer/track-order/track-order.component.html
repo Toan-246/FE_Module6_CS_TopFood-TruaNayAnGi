@@ -46,8 +46,15 @@
                   <i class="icofont-ui-press text-danger food-item">
                   </i> {{cartDetail.dish.name}} x {{cartDetail.quantity}} <span class="float-right text-secondary">{{cartDetail.dish.price * cartDetail.quantity}}</span>
                 </p>
-
                 <hr>
+                <p class="mb-2 text-black">Tổng tiền hàng <span
+                  class="float-right text-secondary">{{orderDto.cart.foodTotal}}</span></p>
+                <p class="mb-2 text-black">Tổng giảm giá <span
+                  class="float-right text-secondary">{{orderDto.cart.discountAmount}}</span></p>
+                <p class="mb-2 text-black">Phí dịch vụ <span
+                  class="float-right text-secondary">{{orderDto.cart.serviceFee}}</span></p>
+                <p class="mb-2 text-black">Phí giao hàng <span
+                  class="float-right text-secondary">{{orderDto.cart.shippingFee}}</span></p>
                 <p class="mb-0 font-weight-bold text-black">Tổng thanh toán <span
                   class="float-right text-secondary">{{orderDto.cart.totalFee}}</span></p>
                 <!-- <p class="mb-0 text-info"><small>Paid via Credit/Debit card
