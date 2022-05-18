@@ -10,7 +10,7 @@
           <div class="card-header">
             <h3 class="card-title">Quản lý đơn hàng theo khách hàng</h3>
             <button class="btn btn-info float-right">
-              <a class="text-light" routerLink="/merchant/orders">Danh sách đơn hàng</a>
+              <a class="text-light" routerLink="/merchant/{{merchant.id}}/orders/users">Quản lý đơn hàng theo Khách hàng</a>
             </button>
           </div>
           <!-- /.card-header -->
@@ -19,21 +19,13 @@
               <thead>
               <tr>
                 <th>#</th>
-                <th>Tên Khách hàng</th>
-                <th>Số điện thoại</th>
-                <th>Email</th>
-                <th>Địa chỉ</th>
-                <th>Số lượng đơn hàng</th>
+                <th>hời gian order</th>
               </tr>
               </thead>
               <tbody>
-              <tr *ngFor="let customer of customerDTOs; index as i">
+              <tr *ngFor="let order of orders; index as i">
                 <td>{{i + 1}}</td>
-                <td class="underline"><a routerLink="/merchant/{{merchant.id}}/users/{{customer.id}}/orders">{{customer.full_Name}}</a></td>
-                <td>{{customer.phone}}</td>
-                <td>{{customer.email}}</td>
-                <td>{{customer.address}}</td>
-                <td>{{customer.orderQuantity}}</td>
+                <td>{{order.create_Date}}</td>
               </tr>
               </tbody>
             </table>
