@@ -16,7 +16,7 @@ export class AddToCartComponent implements OnInit {
 
   @Input()
   id: number;
-  dish: Dish = {};
+  dish: Dish = {categories: [], merchant: {}};
   dishTotal: number;
   dishImage: string;
   quantity: number;

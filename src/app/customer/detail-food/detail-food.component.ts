@@ -12,7 +12,9 @@ import {Merchant} from '../../model/merchant';
 export class DetailFoodComponent implements OnInit {
 
   id: number;
-  merchant: Merchant;
+  merchant: Merchant = {};
+  dish: Dish = {};
+  dishesForYou: Dish[] = [];
 
   countChanges = 0;
 
@@ -21,19 +23,19 @@ export class DetailFoodComponent implements OnInit {
   ) {
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
       this.id = +paramMap.get('id');
+      this.getMerchant();
     });
   }
 
   ngOnInit() {
-    document.getElementById('dish-image').scrollIntoView(true);
-    this.getMerchant();
+    // document.getElementById('dish-image').scrollIntoView(true);
   }
 
   getMerchant() {
     this.dishService.getById(this.id).subscribe(
       (response) => {
-        const dish = response as Dish;
-        this.merchant = dish.merchant;
+        this.dish = response as Dish;
+        this.merchant = this.dish.merchant;
       }
     );
   }
@@ -41,4 +43,5 @@ export class DetailFoodComponent implements OnInit {
   refreshCarts($event) {
     this.countChanges = $event;
   }
+
 }

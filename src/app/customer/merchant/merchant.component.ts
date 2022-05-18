@@ -30,13 +30,13 @@ export class MerchantComponent implements OnInit {
   ngOnInit() {
     this.getMerchant();
     this.getDishes();
-    console.log(this.id);
-    console.log(this.dishes);
   }
 
   getMerchant(){
     this.merchantService.viewMerchantInfo(this.id).subscribe(
-      merchant => this.merchant = merchant
+      merchant => {
+        this.merchant = merchant;
+      }
     );
   }
 
