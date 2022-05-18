@@ -47,7 +47,7 @@ const routes: Routes = [
     component: CountOrdersByUserComponent
   },
   {
-    path: 'customer/:id/orders',
+    path: ':merchantId/users/:userId/orders',
     component: ListOrderByCustomerComponent
   }
 ];

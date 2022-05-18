@@ -29,7 +29,7 @@
               <tbody>
               <tr *ngFor="let customer of customerDTOs; index as i">
                 <td>{{i + 1}}</td>
-                <td class="underline"><a routerLink="/merchant/customer/{{customer.id}}/orders">{{customer.full_Name}}</a></td>
+                <td class="underline"><a routerLink="/merchant/{{merchant.id}}/users/{{customer.id}}/orders">{{customer.full_Name}}</a></td>
                 <td>{{customer.phone}}</td>
                 <td>{{customer.email}}</td>
                 <td>{{customer.address}}</td>

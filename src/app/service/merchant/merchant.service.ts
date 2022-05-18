@@ -52,7 +52,7 @@ export class MerchantService {
   countOrderByUser (id: number): Observable<CustomerDto[]> {
     return this.http.get<CustomerDto[]>(`${API_URL}/merchants/${id}/get-users-dto`)
   }
-  getAllOrderByCustomerId(id: number): Observable<Order[]> {
-    return this.http.get<Order[]>(`${API_URL}/orders/users/${id}`);
+  getAllOrderByCustomerId(merchantId: number, userId: number): Observable<Order[]> {
+    return this.http.get<Order[]>(`${API_URL}/merchants/${merchantId}/users/${userId}/orders`);
   }
 }

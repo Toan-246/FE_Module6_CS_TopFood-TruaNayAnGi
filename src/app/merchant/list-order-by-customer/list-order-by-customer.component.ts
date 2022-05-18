@@ -3,6 +3,7 @@ import {Merchant} from '../../model/merchant';
 import {MerchantService} from '../../service/merchant/merchant.service';
 import {ActivatedRoute, ParamMap} from '@angular/router';
 import {Order} from '../../model/order';
+import {OrderByQueryDto} from '../../model/order-by-query-dto';
 
 @Component({
   selector: 'app-list-order-by-customer',
@@ -11,14 +12,15 @@ import {Order} from '../../model/order';
 })
 export class ListOrderByCustomerComponent implements OnInit {
   merchant: Merchant = {};
-  orders: Order[] = [];
+  orders: OrderByQueryDto[] = [];
   totalOrder: number;
 
   constructor(private merchantService: MerchantService,
               private activatedRoute: ActivatedRoute) {
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
-      const id = paramMap.get('id');
-      this.getAllOrderByCustomerId(id);
+      const merchantId = paramMap.get('merchantId');
+      const userId = paramMap.get('userId');
+      this.getAllOrderByCustomerId(merchantId, userId);
     });
   }
 
@@ -32,8 +34,8 @@ export class ListOrderByCustomerComponent implements OnInit {
     );
   }
 
-  getAllOrderByCustomerId(id) {
-    this.merchantService.getAllOrderByCustomerId(id).subscribe(ordersBE => {
+  getAllOrderByCustomerId(merchantId, userId) {
+    this.merchantService.getAllOrderByCustomerId(merchantId, userId).subscribe(ordersBE => {
       this.orders = ordersBE;
       this.totalOrder = this.orders.length;
     });
