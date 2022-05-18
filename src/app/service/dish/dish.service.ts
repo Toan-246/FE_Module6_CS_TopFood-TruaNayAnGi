@@ -28,11 +28,11 @@ export class DishService {
   }
 
   updateDish(id: number, dish: Dish): Observable<Dish> {
-    return this.httpClient.put(`${API_URL}/dishes/${id}`, dish);
+    return this.httpClient.put(`${API_URL}/merchants/dish/${id}`, dish);
   }
 
-  deleteDish(id: number): Observable<Dish> {
-    return this.httpClient.delete(`${API_URL}/dishes/${id}`);
+  deleteMerchantDish(id: number): Observable<Dish> {
+    return this.httpClient.delete(`${API_URL}/merchants/dish/${id}`);
   }
 
   getMostPurchasedDishes() {
