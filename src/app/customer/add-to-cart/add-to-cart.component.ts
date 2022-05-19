@@ -50,6 +50,10 @@ export class AddToCartComponent implements OnInit {
     );
   }
 
+  addCouponToCart(couponId: number) {
+
+  }
+
   getDish() {
     this.dishService.getById(this.id).subscribe(
       (response) => {
