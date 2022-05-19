@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {Merchant} from '../../model/merchant';
 import {Observable} from 'rxjs';
@@ -7,6 +7,7 @@ import {Order} from '../../model/order';
 import {Dish} from '../../model/dish';
 import {DishDto} from '../../model/dish-dto';
 import {CustomerDto} from '../../model/customer-dto';
+import {OrderByQueryDto} from '../../model/order-by-query-dto';
 
 const API_URL = `${environment.apiUrl}`;
 
@@ -46,13 +47,29 @@ export class MerchantService {
     return this.http.get<Order[]>(`${API_URL}/orders/dishes/${id}`);
   }
 
-  countMerchantByDish (id: number): Observable<DishDto[]> {
-    return this.http.get<DishDto[]>(`${API_URL}/merchants/${id}/get-dishes-dto`)
+  countMerchantByDish(id: number): Observable<DishDto[]> {
+    return this.http.get<DishDto[]>(`${API_URL}/merchants/${id}/get-dishes-dto`);
   }
-  countOrderByUser (id: number): Observable<CustomerDto[]> {
-    return this.http.get<CustomerDto[]>(`${API_URL}/merchants/${id}/get-users-dto`)
+
+  countOrderByUser(id: number): Observable<CustomerDto[]> {
+    return this.http.get<CustomerDto[]>(`${API_URL}/merchants/${id}/get-users-dto`);
   }
+
   getAllOrderByCustomerId(merchantId: number, userId: number): Observable<Order[]> {
     return this.http.get<Order[]>(`${API_URL}/merchants/${merchantId}/users/${userId}/orders`);
+  }
+
+  getAllOrdersByMerchantId(id: number): Observable<Order[]> {
+    return this.http.get<OrderByQueryDto[]>(`${API_URL}/merchants/${id}/orders`);
+  }
+
+  getAllOrdersByMerchantIdInPeriod(id: number, startDate, endDate): Observable<Order[]> {
+
+    let params = new HttpParams().set('startTime', startDate);
+    params = params.set('endTime', endDate);
+
+    return this.http.get<OrderByQueryDto[]>(`${API_URL}/merchants/${id}/orders`,
+      { params: params }
+    );
   }
 }
