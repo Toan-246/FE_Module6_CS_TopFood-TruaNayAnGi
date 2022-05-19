@@ -13,8 +13,8 @@ export class TrackOrderComponent implements OnInit {
 
   orderId: number;
   orderDto: OrderDto = {cart: {cartDetails: []}, merchant: {}, deliveryInfo: {}};
-
   merchant: Merchant = {};
+  orderStatus;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -34,6 +34,21 @@ export class TrackOrderComponent implements OnInit {
     this.orderService.getOrder(this.orderId).subscribe(
       (order) => {
         this.orderDto = order;
+        switch (this.orderDto.status) {
+          case -1: {
+            this.orderStatus = 'Đã hủy';
+            break;
+          }
+          case 1: {
+            this.orderStatus = 'Đã xác nhận';
+            break;
+          }
+          case 0:
+          default: {
+            this.orderStatus = 'Chờ xác nhận';
+            break;
+          }
+        }
       }
     );
   }
