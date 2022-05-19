@@ -52,6 +52,11 @@ const routes: Routes = [
   {
     path: ':id/revenue',
     component: RevenueComponent
+  },
+  {
+    path: 'dish/create1',
+    component: DishCreateComponent
+
   }
 ];
 

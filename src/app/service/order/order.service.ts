@@ -22,4 +22,8 @@ export class OrderService {
   getOrder(orderId: number): Observable<OrderDto> {
     return this.httpClient.get(`${API_URL}/orders/${orderId}`);
   }
+
+  cancelOrder(orderId:number,orderDto:OrderDto){
+    return this.httpClient.post(`${API_URL}/orders/cancels/${orderId}`,orderDto);
+  }
 }

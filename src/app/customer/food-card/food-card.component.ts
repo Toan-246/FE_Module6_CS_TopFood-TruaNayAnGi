@@ -1,5 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Dish} from '../../model/dish';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-food-card',
@@ -11,10 +12,25 @@ export class FoodCardComponent implements OnInit {
   @Input()
   dish: Dish = {};
 
-  constructor() {
+  @Output()
+  redirect = new EventEmitter();
+
+  constructor(private router: Router) {
   }
 
   ngOnInit() {
+  }
+
+  redirectToDish(dishId: number) {
+    this.router.navigateByUrl(`/home/food/${dishId}`);
+  }
+
+  redirectToMerchant(merchantId: number) {
+    this.router.navigateByUrl(`/home/merchant/${merchantId}`);
+  }
+
+  clickLink() {
+    this.redirect.emit('user-clicked-link');
   }
 
 }

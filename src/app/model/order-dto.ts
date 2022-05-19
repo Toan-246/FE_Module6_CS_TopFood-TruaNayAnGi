@@ -4,7 +4,7 @@ import {Merchant} from './merchant';
 import {User} from './user';
 
 export interface OrderDto {
-
+  id?: number;
   cart?: Cart;
   createDate?: string;
   deliveryInfo?: DeliveryInfo;
@@ -12,4 +12,6 @@ export interface OrderDto {
   restaurantNote?: string;
   shippingNote?: string;
   user?: User;
+  status?: number;
+
 }

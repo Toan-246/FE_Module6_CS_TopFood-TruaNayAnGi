@@ -40,8 +40,8 @@
                   <td>{{shipperRegister.phone}}</td>
                   <td>{{shipperRegister.licensePlates}}</td>
                   <td>{{shipperRegister.carName}}</td>
-                  <td><button  class="btn btn-success">Duyệt</button></td>
-                  <td><button  class="btn btn-danger">Từ chối</button></td>
+                  <td><button (click)="submitAcceptShipperRegisterRequest(shipperRegister)"  class="btn btn-success">Duyệt</button></td>
+                  <td><button (click)="submitRefuseShipperRegisterRequest(shipperRegister)" class="btn btn-danger">Từ chối</button></td>
                 </tr>
                 </tbody>
               </table>

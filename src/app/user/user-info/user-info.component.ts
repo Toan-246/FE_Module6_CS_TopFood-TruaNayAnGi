@@ -7,6 +7,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {NotificationService} from '../../service/notification/notification.service';
 import {OrderDto} from '../../model/order-dto';
 import {CartDetail} from '../../model/cart-detail';
+import {OrderService} from '../../service/order/order.service';
 
 
 declare var $: any;
@@ -31,12 +32,17 @@ export class UserInfoComponent implements OnInit {
     username: new FormControl(''),
     image: new FormControl('')
   });
+  orderDto: OrderDto = {cart: {cartDetails: []}, merchant: {}, deliveryInfo: {}};
+  orderStatus;
+  orderId: number;
 
   constructor(private userService: UseService,
               private authService: AuthService,
               private activatedRoute: ActivatedRoute,
               private router: Router,
-              private notificationService: NotificationService) {
+              private notificationService: NotificationService,
+              private orderService: OrderService
+  ) {
   }
 
   get email() {
@@ -114,10 +120,20 @@ export class UserInfoComponent implements OnInit {
     }
   }
 
+  clickButton(orderId: number, orderDto: OrderDto) {
+    this.orderService.cancelOrder(orderId, orderDto).subscribe(() => {
+      this.notificationService.showTopRightMessage('success','Đã hủy')
+
+      this.getAllOrdersByUser();
+    });
+    console.log(orderId);
+  }
+
   getAllOrdersByUser() {
     this.userId = this.authService.getCurrentUserId();
     this.userService.getAllOrderByUserId(this.userId).subscribe(ordersBE => {
       this.orders = ordersBE as OrderDto[];
     });
   }
+
 }
