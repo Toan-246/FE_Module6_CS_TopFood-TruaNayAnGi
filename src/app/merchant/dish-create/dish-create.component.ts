@@ -74,10 +74,8 @@ export class DishCreateComponent implements OnInit {
       this.dish.description = this.dishForm.value.description;
       this.dish.categories = this.categories;
       this.dish.merchant = this.merchant;
-      // console.log(this.dish.merchant);
       this.dishService.createMerchantDish(this.dish).subscribe(() => {
         this.notificationService.showMessage('success', 'Tạo món ăn thành công');
-        // console.log(this.dish);
         this.router.navigateByUrl('/merchant');
       }, error => {
         this.notificationService.showMessage('error', 'Đã xảy ra lỗi');
@@ -87,9 +85,9 @@ export class DishCreateComponent implements OnInit {
     }
   }
 
-  changeFile($event) {
-    this.selectedFile = $event.target.files;
-  }
+  // changeFile($event) {
+  //   this.selectedFile = $event.target.files;
+  // }
 
   getAllCategories() {
     this.categoryService.getAllCategory().subscribe(categoriesFromBE => {

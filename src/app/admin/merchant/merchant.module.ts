@@ -10,18 +10,21 @@ import {ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
-  declarations: [
-    MerchantListComponent,
-    MerchantViewComponent
-  ],
+    declarations: [
+        MerchantListComponent,
+        MerchantViewComponent
+    ],
+    exports: [
+        MerchantListComponent
+    ],
 
-  imports: [
-    SharedModule,
-    CommonModule,
-    MerchantRoutingModule,
-    CustomerModule,
-    ReactiveFormsModule,
-  ]
+    imports: [
+        SharedModule,
+        CommonModule,
+        MerchantRoutingModule,
+        CustomerModule,
+        ReactiveFormsModule,
+    ]
 })
 export class MerchantModule {
 }

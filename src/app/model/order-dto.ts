@@ -12,4 +12,6 @@ export interface OrderDto {
   restaurantNote?: string;
   shippingNote?: string;
   user?: User;
+  status?: number;
+
 }

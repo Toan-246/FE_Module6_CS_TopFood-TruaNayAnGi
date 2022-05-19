@@ -25,7 +25,7 @@ export class FoodListComponent implements OnInit {
 
   getAllMerchantDishes() {
     this.userId = this.authService.getCurrentUserId();
-    this.dishService.getAllMerchantDishes(this.userId).subscribe(dishesFromBE => {
+    this.dishService.getAllMerchantDishesByOwnerId(this.userId).subscribe(dishesFromBE => {
       this.dishes = dishesFromBE as Dish[];
     });
   }

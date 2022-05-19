@@ -21,4 +21,11 @@ export class ShipperRegisterService {
   getAllShipperRequest(): Observable<ShipperRegister[]> {
     return this.http.get<ShipperRegister[]>(API_URL + '/registerShipper');
   }
+  acceptShipperRegisterRequest(id: number, shipperRegister: ShipperRegister) {
+    return this.http.post(`${API_URL}/registerShipper/accept/${id}`, shipperRegister);
+  }
+
+  refuseShipperRegisterRequest(id: number, shipperRegister: ShipperRegister) {
+    return this.http.post(`${API_URL}/registerShipper/refuse/${id}`, shipperRegister);
+  }
 }

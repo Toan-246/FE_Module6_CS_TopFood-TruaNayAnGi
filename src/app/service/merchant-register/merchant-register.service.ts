@@ -25,6 +25,7 @@ export class MerchantRegisterService {
   acceptRegisterRequest(id: number, merchantRegister: MerchantRegister) {
     return this.http.post(`${API_URL}/registerMerchant/accept/${id}`, merchantRegister);
   }
+
   refuseRegisterRequest(id: number, merchantRegister: MerchantRegister) {
     return this.http.post(`${API_URL}/registerMerchant/refuse/${id}`, merchantRegister);
   }

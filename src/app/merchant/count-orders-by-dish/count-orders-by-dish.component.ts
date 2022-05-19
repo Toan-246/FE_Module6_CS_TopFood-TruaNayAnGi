@@ -11,7 +11,7 @@ import {ActivatedRoute, ParamMap} from '@angular/router';
   styleUrls: ['./count-orders-by-dish.component.css']
 })
 export class CountOrdersByDishComponent implements OnInit {
-  merchant: Merchant;
+  merchant: Merchant = {};
   dishDTOs: DishDto[] = [];
 
   constructor(private merchantService: MerchantService,

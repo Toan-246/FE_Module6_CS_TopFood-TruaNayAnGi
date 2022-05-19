@@ -6,6 +6,7 @@ import {Observable} from 'rxjs';
 import {Order} from '../../model/order';
 import {Dish} from '../../model/dish';
 import {DishDto} from '../../model/dish-dto';
+import {CustomerDto} from '../../model/customer-dto';
 import {OrderDto} from '../../model/order-dto';
 
 const API_URL = `${environment.apiUrl}`;
@@ -48,6 +49,12 @@ export class MerchantService {
 
   countMerchantByDish (id: number): Observable<DishDto[]> {
     return this.http.get<DishDto[]>(`${API_URL}/merchants/${id}/get-dishes-dto`)
+  }
+  countOrderByUser (id: number): Observable<CustomerDto[]> {
+    return this.http.get<CustomerDto[]>(`${API_URL}/merchants/${id}/get-users-dto`)
+  }
+  getAllOrderByCustomerId(merchantId: number, userId: number): Observable<Order[]> {
+    return this.http.get<Order[]>(`${API_URL}/merchants/${merchantId}/users/${userId}/orders`);
   }
   getAllOrderByMerchantId(merchantId: number): Observable<OrderDto[]>{
     return this.http.get<OrderDto[]>(`${API_URL}/merchants/owners/${merchantId}/orders`);

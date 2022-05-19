@@ -28,22 +28,26 @@ export class DishService {
   }
 
   updateDish(id: number, dish: Dish): Observable<Dish> {
-    return this.httpClient.put(`${API_URL}/dishes/${id}`, dish);
+    return this.httpClient.put(`${API_URL}/merchants/dish/${id}`, dish);
   }
 
-  deleteDish(id: number): Observable<Dish> {
-    return this.httpClient.delete(`${API_URL}/dishes/${id}`);
+  deleteMerchantDish(id: number): Observable<Dish> {
+    return this.httpClient.delete(`${API_URL}/merchants/dish/${id}`);
   }
 
   getMostPurchasedDishes() {
     return this.httpClient.get(`${API_URL}/dishes/most-purchased/8`);
   }
 
-  getAllMerchantDishes(userId: number): Observable<Dish[]> {
+  getAllMerchantDishesByOwnerId(userId: number): Observable<Dish[]> {
     return this.httpClient.get<Dish[]>(`${API_URL}/merchants/user/${userId}/merchant/dishes`);
   }
 
   searchDishes(searchForm: SearchForm) {
     return this.httpClient.post<Dish[]>(`${API_URL}/dishes/search`, searchForm);
+  }
+
+  getAllMerchantDishesByMerchantId(merchantId: number): Observable<Dish[]> {
+    return this.httpClient.get<Dish[]>(`${API_URL}/dishes/merchants/${merchantId}`);
   }
 }
