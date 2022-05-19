@@ -47,6 +47,10 @@ const routes: Routes = [
   {
     path: 'dish/edit/:id',
     component: DishEditComponent
+  },
+  {
+    path: 'dish/create1',
+    component: DishCreateComponent
   }
 ];
 

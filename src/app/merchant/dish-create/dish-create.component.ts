@@ -24,14 +24,12 @@ export class DishCreateComponent implements OnInit {
     name: new FormControl('', Validators.required),
     price: new FormControl('', Validators.required),
     description: new FormControl('', Validators.required),
-    category: new FormControl('')
+    image: new FormControl('')
   });
 
   allCategories: Category[] = [];
 
   categories: Category[] = [];
-  selectedFile: File[] = [];
-  imageUrl: any;
   merchant: Merchant = {};
 
   constructor(private dishService: DishService,
@@ -59,6 +57,10 @@ export class DishCreateComponent implements OnInit {
     return this.dishForm.get('description');
   }
 
+  // get image() {
+  //   return this.dishForm.get('image')
+  // }
+
   getMerchant() {
     this.merchantService.getCurrentUserMerchant().subscribe(merchantBE => {
       this.merchant = merchantBE;
@@ -69,25 +71,34 @@ export class DishCreateComponent implements OnInit {
 
   createDish() {
     if (this.dishForm.valid) {
-      this.dish.name = this.dishForm.value.name;
-      this.dish.price = this.dishForm.value.price;
-      this.dish.description = this.dishForm.value.description;
-      this.dish.categories = this.categories;
-      this.dish.merchant = this.merchant;
-      this.dishService.createMerchantDish(this.dish).subscribe(() => {
+      let newDish = new FormData();
+      newDish.append('name', this.dishForm.value.name);
+      newDish.append('price', this.dishForm.value.price);
+      newDish.append('description', this.dishForm.value.description);
+      for (var i = 0; i < this.categories.length; i++) {
+        newDish.append('categories[]', '' + this.categories[i].id);
+      }
+      newDish.append('merchant', '' + this.merchant.id);
+
+      // newDish.append('categories', this.dishForm.value.categories);
+      // newDish.append('merchant', JSON.stringify(this.merchant));
+
+      const imageFile = (document.getElementById('image') as HTMLInputElement).files;
+      if (imageFile.length > 0) {
+        newDish.append('image', imageFile[0]);
+        console.log(newDish.get('image'));
+
+      }
+      this.dishService.createMerchantDish(newDish).subscribe(() => {
         this.notificationService.showMessage('success', 'Tạo món ăn thành công');
         this.router.navigateByUrl('/merchant');
       }, error => {
-        this.notificationService.showMessage('error', 'Đã xảy ra lỗi');
+        this.notificationService.showMessage('error', error.error.message);
       });
     } else {
       this.notificationService.showMessage('error', 'Vui lòng kiểm tra lại thông tin nhập');
     }
   }
-
-  // changeFile($event) {
-  //   this.selectedFile = $event.target.files;
-  // }
 
   getAllCategories() {
     this.categoryService.getAllCategory().subscribe(categoriesFromBE => {

@@ -7,7 +7,7 @@
     <div class="content-wrapper">
       <!--      Bat dau o day -->
       <div class="container mt-3">
-        <h3>Chỉnh sửa món ăn</h3>
+        <h3>Thêm món ăn</h3>
         <form [formGroup]="dishForm" (ngSubmit)="createDish()" role="form">
           <div class="mb-3">
             <label for="name" class="form-label">Tên món ăn</label>
@@ -45,7 +45,7 @@
 
           <div class="mb-4">
             <label for="image" class="form-label">Ảnh món ăn</label>
-            <input type="file" class="form-control" multiple id="image" (change)="changeFile($event)">
+            <input type="file" class="form-control" id="image" formControlName="image">
           </div>
           <button type="submit" class="btn btn-info">Lưu món ăn mới</button>
           <button type="button" class="btn btn-danger ml-3" routerLink="/merchant">Không tạo nữa</button>
