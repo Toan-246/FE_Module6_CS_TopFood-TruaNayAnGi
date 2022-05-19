@@ -19,4 +19,8 @@ export class DeliveryInfoService {
   getOtherDeliveryInfos(userId: number) {
     return this.httpClient.get(`${API_URL}/users/${userId}/other-delivery-infos`);
   }
+
+  setDeliveryInfoToSelected(userId:number, deliveryInfoId: number) {
+    return this.httpClient.get(`${API_URL}/users/${userId}/${deliveryInfoId}/make-default`);
+  }
 }
