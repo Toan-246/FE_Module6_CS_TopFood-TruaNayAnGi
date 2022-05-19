@@ -56,7 +56,7 @@
                         <p><i class="icofont-phone-circle icofont-1x"></i> <span> {{deliveryInfo.phone}}</span></p>
                         <p>{{deliveryInfo.address}}</p>
                         <p class="mb-0 text-black font-weight-bold">
-                          <button class="btn btn-sm btn-secondary mr-2" (click)="chooseDeliveryInfo(deliveryInfo.id)">
+                          <button class="btn btn-sm btn-secondary mr-2" (click)="chooseDeliveryInfo(deliveryInfo.user.id,deliveryInfo.id)">
                             Chọn địa chỉ
                           </button>
                           <button class="btn btn-sm btn-secondary mr-2" (click)="editDeliveryInfo(deliveryInfo.id)">
