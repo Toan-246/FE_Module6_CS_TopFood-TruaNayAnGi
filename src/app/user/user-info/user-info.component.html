@@ -50,14 +50,14 @@
                 <div class="gold-members p-4" *ngFor="let order of orders">
                   <a>
                     <div class="media">
-                      <img class="mr-4" src="img/3.jpg" alt="Generic placeholder image">
+                      <img class="mr-4" src="http://localhost:8080/image/{{order.merchant.avatar}}" alt="Hình ảnh cửa hàng">
                       <div class="media-body">
                                                     <span
                                                       class="float-right text-info">{{order.createDate | date: 'dd/MM/yyyy hh:mm'}}
                                                       PM <i class="icofont-check-circled text-success"></i>
                                                     <div>{{
                                                       order.status < 0 ? 'Đã hủy' :
-                                                      order.status > 0 ? 'Đã xá nhận' :
+                                                      order.status > 0 ? 'Đã xác nhận' :
                                                       'Đang chờ xác nhận'
                                                       }}</div>
                                                     </span>
@@ -74,7 +74,7 @@
                         </p>
                         <hr>
                         <div class="float-right">
-                          <button  (click)="clickButton(order.id)" class="btn btn-danger"> Hủy</button>
+                          <button  (click)="clickButton(order.id,orderDto)" class="btn btn-danger"> Hủy</button>
                           <a class="btn btn-info" routerLink="/home/track-order/{{order.id}}"><i
                             class="icofont-refresh"></i>Thông tin</a>
                         </div>
