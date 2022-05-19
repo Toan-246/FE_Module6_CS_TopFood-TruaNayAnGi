@@ -26,6 +26,6 @@ export class DeliveryInfoService {
   }
 
   updateDeliveryInfo(deliveryInfoId:number , deliveryInfo: DeliveryInfo){
-    return this.httpClient.put(`${API_URL}/users/${deliveryInfoId}/update-deliveryInfo`,deliveryInfo);
+    return this.httpClient.put(`${API_URL}/users/${deliveryInfoId}`,deliveryInfo);
   }
 }

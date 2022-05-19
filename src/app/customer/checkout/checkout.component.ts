@@ -94,14 +94,17 @@ export class CheckoutComponent implements OnInit {
   }
 
   putDeliveryInfoToModal(deliveryInfo: DeliveryInfo){
+    this.deliveryInfoId = deliveryInfo.id;
     this.deliveryInfoForm.get('name').setValue(deliveryInfo.name);
     this.deliveryInfoForm.get('phone').setValue(deliveryInfo.phone);
     this.deliveryInfoForm.get('address').setValue(deliveryInfo.address);
   }
 
-  submitFormEditDeliveryInfo(deliveryInfoId: number,deliveryInfo:DeliveryInfo) {
-    const editDeliveryInfo =
-    this.deliveryInfoService.updateDeliveryInfo(this.deliveryInfoId,deliveryInfo).subscribe(()=>{
+  submitFormEditDeliveryInfo() {
+    this.editDeliveryInfo = this.deliveryInfoForm.value;
+    this.editDeliveryInfo.id = this.deliveryInfoId;
+    console.log(this.editDeliveryInfo);
+    this.deliveryInfoService.updateDeliveryInfo(this.deliveryInfoId,this.editDeliveryInfo).subscribe(()=>{
       this.notificationService.showMessage('success', 'Cập nhật thành công');
       this.getDeliveryInfo();
     },error => {
@@ -111,7 +114,6 @@ export class CheckoutComponent implements OnInit {
 
     });
 
-    console.log(`edit delivery info: id=${deliveryInfoId}`);
   }
 
   chooseDeliveryInfo(userId:number,deliveryInfoId:number) {
