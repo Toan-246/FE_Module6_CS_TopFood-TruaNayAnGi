@@ -36,10 +36,12 @@
                         <p class="text-black">{{defaultDeliveryInfo.address}}
                         </p>
                         <p class="mb-0 text-black font-weight-bold">
-                          <button class="btn btn-sm btn-secondary mr-2"
-                                  (click)="editDeliveryInfo(defaultDeliveryInfo.id)">Sửa
-                          </button>
+                        <p class="mb-0 text-black font-weight-bold"><button class="btn btn-sm btn-secondary mr-2"
+                                                                       data-toggle="modal" data-target="#edit-delivery-modal"
+                                                                      ><i
+                          class="icofont-ui-edit"(click)="putDeliveryInfoToModal(defaultDeliveryInfo)"></i> Sửa</button>
                           <span>30MIN</span>
+
                         </p>
                       </div>
                     </div>
@@ -59,11 +61,12 @@
                           <button class="btn btn-sm btn-secondary mr-2" (click)="chooseDeliveryInfo(deliveryInfo.user.id,deliveryInfo.id)">
                             Chọn địa chỉ
                           </button>
-                          <button class="btn btn-sm btn-secondary mr-2" (click)="editDeliveryInfo(deliveryInfo.id)">
-                            Sửa
-                          </button>
+                        <p class="mb-0 text-black font-weight-bold"><button class="btn btn-sm btn-secondary mr-2"
+                                                                       data-toggle="modal" data-target="#edit-delivery-modal"
+                                                                        (click)="putDeliveryInfoToModal(deliveryInfo)"><i
+                          class="icofont-ui-edit"></i> Sửa</button>
                           <span>45MIN</span>
-                        </p>
+                      </p>
                       </div>
                     </div>
                   </div>
@@ -156,5 +159,37 @@
     </div>
   </div>
 </section>
+<div class="modal fade" id="edit-delivery-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form [formGroup]="deliveryInfoForm" (ngSubmit)="editDeliveryInfo()">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Cập nhật địa chỉ giao hàng mới</h5>
+          <span type="button" class="btn-close" data-dismiss="modal" aria-label="Close">X</span>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="name" class="form-label">Họ và tên</label>
+            <input type="text" class="form-control" id="name" formControlName="name">
+<!--            <p class="validate" [hidden]="fullName.valid || !fullName.touched">Nhập Họ và tên</p>-->
+          </div>
+          <div class="mb-3">
+            <label for="phone" class="form-label">Số điện thoại</label>
+            <input type="text" class="form-control" id="phone" formControlName="phone">
+<!--            <p class="validate" [hidden]="phone.valid || !phone.touched">Định dạng số điện thoại không đúng</p>-->
+          </div>
+          <div class="mb-3">
+            <label for="address" class="form-label">Địa chỉ</label>
+            <input type="text" class="form-control" id="address" formControlName="address">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+          <button type="submit" class="btn btn-info">Cập nhật</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 
 <app-footer></app-footer>

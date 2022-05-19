@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {environment} from '../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
+import {DeliveryInfo} from '../../model/delivery-info';
 
 const API_URL = `${environment.apiUrl}`;
 
@@ -22,5 +23,9 @@ export class DeliveryInfoService {
 
   setDeliveryInfoToSelected(userId:number, deliveryInfoId: number) {
     return this.httpClient.get(`${API_URL}/users/${userId}/${deliveryInfoId}/make-default`);
+  }
+
+  updateDeliveryInfo(deliveryInfoId:number , deliveryInfo: DeliveryInfo){
+    return this.httpClient.put(`${API_URL}/users/${deliveryInfoId}/update-deliveryInfo`,deliveryInfo);
   }
 }

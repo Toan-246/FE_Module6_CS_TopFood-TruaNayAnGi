@@ -9,6 +9,8 @@ import {OrderService} from '../../service/order/order.service';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {NotificationService} from '../../service/notification/notification.service';
 import {User} from '../../model/user';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+declare var $: any;
 
 @Component({
   selector: 'app-checkout',
@@ -29,7 +31,15 @@ export class CheckoutComponent implements OnInit {
   otherDeliveryInfo: DeliveryInfo[] = [];
   restaurantNote: string;
   shippingNote: string;
+  deliveryInfo: DeliveryInfo={};
+  editDeliveryInfo: DeliveryInfo = {};
 
+  deliveryInfoForm: FormGroup = new FormGroup({
+    name: new FormControl(''),
+    address: new FormControl(''),
+    phone: new FormControl('', [Validators.pattern
+    ('^[0](\\+\\d{1,3}\\s?)?((\\(\\d{3}\\)\\s?)|(\\d{3})(\\s|-?))(\\d{3}(\\s|-?))(\\d{3})(\\s?(([E|e]xt[:|.|]?)|x|X)(\\s?\\d+))?')]),
+  })
 
   constructor(private authService: AuthService,
               private cartService: CartService,
@@ -83,7 +93,24 @@ export class CheckoutComponent implements OnInit {
     this.cart = $event;
   }
 
-  editDeliveryInfo(deliveryInfoId: number) {
+  putDeliveryInfoToModal(deliveryInfo: DeliveryInfo){
+    this.deliveryInfoForm.get('name').setValue(deliveryInfo.name);
+    this.deliveryInfoForm.get('phone').setValue(deliveryInfo.phone);
+    this.deliveryInfoForm.get('address').setValue(deliveryInfo.address);
+  }
+
+  submitFormEditDeliveryInfo(deliveryInfoId: number,deliveryInfo:DeliveryInfo) {
+    const editDeliveryInfo =
+    this.deliveryInfoService.updateDeliveryInfo(this.deliveryInfoId,deliveryInfo).subscribe(()=>{
+      this.notificationService.showMessage('success', 'Cập nhật thành công');
+      this.getDeliveryInfo();
+    },error => {
+      this.notificationService.showMessage('error', error.error.message);
+    },()=>{
+      $('edit-delivery-modal').modal('hide');
+
+    });
+
     console.log(`edit delivery info: id=${deliveryInfoId}`);
   }
 
