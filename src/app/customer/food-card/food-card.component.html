@@ -1,13 +1,13 @@
 <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
   <div class="list-card-image">
-    <a routerLink="/home/food/{{dish.id}}">
+    <a routerLink="/home/food/{{dish.id}}" routerLinkActive="active">
       <img src="http://localhost:8080/image/{{dish.image}}" alt="" class="img-fluid item-img food-img">
     </a>
   </div>
   <div class="p-3 position-relative">
     <div class="list-card-body">
       <h6 class="mb-1"><a routerLink="/home/food/{{dish.id}}" class="text-black">{{dish.name}}</a></h6>
-      <p class="text-gray mb-3 "><a routerLink="/home/merchant/{{dish.merchant.id}}" class="merchant-name">{{dish.merchant.name}}</a></p>
+      <a routerLink="/home/merchant/{{dish.merchant.id}}" class="merchant-name"><p class="text-gray mb-3 ">{{dish.merchant.name}}</p></a>
       <p class="text-gray mb-3 time"><span
         class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i
         class="icofont-wall-clock"></i> 20–25 min</span> <span

@@ -50,4 +50,8 @@ export class DishService {
   getAllMerchantDishesByMerchantId(merchantId: number): Observable<Dish[]> {
     return this.httpClient.get<Dish[]>(`${API_URL}/dishes/merchants/${merchantId}`);
   }
+
+  findDishesWithSameCategoryWith(dishId: number, limit: number): Observable<Dish[]> {
+    return this.httpClient.get<Dish[]>(`${API_URL}/dishes/${dishId}/top-${limit}-same-category`);
+  }
 }
