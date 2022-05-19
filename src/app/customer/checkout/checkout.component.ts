@@ -10,6 +10,7 @@ import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {NotificationService} from '../../service/notification/notification.service';
 import {User} from '../../model/user';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {validate} from 'codelyzer/walkerFactory/walkerFn';
 declare var $: any;
 
 @Component({
@@ -36,9 +37,9 @@ export class CheckoutComponent implements OnInit {
   createDeliveryInfo: DeliveryInfo={};
 
   deliveryInfoForm: FormGroup = new FormGroup({
-    name: new FormControl(''),
-    address: new FormControl(''),
-    phone: new FormControl('', [Validators.pattern
+    name: new FormControl('',Validators.required),
+    address: new FormControl('', Validators.required),
+    phone: new FormControl('', [Validators.required, Validators.pattern
     ('^[0](\\+\\d{1,3}\\s?)?((\\(\\d{3}\\)\\s?)|(\\d{3})(\\s|-?))(\\d{3}(\\s|-?))(\\d{3})(\\s?(([E|e]xt[:|.|]?)|x|X)(\\s?\\d+))?')]),
   })
 
@@ -106,7 +107,8 @@ export class CheckoutComponent implements OnInit {
     this.editDeliveryInfo = this.deliveryInfoForm.value;
     this.editDeliveryInfo.id = this.deliveryInfoId;
     console.log(this.editDeliveryInfo);
-    this.deliveryInfoService.updateDeliveryInfo(this.deliveryInfoId,this.editDeliveryInfo).subscribe(()=>{
+    if (this.deliveryInfoForm.valid){
+      this.deliveryInfoService.updateDeliveryInfo(this.deliveryInfoId,this.editDeliveryInfo).subscribe(()=>{
       this.notificationService.showMessage('success', 'Cập nhật thành công');
       this.getDeliveryInfo();
     },error => {
@@ -114,21 +116,26 @@ export class CheckoutComponent implements OnInit {
     },()=>{
       $('edit-delivery-modal').modal('hide');
     });
-
+    }else {
+      this.notificationService.showMessage('error', 'Bạn chưa điền đầy đủ thông tin ');
+    }
   }
   submitFormCreateDeliveryInfo() {
     this.createDeliveryInfo = this.deliveryInfoForm.value;
     this.createDeliveryInfo.user = {id: this.authService.getCurrentUserId()}
     console.log(this.createDeliveryInfo);
-    this.deliveryInfoService.createDelivery(this.createDeliveryInfo).subscribe(()=>{
-      this.notificationService.showMessage('success', 'Thêm thành công');
-      this.getDeliveryInfo();
-    },error => {
-      this.notificationService.showMessage('error', error.error.message);
-    },()=>{
-      $('create-delivery-modal').modal('hide');
-    });
-
+    if (this.deliveryInfoForm.valid) {
+      this.deliveryInfoService.createDelivery(this.createDeliveryInfo).subscribe(() => {
+        this.notificationService.showMessage('success', 'Thêm thành công');
+        this.getDeliveryInfo();
+      }, error => {
+        this.notificationService.showMessage('error', error.error.message);
+      }, () => {
+        $('create-delivery-modal').modal('hide');
+      });
+    }else {
+      this.notificationService.showMessage('error', 'Bạn chưa điền đầy đủ thông tin ');
+    }
   }
 
   chooseDeliveryInfo(userId:number,deliveryInfoId:number) {
@@ -154,5 +161,14 @@ export class CheckoutComponent implements OnInit {
     );
   }
 
+  get nameControl() {
+    return this.deliveryInfoForm.get('name');
+  }
+  get addressControl(){
+    return this.deliveryInfoForm.get('address');
+  }
+  get phoneControl(){
+    return this.deliveryInfoForm.get('phone');
+  }
 
 }
