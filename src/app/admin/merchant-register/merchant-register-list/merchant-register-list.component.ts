@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MerchantRegister} from '../../../model/merchant-register';
 import {MerchantRegisterService} from '../../../service/merchant-register/merchant-register.service';
+import {NotificationService} from '../../../service/notification/notification.service';
 
 @Component({
   selector: 'app-merchant-register-list',
@@ -10,7 +11,8 @@ import {MerchantRegisterService} from '../../../service/merchant-register/mercha
 export class MerchantRegisterListComponent implements OnInit {
   merchantRegisters: MerchantRegister[] = [];
 
-  constructor(private merchantRegisterService: MerchantRegisterService) {
+  constructor(private merchantRegisterService: MerchantRegisterService,
+              private notificationService: NotificationService) {
   }
 
   ngOnInit() {
@@ -21,6 +23,7 @@ export class MerchantRegisterListComponent implements OnInit {
   submitAcceptRegisterRequest(merchantRegister: MerchantRegister) {
     merchantRegister.user;
     this.merchantRegisterService.acceptRegisterRequest(merchantRegister.id, merchantRegister).subscribe(() => {
+      this.notificationService.showTopRightMessage('success','Duyệt thành công')
       this.getAllMerchantRegisterRequest();
     });
   }
@@ -28,6 +31,7 @@ export class MerchantRegisterListComponent implements OnInit {
   submitRefuseRegisterRequest(merchantRegister: MerchantRegister) {
     merchantRegister.user;
     this.merchantRegisterService.refuseRegisterRequest(merchantRegister.id, merchantRegister).subscribe(() => {
+      this.notificationService.showTopRightMessage('success','Đã từ chối')
       this.getAllMerchantRegisterRequest();
     });
   }
