@@ -5,6 +5,8 @@ import {OrderDto} from '../../model/order-dto';
 import {AuthService} from '../../service/auth/auth.service';
 import {UseService} from '../../service/use/use.service';
 import {OrderDtoByOwner} from '../../model/order-dto-by-owner';
+import {Order} from '../../model/order';
+import {NotificationService} from '../../service/notification/notification.service';
 
 @Component({
   selector: 'app-order-list',
@@ -18,6 +20,7 @@ export class OrderListComponent implements OnInit {
 
   constructor(private merchantService: MerchantService,
               private authService: AuthService,
+              private notificationService: NotificationService,
   ) {
   }
 
@@ -40,4 +43,13 @@ export class OrderListComponent implements OnInit {
     });
   }
 
+  submitAcceptOrderByMerchant(id: number, order: Order) {
+    this.merchantService.acceptOrderByMerchant(order.id, order).subscribe(() => {
+      this.notificationService.showTopRightMessage('success', 'Duyệt thành công');
+      this.getAllOrderByMerchant();
+    });
+  }
 }
+
+
+

@@ -9,15 +9,15 @@
         <div class="card">
           <div class="card-header">
             <h3 class="card-title">Quản lý đơn hàng</h3>
-            <!--            <button class="btn btn-info float-right ml-2">-->
-            <!--              <a class="text-light" routerLink="/merchant/dish/create">Phiếu mua hàng</a>-->
-            <!--            </button>-->
-            <!--            <button class="btn btn-info float-right ml-2">-->
-            <!--              <a class="text-light" routerLink="/merchant/dish/create">Khách hàng</a>-->
-            <!--            </button>-->
-            <!--            <button class="btn btn-info float-right ml-2">-->
-            <!--              <a class="text-light" routerLink="/merchant/{{merchant.id}}/orders/dishes">Món ăn</a>-->
-            <!--            </button>-->
+                        <button class="btn btn-info float-right ml-2">
+                          <a class="text-light" routerLink="/merchant/dish/create">Phiếu mua hàng</a>
+                        </button>
+                        <button class="btn btn-info float-right ml-2">
+                          <a class="text-light" routerLink="/merchant/dish/create">Khách hàng</a>
+                        </button>
+                        <button class="btn btn-info float-right ml-2">
+                          <a class="text-light" routerLink="/merchant/{{merchant.id}}/orders/dishes">Món ăn</a>
+                        </button>
           </div>
           <!-- /.card-header -->
           <div class="card-body">
@@ -27,11 +27,12 @@
                 <th>#</th>
                 <th>Mã đơn hàng</th>
                 <th>Tên khách hàng</th>
-                <th>Món ăn</th>
                 <th>Giá</th>
                 <th>Địa chỉ</th>
+                <th>Số điện thoại</th>
                 <th>Thời gian tạo</th>
                 <th>Trạng thái</th>
+                <th colspan="2"></th>
               </tr>
               </thead>
               <tbody>
@@ -39,13 +40,18 @@
                 <td>{{i + 1}}</td>
                 <td>{{order.id}}</td>
                 <td>{{order.full_Name}}</td>
-                <td>{{order.name}}</td>
                 <td>{{order.orderPrice}}</td>
                 <td>{{order.address}}</td>
+                <td>{{order.phone}}</td>
                 <td>{{order.create_Date | date: 'dd/MM/yyyy hh:mm' }}</td>
                 <td>{{order.status < 0 ? 'Đã hủy' :
                   order.status > 0 ? 'Đã xác nhận' :
                     'Đang chờ xác nhận'}}</td>
+                <td><button routerLink="/merchant/orders/view/{{order.id}}" class="btn btn-success">Xem chi tiết</button></td>
+                <td *ngIf="order.status == 0">
+                  <button (click)="submitAcceptOrderByMerchant(order.id,order)" class="btn btn-success">Duyệt</button>
+                </td>
+
               </tr>
               </tbody>
             </table>

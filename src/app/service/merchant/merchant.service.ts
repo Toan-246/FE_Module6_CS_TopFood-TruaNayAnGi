@@ -47,16 +47,26 @@ export class MerchantService {
     return this.http.get<Order[]>(`${API_URL}/orders/dishes/${id}`);
   }
 
-  countMerchantByDish (id: number): Observable<DishDto[]> {
-    return this.http.get<DishDto[]>(`${API_URL}/merchants/${id}/get-dishes-dto`)
+  countMerchantByDish(id: number): Observable<DishDto[]> {
+    return this.http.get<DishDto[]>(`${API_URL}/merchants/${id}/get-dishes-dto`);
   }
-  countOrderByUser (id: number): Observable<CustomerDto[]> {
-    return this.http.get<CustomerDto[]>(`${API_URL}/merchants/${id}/get-users-dto`)
+
+  countOrderByUser(id: number): Observable<CustomerDto[]> {
+    return this.http.get<CustomerDto[]>(`${API_URL}/merchants/${id}/get-users-dto`);
   }
+
   getAllOrderByCustomerId(merchantId: number, userId: number): Observable<Order[]> {
     return this.http.get<Order[]>(`${API_URL}/merchants/${merchantId}/users/${userId}/orders`);
   }
-  getAllOrderByMerchantId(merchantId: number): Observable<OrderDto[]>{
+
+  getAllOrderByMerchantId(merchantId: number): Observable<OrderDto[]> {
     return this.http.get<OrderDto[]>(`${API_URL}/merchants/owners/${merchantId}/orders`);
+  }
+
+  acceptOrderByMerchant(id: number, order: Order) {
+    return this.http.post(`${API_URL}/merchants/${id}/accept`, order);
+  }
+  viewOrderByMerchant(orderId:number): Observable<OrderDto>{
+    return this.http.get<OrderDto>(`${API_URL}/merchants/order/${orderId}`);
   }
 }
