@@ -38,7 +38,7 @@
             <div class="row">
               <div class="col-3" *ngFor="let category of allCategories; index as i">
                 <input (click)="toggleCategory(category.id)" style="margin-right: 5px" type="checkbox" id='cb-category-{{category.id}}' value="{{category.name}}">
-                <label for="{{category.name}}" class="form-label">{{category.name}}</label>
+                <label for="cb-category-{{category.id}}" class="form-label">{{category.name}}</label>
               </div>
             </div>
           </div>
