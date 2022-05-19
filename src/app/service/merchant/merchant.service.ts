@@ -7,6 +7,7 @@ import {Order} from '../../model/order';
 import {Dish} from '../../model/dish';
 import {DishDto} from '../../model/dish-dto';
 import {CustomerDto} from '../../model/customer-dto';
+import {OrderDto} from '../../model/order-dto';
 import {OrderByQueryDto} from '../../model/order-by-query-dto';
 
 const API_URL = `${environment.apiUrl}`;
@@ -59,6 +60,13 @@ export class MerchantService {
     return this.http.get<Order[]>(`${API_URL}/merchants/${merchantId}/users/${userId}/orders`);
   }
 
+
+  acceptOrderByMerchant(id: number, order: Order) {
+    return this.http.post(`${API_URL}/merchants/${id}/accept`, order);
+  }
+  viewOrderByMerchant(orderId:number): Observable<OrderDto>{
+    return this.http.get<OrderDto>(`${API_URL}/merchants/order/${orderId}`);
+    
   getAllOrdersByMerchantId(id: number): Observable<Order[]> {
     return this.http.get<OrderByQueryDto[]>(`${API_URL}/merchants/${id}/orders`);
   }
