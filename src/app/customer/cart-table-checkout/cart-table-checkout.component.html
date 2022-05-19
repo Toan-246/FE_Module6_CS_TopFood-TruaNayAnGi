@@ -2,8 +2,8 @@
   <div class="d-flex mb-4 osahan-cart-item-profile">
     <img class="img-fluid mr-3 rounded-pill" alt="osahan" src="assets/customer-template/img/2.jpg">
     <div class="d-flex flex-column">
-      <h6 class="mb-1 text-white"> {{cart.merchant.name}}
-      </h6>
+      <a routerLink="/home/merchant/{{cart.merchant.id}}"><h6 class="mb-1 text-white"> {{cart.merchant.name}}
+      </h6></a>
       <p class="mb-0 text-white"><i class="icofont-location-pin"></i>{{cart.merchant.address}} </p>
     </div>
   </div>

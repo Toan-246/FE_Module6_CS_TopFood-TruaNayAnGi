@@ -29,7 +29,7 @@ const routes: Routes = [
   },
   {
     path: 'food/:id',
-    component: DetailFoodComponent
+    component: DetailFoodComponent,
   },
   {
     path: 'order-success/:orderId',

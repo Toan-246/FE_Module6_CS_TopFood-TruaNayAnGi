@@ -1,11 +1,19 @@
 <app-navbar-customer id="app-navbar-customer" [refreshNum]="countChanges"></app-navbar-customer>
-<app-merchant-banner [merchant]="merchant"></app-merchant-banner>
+<app-merchant-banner [merchant]="merchant" id="app-merchant-banner"></app-merchant-banner>
 
-<div class="mt-4 container">
-  <div class="row col-md-12 mb-3 p-3 rounded shadow-sm bg-green"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <i class="m-0 text-yellow icofont-book-mark icofont-2x"></i>
-    <p class="m-0 text-black merchant-description">&nbsp;{{merchant.description}}</p>
+<div class="mt-4 container d-flex">
+  <div class="row mb-3 p-3 rounded shadow-sm justify-content-between full-width" style="background: #fff6b2"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <div class="m-0 col-md-7">
+      <div class="d-flex">
+        <i class="m-0 text-yellow icofont-book-mark icofont-2x"></i>
+        <p class="m-0 text-black merchant-description">&nbsp;{{merchant.description}}</p>
+      </div>
+    </div>
+    <div class="m-0 col-md-4">
+      <app-merchant-vsattp *ngIf="merchant.vsattp && merchant.vsattp?.length > 0" [merchant]="merchant"></app-merchant-vsattp>
+    </div>
   </div>
+
 </div>
 <section class="section pt-5 pb-5 products-listing">
   <div class="container">
