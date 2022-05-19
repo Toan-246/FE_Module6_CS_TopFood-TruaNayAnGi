@@ -15,7 +15,7 @@ export class OrderService {
   constructor(private httpClient: HttpClient) {
   }
 
-  createOrder(orderDto: OrderDto): Observable<{id?: number}> {
+  createOrder(orderDto: OrderDto): Observable<{ id?: number }> {
     return this.httpClient.post(`${API_URL}/current-user/create-order`, orderDto);
   }
 
@@ -23,7 +23,7 @@ export class OrderService {
     return this.httpClient.get(`${API_URL}/orders/${orderId}`);
   }
 
-  cancelOrder(orderId:number,orderDto:OrderDto){
-    return this.httpClient.post(`${API_URL}/orders/cancels/${orderId}`,orderDto);
+  cancelOrder(orderId: number, orderDto: OrderDto) {
+    return this.httpClient.post(`${API_URL}/orders/${orderId}/cancels`, orderDto);
   }
 }

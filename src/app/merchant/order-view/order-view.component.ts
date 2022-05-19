@@ -5,6 +5,8 @@ import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {Merchant} from '../../model/merchant';
 import {OrderDto} from '../../model/order-dto';
 import {OrderService} from '../../service/order/order.service';
+import {Order} from '../../model/order';
+import {NotificationService} from '../../service/notification/notification.service';
 
 @Component({
   selector: 'app-order-view',
@@ -13,14 +15,14 @@ import {OrderService} from '../../service/order/order.service';
 })
 export class OrderViewComponent implements OnInit {
   orderId: number;
-  // orderDto: OrderDto = {cart: {cartDetails: []}, merchant: {}, deliveryInfo: {}};
-  orderDto: OrderDto = {};
+  orderDto: OrderDto = {cart: {cartDetails: []}, merchant: {}, deliveryInfo: {}};
   merchant: Merchant = {};
 
   constructor(private merchantService: MerchantService,
               private orderService: OrderService,
               private activatedRoute: ActivatedRoute,
-              private router: Router) {
+              private router: Router,
+              private notificationService: NotificationService) {
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
       this.orderId = +paramMap.get('orderId');
     });
@@ -30,20 +32,17 @@ export class OrderViewComponent implements OnInit {
     this.orderService.getOrder(this.orderId).subscribe(
       (order) => {
         this.orderDto = order;
-        console.log(this.orderId);
-        console.log(this.orderDto);
         });
       }
-
-
 
   ngOnInit() {
     this.getOrder();
   }
 
-
-  submit() {
-    this.router.navigateByUrl('/orders');
-
+  submitAcceptOrderByMerchant() {
+    this.merchantService.merchantAcceptOrder(this.orderId).subscribe(() => {
+      this.orderDto.status = 1;
+      this.notificationService.showTopRightMessage('success', 'Đã xác nhận đơn hàng');
+    });
   }
 }

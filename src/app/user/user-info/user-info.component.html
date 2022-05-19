@@ -76,7 +76,7 @@
                         </p>
                         <hr>
                         <div class="float-right">
-                          <button  (click)="clickButton(order.id,orderDto)" class="btn btn-danger"> Hủy</button>
+                          <button (click)="customerCancelOrder(order.id,orderDto)" class="btn btn-danger" *ngIf="order.status===0"> Hủy đơn</button>
                           <a class="btn btn-info" routerLink="/home/track-order/{{order.id}}"><i
                             class="icofont-refresh"></i>Thông tin</a>
                         </div>

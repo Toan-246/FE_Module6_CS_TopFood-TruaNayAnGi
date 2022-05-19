@@ -44,8 +44,8 @@ export class OrderListComponent implements OnInit {
   }
 
   submitAcceptOrderByMerchant(id: number, order: Order) {
-    this.merchantService.acceptOrderByMerchant(order.id, order).subscribe(() => {
-      this.notificationService.showTopRightMessage('success', 'Duyệt thành công');
+    this.merchantService.merchantAcceptOrder(order.id).subscribe(() => {
+      this.notificationService.showTopRightMessage('success', 'Đã xác nhận đơn hàng');
       this.getAllOrderByMerchant();
     });
   }

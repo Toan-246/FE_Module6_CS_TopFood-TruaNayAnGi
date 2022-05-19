@@ -120,7 +120,7 @@ export class UserInfoComponent implements OnInit {
     }
   }
 
-  clickButton(orderId: number, orderDto: OrderDto) {
+  customerCancelOrder(orderId: number, orderDto: OrderDto) {
     this.orderService.cancelOrder(orderId, orderDto).subscribe(() => {
       this.notificationService.showTopRightMessage('success','Đã hủy')
 

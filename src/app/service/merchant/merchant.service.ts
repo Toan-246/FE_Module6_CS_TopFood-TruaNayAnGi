@@ -64,9 +64,10 @@ export class MerchantService {
     return this.http.get<OrderDto[]>(`${API_URL}/merchants/owners/${merchantId}/orders`);
   }
 
-  acceptOrderByMerchant(id: number, order: Order) {
-    return this.http.post(`${API_URL}/merchants/${id}/accept`, order);
+  merchantAcceptOrder(id: number) {
+    return this.http.get(`${API_URL}/orders/${id}/accept`);
   }
+
   viewOrderByMerchant(orderId:number): Observable<OrderDto> {
     return this.http.get<OrderDto>(`${API_URL}/merchants/order/${orderId}`);
   }
