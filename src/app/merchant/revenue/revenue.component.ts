@@ -5,7 +5,7 @@ import {OrderByQueryDto} from '../../model/order-by-query-dto';
 import {ActivatedRoute, ParamMap} from '@angular/router';
 import {User} from '../../model/user';
 import {UseService} from '../../service/use/use.service';
-
+declare var $: any;
 @Component({
   selector: 'app-revenue',
   templateUrl: './revenue.component.html',
@@ -30,23 +30,23 @@ export class RevenueComponent implements OnInit {
 
   ngOnInit() {
     this.getMerchant();
-    // this.resetSearchForm();
+    var now = new Date();
+    var month: any = (now.getMonth() + 1);
+    var startMonth: any = (now.getMonth());
+    var day: any = now.getDate();
+    if (month < 10)
+      month = "0" + month;
+    if (startMonth < 10)
+      startMonth = "0" + startMonth;
+    if (day < 10)
+      day = "0" + day;
+    var today = now.getFullYear() + '-' + month + '-' + day;
+    var start = now.getFullYear() + '-' + startMonth + '-' + day;
+    $('#endDate').val(today);
+    $('#startDate').val(start);
     this.getAllOrders();
-    this.endDate = new Date();
-    this.startDate = new Date();
-    this.startDate.setDate(this.startDate.getDate()-30);
-    console.log(this.startDate, this.endDate);
-    (<HTMLInputElement> document.getElementById('startDate')).value = '2022-05-22';
-    (<HTMLInputElement> document.getElementById('endDate')).value = '2022-05-22';
 
   }
-
-
-  // resetSearchForm(){
-  //   (<HTMLInputElement> document.getElementById('startDate')).value = "2000-01-01";
-  //   (<HTMLInputElement> document.getElementById('endDate')).value = '2050-01-01'
-  // }
-
   getMerchant() {
     this.merchantService.getCurrentUserMerchant().subscribe(
       merchant => this.merchant = merchant
