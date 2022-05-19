@@ -21,11 +21,15 @@ export class DeliveryInfoService {
     return this.httpClient.get(`${API_URL}/users/${userId}/other-delivery-infos`);
   }
 
-  setDeliveryInfoToSelected(userId:number, deliveryInfoId: number) {
+  setDeliveryInfoToSelected(userId: number, deliveryInfoId: number) {
     return this.httpClient.get(`${API_URL}/users/${userId}/${deliveryInfoId}/make-default`);
   }
 
-  updateDeliveryInfo(deliveryInfoId:number , deliveryInfo: DeliveryInfo){
-    return this.httpClient.put(`${API_URL}/users/${deliveryInfoId}`,deliveryInfo);
+  updateDeliveryInfo(deliveryInfoId: number, deliveryInfo: DeliveryInfo) {
+    return this.httpClient.put(`${API_URL}/users/${deliveryInfoId}`, deliveryInfo);
+  }
+
+  createDelivery(deliveryInfo: DeliveryInfo){
+    return this.httpClient.post(`${API_URL}/users/delivery/create`,deliveryInfo);
   }
 }

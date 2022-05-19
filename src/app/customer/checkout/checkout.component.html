@@ -38,8 +38,8 @@
                         <p class="mb-0 text-black font-weight-bold">
                         <p class="mb-0 text-black font-weight-bold"><button class="btn btn-sm btn-secondary mr-2"
                                                                        data-toggle="modal" data-target="#edit-delivery-modal"
-                                                                      ><i
-                          class="icofont-ui-edit"(click)="putDeliveryInfoToModal(defaultDeliveryInfo)"></i> Sửa</button>
+                                                                            (click)="putToModalEditDeliveryInfo(defaultDeliveryInfo)">
+                        <i class="icofont-ui-edit"></i> Sửa</button>
                           <span>30MIN</span>
 
                         </p>
@@ -63,7 +63,7 @@
                           </button>
                         <p class="mb-0 text-black font-weight-bold"><button class="btn btn-sm btn-secondary mr-2"
                                                                        data-toggle="modal" data-target="#edit-delivery-modal"
-                                                                        (click)="putDeliveryInfoToModal(deliveryInfo)"><i
+                                                                        (click)="putToModalEditDeliveryInfo(deliveryInfo)"><i
                           class="icofont-ui-edit"></i> Sửa</button>
                           <span>45MIN</span>
                       </p>
@@ -81,8 +81,8 @@
                         <h6 class="mb-1 text-secondary">Other</h6>
                         <p>Địa chỉ giao hàng mới</p>
                         <p class="mb-0 text-black font-weight-bold"><a data-toggle="modal"
-                                                                       data-target="#add-address-modal"
-                                                                       class="btn btn-sm btn-primary mr-2" href="#">
+                                                                       data-target="#create-delivery-modal"
+                                                                       class="btn btn-sm btn-primary mr-2">
                           Thêm địa chỉ
                           giao hàng mới</a>
                         </p>
@@ -177,6 +177,38 @@
             <label for="phone" class="form-label">Số điện thoại</label>
             <input type="text" class="form-control" id="phone" formControlName="phone">
 <!--            <p class="validate" [hidden]="phone.valid || !phone.touched">Định dạng số điện thoại không đúng</p>-->
+          </div>
+          <div class="mb-3">
+            <label for="address" class="form-label">Địa chỉ</label>
+            <input type="text" class="form-control" id="address" formControlName="address">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+          <button type="submit" class="btn btn-info">Cập nhật</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="create-delivery-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form [formGroup]="deliveryInfoForm" (ngSubmit)="submitFormCreateDeliveryInfo()">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModal">Thêm địa chỉ giao hàng mới</h5>
+          <span type="button" class="btn-close" data-dismiss="modal" aria-label="Close">X</span>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="name" class="form-label">Họ và tên</label>
+            <input type="text" class="form-control" id="name" formControlName="name">
+            <!--            <p class="validate" [hidden]="fullName.valid || !fullName.touched">Nhập Họ và tên</p>-->
+          </div>
+          <div class="mb-3">
+            <label for="phone" class="form-label">Số điện thoại</label>
+            <input type="text" class="form-control" id="phone" formControlName="phone">
+            <!--            <p class="validate" [hidden]="phone.valid || !phone.touched">Định dạng số điện thoại không đúng</p>-->
           </div>
           <div class="mb-3">
             <label for="address" class="form-label">Địa chỉ</label>

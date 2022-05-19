@@ -33,6 +33,7 @@ export class CheckoutComponent implements OnInit {
   shippingNote: string;
   deliveryInfo: DeliveryInfo={};
   editDeliveryInfo: DeliveryInfo = {};
+  createDeliveryInfo: DeliveryInfo={};
 
   deliveryInfoForm: FormGroup = new FormGroup({
     name: new FormControl(''),
@@ -93,12 +94,13 @@ export class CheckoutComponent implements OnInit {
     this.cart = $event;
   }
 
-  putDeliveryInfoToModal(deliveryInfo: DeliveryInfo){
+  putToModalEditDeliveryInfo(deliveryInfo: DeliveryInfo){
     this.deliveryInfoId = deliveryInfo.id;
     this.deliveryInfoForm.get('name').setValue(deliveryInfo.name);
     this.deliveryInfoForm.get('phone').setValue(deliveryInfo.phone);
     this.deliveryInfoForm.get('address').setValue(deliveryInfo.address);
   }
+
 
   submitFormEditDeliveryInfo() {
     this.editDeliveryInfo = this.deliveryInfoForm.value;
@@ -111,7 +113,20 @@ export class CheckoutComponent implements OnInit {
       this.notificationService.showMessage('error', error.error.message);
     },()=>{
       $('edit-delivery-modal').modal('hide');
+    });
 
+  }
+  submitFormCreateDeliveryInfo() {
+    this.createDeliveryInfo = this.deliveryInfoForm.value;
+    this.createDeliveryInfo.user = {id: this.authService.getCurrentUserId()}
+    console.log(this.createDeliveryInfo);
+    this.deliveryInfoService.createDelivery(this.createDeliveryInfo).subscribe(()=>{
+      this.notificationService.showMessage('success', 'Thêm thành công');
+      this.getDeliveryInfo();
+    },error => {
+      this.notificationService.showMessage('error', error.error.message);
+    },()=>{
+      $('create-delivery-modal').modal('hide');
     });
 
   }
