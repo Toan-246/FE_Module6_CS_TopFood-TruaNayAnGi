@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {MerchantService} from '../../../service/merchant/merchant.service';
 import {Merchant} from '../../../model/merchant';
 import {AuthService} from '../../../service/auth/auth.service';
+import {NotificationService} from '../../../service/notification/notification.service';
 
 @Component({
   selector: 'app-merchant-list',
@@ -11,7 +12,8 @@ import {AuthService} from '../../../service/auth/auth.service';
 export class MerchantListComponent implements OnInit {
   merchants: Merchant[] = [];
 
-  constructor(private merchantService: MerchantService) {
+  constructor(private merchantService: MerchantService
+             ) {
   }
 
   ngOnInit() {

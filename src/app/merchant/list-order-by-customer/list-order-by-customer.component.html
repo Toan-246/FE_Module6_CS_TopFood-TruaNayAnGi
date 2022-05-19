@@ -8,7 +8,7 @@
       <div class="col-12">
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title">Quản lý đơn hàng theo khách hàng</h3>
+            <h3 class="card-title">Có {{totalOrder}} đơn hàng</h3>
             <button class="btn btn-info float-right">
               <a class="text-light" routerLink="/merchant/{{merchant.id}}/orders/users">Quản lý đơn hàng theo Khách hàng</a>
             </button>
@@ -19,13 +19,13 @@
               <thead>
               <tr>
                 <th>#</th>
-                <th>hời gian order</th>
+                <th>Thời gian order</th>
               </tr>
               </thead>
               <tbody>
               <tr *ngFor="let order of orders; index as i">
                 <td>{{i + 1}}</td>
-                <td>{{order.create_Date}}</td>
+                <td>{{order.create_Date| date: 'dd/MM/yyyy hh:mm'}}</td>
               </tr>
               </tbody>
             </table>

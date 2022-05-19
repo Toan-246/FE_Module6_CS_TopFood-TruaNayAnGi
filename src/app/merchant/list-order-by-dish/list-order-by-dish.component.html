@@ -19,7 +19,10 @@
               <thead>
               <tr>
                 <th>#</th>
-                <th>khách hàng</th>
+                <th>Tên khách hàng</th>
+                <th>Số điện thoại</th>
+                <th>Email</th>
+                <th>Địa chỉ</th>
                 <th>Thời gian order</th>
               </tr>
               </thead>
@@ -27,7 +30,10 @@
               <tr *ngFor="let order of orders; index as i">
                 <td>{{i + 1}}</td>
                 <td>{{order.user.fullName}}</td>
-                <td>{{order.createDate}}</td>
+                <td>{{order.user.email}}</td>
+                <td>{{order.user.phone}}</td>
+                <td>{{order.user.address}}</td>
+                <td>{{order.createDate| date: 'dd/MM/yyyy hh:mm'}}</td>
               </tr>
               </tbody>
             </table>
