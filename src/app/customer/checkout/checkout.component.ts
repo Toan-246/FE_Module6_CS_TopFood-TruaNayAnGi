@@ -8,6 +8,7 @@ import {DeliveryInfoService} from '../../service/delivery-info/delivery-info.ser
 import {OrderService} from '../../service/order/order.service';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {NotificationService} from '../../service/notification/notification.service';
+import {User} from '../../model/user';
 
 @Component({
   selector: 'app-checkout',
@@ -20,6 +21,7 @@ export class CheckoutComponent implements OnInit {
   currentUser: any;
   loggedIn: boolean;
   userId: number;
+  deliveryInfoId: number;
   cart: Cart;
   total: number;
 
@@ -85,8 +87,11 @@ export class CheckoutComponent implements OnInit {
     console.log(`edit delivery info: id=${deliveryInfoId}`);
   }
 
-  chooseDeliveryInfo(deliveryInfoId: number) {
-    console.log(`make delivery info default:  id=${deliveryInfoId}`);
+  chooseDeliveryInfo(userId:number,deliveryInfoId:number) {
+    this.deliveryInfoService.setDeliveryInfoToSelected(userId,deliveryInfoId).subscribe(()=>{
+      this.getDeliveryInfo()
+    });
+    console.log(`make delivery info default:  idDelivery=${deliveryInfoId} userId=${userId}`);
   }
 
 
@@ -104,5 +109,6 @@ export class CheckoutComponent implements OnInit {
       }
     );
   }
+
 
 }

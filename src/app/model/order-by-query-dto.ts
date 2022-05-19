@@ -1,3 +1,5 @@
+import {User} from './user';
+
 export interface OrderByQueryDto {
   id?: number;
   create_Date?: any;
@@ -7,4 +9,9 @@ export interface OrderByQueryDto {
   shipping_Fee?: number;
   shipping_Note?: string;
   total_Fee?: number;
+  user_Id?: number;
+  full_Name?: string;
+  phone?: string;
+  address?: string;
+  email?: string;
 }

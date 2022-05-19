@@ -20,7 +20,7 @@ export class CartsTableComponent implements OnInit, OnChanges {
   refreshNum = 0;
 
   currentUser: any;
-  loggedIn: boolean;
+  loggedIn = false;
 
   constructor(private authService: AuthService,
               private cartService: CartService,
@@ -47,10 +47,10 @@ export class CartsTableComponent implements OnInit, OnChanges {
   }
 
   getCurrentUserCarts() {
+    if (!this.loggedIn) return;
     this.cartService.getCurrentUserCarts().subscribe(
       (response) => {
         this.carts = response as Cart[];
-        console.log(this.carts);
       }
     );
   }

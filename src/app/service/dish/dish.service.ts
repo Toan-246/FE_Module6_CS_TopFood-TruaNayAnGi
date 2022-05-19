@@ -23,11 +23,11 @@ export class DishService {
     return this.httpClient.get<Dish>(`${API_URL}/dishes/${id}`);
   }
 
-  createMerchantDish(dish: Dish): Observable<Dish> {
-    return this.httpClient.post(`${API_URL}/merchants/dish/create`, dish);
+  createMerchantDish(dish): Observable<Dish> {
+    return this.httpClient.post(`${API_URL}/merchants/dish/create1`, dish);
   }
 
-  updateDish(id: number, dish: Dish): Observable<Dish> {
+  updateDish(id: number, dish: FormData): Observable<Dish> {
     return this.httpClient.put(`${API_URL}/merchants/dish/${id}`, dish);
   }
 
@@ -49,5 +49,9 @@ export class DishService {
 
   getAllMerchantDishesByMerchantId(merchantId: number): Observable<Dish[]> {
     return this.httpClient.get<Dish[]>(`${API_URL}/dishes/merchants/${merchantId}`);
+  }
+
+  findDishesWithSameCategoryWith(dishId: number, limit: number): Observable<Dish[]> {
+    return this.httpClient.get<Dish[]>(`${API_URL}/dishes/${dishId}/top-${limit}-same-category`);
   }
 }
