@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 
 import {MerchantRoutingModule} from './merchant-routing.module';
 import {SharedModule} from '../shared/shared.module';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {FoodListComponent} from './food-list/food-list.component';
 import {MyMerchantBannerComponent} from './my-merchant-banner/my-merchant-banner.component';
 import {SecondNavbarComponent} from './second-navbar/second-navbar.component';
@@ -18,20 +18,22 @@ import { OrderListComponent } from './order-list/order-list.component';
 import { CountOrdersByDishComponent } from './count-orders-by-dish/count-orders-by-dish.component';
 import { CountOrdersByUserComponent } from './count-orders-by-user/count-orders-by-user.component';
 import { ListOrderByCustomerComponent } from './list-order-by-customer/list-order-by-customer.component';
+import { RevenueComponent } from './revenue/revenue.component';
 
 @NgModule({
   declarations: [FoodListComponent, MyMerchantBannerComponent,
     SecondNavbarComponent, DishesComponent, InfoComponent,
     ListOrderByDishComponent, DishCreateComponent, DishEditComponent, DishCeaseComponent, OrderListComponent,
-    CountOrdersByDishComponent, CountOrdersByUserComponent, ListOrderByCustomerComponent
+    CountOrdersByDishComponent, CountOrdersByUserComponent, ListOrderByCustomerComponent, RevenueComponent
   ],
-  imports: [
-    SharedModule,
-    CommonModule,
-    MerchantRoutingModule,
-    ReactiveFormsModule,
-    CustomerModule
-  ]
+    imports: [
+        SharedModule,
+        CommonModule,
+        MerchantRoutingModule,
+        ReactiveFormsModule,
+        CustomerModule,
+        FormsModule
+    ]
 })
 export class MerchantModule {
 }

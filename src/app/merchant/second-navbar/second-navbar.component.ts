@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Merchant} from '../../model/merchant';
+import {MerchantService} from '../../service/merchant/merchant.service';
 
 @Component({
   selector: 'app-second-navbar',
@@ -6,10 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./second-navbar.component.css']
 })
 export class SecondNavbarComponent implements OnInit {
-
-  constructor() { }
+  merchant: Merchant = {};
+  constructor(private merchantService: MerchantService) { }
 
   ngOnInit() {
+    this.getMerchant()
   }
-
+  getMerchant() {
+    this.merchantService.getCurrentUserMerchant().subscribe(
+      merchant => this.merchant = merchant
+    );
+  }
 }

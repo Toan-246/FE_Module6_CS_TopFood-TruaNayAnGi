@@ -1,0 +1,59 @@
+<app-navbar-customer></app-navbar-customer>
+<app-my-merchant-banner [merchant]="merchant"></app-my-merchant-banner>
+<app-second-navbar></app-second-navbar>
+
+<section class="content">
+  <div class="mt-3 container">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Quản lý Doanh thu</h3>
+            <div></div>
+            <input type="date" id="startDate" [(ngModel)]="startDate">
+            <input type="date" id="endDate" [(ngModel)]="endDate">
+            <button (click)="getAllOrders()">Tìm kiếm</button>
+            <button class="btn btn-info float-right">
+              <a class="text-light" routerLink="/merchant/orders">Danh sách đơn hàng</a>
+            </button>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body">
+            <table id="example2" class="table table-bordered table-hover">
+              <thead>
+              <tr>
+                <th>#</th>
+                <th>Mã Đơn hàng</th>
+                <th>Khách hàng</th>
+                <th>Thời gian đặt hàng</th>
+                <th>Doanh thu</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let order of orders; index as i">
+                <td>{{i + 1}}</td>
+                <td>{{order.id}}</td>
+                <td>{{order.full_Name}}</td>
+                <td>{{order.create_Date}}</td>
+                <td>{{order.total_Fee-order.service_Fee - order.shipping_Fee}}</td>
+              </tr>
+              <tr>
+                <td>Tổng doanh thu</td>
+                <td colspan="4">{{totalRevenue}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+  </div>
+  <!-- /.container-fluid -->
+</section>
+
+<hr>
+<app-footer></app-footer>

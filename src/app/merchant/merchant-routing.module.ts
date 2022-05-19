@@ -9,6 +9,7 @@ import {OrderListComponent} from './order-list/order-list.component';
 import {CountOrdersByDishComponent} from './count-orders-by-dish/count-orders-by-dish.component';
 import {CountOrdersByUserComponent} from './count-orders-by-user/count-orders-by-user.component';
 import {ListOrderByCustomerComponent} from './list-order-by-customer/list-order-by-customer.component';
+import {RevenueComponent} from './revenue/revenue.component';
 
 const routes: Routes = [
 
@@ -47,6 +48,10 @@ const routes: Routes = [
   {
     path: 'dish/edit/:id',
     component: DishEditComponent
+  },
+  {
+    path: ':id/revenue',
+    component: RevenueComponent
   }
 ];
 
