@@ -39,7 +39,7 @@
               <div class="col-3" *ngFor="let category of allCategories; index as i">
                 <input (click)="toggleCategory(category.id)" style="margin-right: 5px" type="checkbox" id='cb-category-{{category.id}}'
                        value="{{category.name}}"
-                       [checked]="categoryId.includes(category.id)">
+                       [checked]="categoryIds.includes(category.id)">
                 <!--               sử dụng property binding : checked (checked là thuộc tính của checkbox -->
                 <!--                tạo ra 1 mảng categoryId chứa id của những category thuộc về 1 dish-->
                 <!--                thuộc tính checked nhận giá trị boolean vậy nên sử dụng hàm includes (trả về boolean)-->
@@ -49,10 +49,16 @@
             </div>
           </div>
 
-<!--          <div class="mb-4">-->
-<!--            <label for="image" class="form-label">Ảnh món ăn</label>-->
-<!--            <input type="file" class="form-control" multiple id="image">-->
-<!--          </div>-->
+          <div class="mb-4">
+            <label for="image" class="form-label">Ảnh món ăn</label>
+            <div>
+              <img src="http://localhost:8080/image/{{dish.image}}" alt="Ảnh món ăn" class="dish-image">
+            </div>
+            <input type="file" class="form-control" id="image" formControlName="image">
+            <div class="validate" [hidden]="imageControl.valid">
+            <div *ngIf="imageControl.errors?.required">Chọn ảnh món ăn</div>
+          </div>
+          </div>
           <button type="submit" class="btn btn-info">Lưu thay đổi</button>
           <button type="button" class="btn btn-danger ml-3" routerLink="/merchant">Không sửa nữa</button>
         </form>
