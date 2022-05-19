@@ -4,6 +4,7 @@ import {MerchantService} from '../../service/merchant/merchant.service';
 import {OrderDto} from '../../model/order-dto';
 import {AuthService} from '../../service/auth/auth.service';
 import {UseService} from '../../service/use/use.service';
+import {OrderDtoByOwner} from '../../model/order-dto-by-owner';
 
 @Component({
   selector: 'app-order-list',
@@ -13,7 +14,7 @@ import {UseService} from '../../service/use/use.service';
 export class OrderListComponent implements OnInit {
   merchant: Merchant = {};
   userId: number;
-  orders: OrderDto[] = [];
+  orders: OrderDtoByOwner[] = [];
 
   constructor(private merchantService: MerchantService,
               private authService: AuthService,
@@ -35,11 +36,6 @@ export class OrderListComponent implements OnInit {
     this.userId = this.authService.getCurrentUserId();
     this.merchantService.getAllOrderByMerchantId(this.userId).subscribe(ordersBE => {
       this.orders = ordersBE as OrderDto[];
-      for (let i = 0; i< this.orders.length; i++ ){
-        if (this.orders[i].deliveryInfo == null){
-          this.orders[i].deliveryInfo = {};
-        }
-      };
       console.log(this.orders);
     });
   }

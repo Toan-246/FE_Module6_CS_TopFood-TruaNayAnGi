@@ -9,15 +9,15 @@
         <div class="card">
           <div class="card-header">
             <h3 class="card-title">Quản lý đơn hàng</h3>
-<!--            <button class="btn btn-info float-right ml-2">-->
-<!--              <a class="text-light" routerLink="/merchant/dish/create">Phiếu mua hàng</a>-->
-<!--            </button>-->
-<!--            <button class="btn btn-info float-right ml-2">-->
-<!--              <a class="text-light" routerLink="/merchant/dish/create">Khách hàng</a>-->
-<!--            </button>-->
-<!--            <button class="btn btn-info float-right ml-2">-->
-<!--              <a class="text-light" routerLink="/merchant/{{merchant.id}}/orders/dishes">Món ăn</a>-->
-<!--            </button>-->
+            <!--            <button class="btn btn-info float-right ml-2">-->
+            <!--              <a class="text-light" routerLink="/merchant/dish/create">Phiếu mua hàng</a>-->
+            <!--            </button>-->
+            <!--            <button class="btn btn-info float-right ml-2">-->
+            <!--              <a class="text-light" routerLink="/merchant/dish/create">Khách hàng</a>-->
+            <!--            </button>-->
+            <!--            <button class="btn btn-info float-right ml-2">-->
+            <!--              <a class="text-light" routerLink="/merchant/{{merchant.id}}/orders/dishes">Món ăn</a>-->
+            <!--            </button>-->
           </div>
           <!-- /.card-header -->
           <div class="card-body">
@@ -25,6 +25,7 @@
               <thead>
               <tr>
                 <th>#</th>
+                <th>Mã đơn hàng</th>
                 <th>Tên khách hàng</th>
                 <th>Món ăn</th>
                 <th>Giá</th>
@@ -33,13 +34,15 @@
               </tr>
               </thead>
               <tbody>
-              <tr *ngFor="let order of orders">
+              <tr *ngFor="let order of orders; index as i">
+                <td>{{i + 1}}</td>
                 <td>{{order.id}}</td>
-                <td>{{order.user.fullName}}</td>
-                <td *ngFor="let cartDetails of order.cart.cartDetails">{{cartDetails.dish.name}} x {{cartDetails.quantity}}</td>
-                <td>{{order.cart.totalFee}}</td>
-                <td>{{order.user.address}}</td>
-                <td>{{order.createDate}}</td>
+                <td>{{order.full_Name}}</td>
+                <td>{{order.name}}</td>
+                <td>{{order.orderPrice}}</td>
+                <td>{{order.address}}</td>
+                <td>{{order.create_Date | date: 'dd/MM/yyyy hh:mm' }}</td>
+                <td
               </tr>
               </tbody>
             </table>
