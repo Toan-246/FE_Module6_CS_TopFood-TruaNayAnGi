@@ -15,10 +15,12 @@ const routes: Routes = [
   },
   {
     path: 'admin',
+    canActivate: [AuthGuardGuard],
     loadChildren: () => import('./admin/admin.module').then(module => module.AdminModule)
   },
   {
     path: 'merchant',
+    canActivate: [AuthGuardGuard],
     loadChildren: () => import('./merchant/merchant.module').then(module => module.MerchantModule)
   },
   {
