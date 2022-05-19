@@ -60,14 +60,18 @@ export class MerchantService {
     return this.http.get<Order[]>(`${API_URL}/merchants/${merchantId}/users/${userId}/orders`);
   }
 
+  getAllOrderByMerchantId(merchantId: number): Observable<OrderDto[]> {
+    return this.http.get<OrderDto[]>(`${API_URL}/merchants/owners/${merchantId}/orders`);
+  }
 
   acceptOrderByMerchant(id: number, order: Order) {
     return this.http.post(`${API_URL}/merchants/${id}/accept`, order);
   }
-  viewOrderByMerchant(orderId:number): Observable<OrderDto>{
+  viewOrderByMerchant(orderId:number): Observable<OrderDto> {
     return this.http.get<OrderDto>(`${API_URL}/merchants/order/${orderId}`);
-    
-  getAllOrdersByMerchantId(id: number): Observable<Order[]> {
+  }
+
+  getAllOrdersDtoByMerchantId(id: number): Observable<Order[]> {
     return this.http.get<OrderByQueryDto[]>(`${API_URL}/merchants/${id}/orders`);
   }
 

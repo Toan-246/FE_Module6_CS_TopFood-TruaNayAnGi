@@ -9,11 +9,11 @@
         <div class="card">
           <div class="card-header">
             <h3 class="card-title">Quản lý đơn hàng</h3>
+<!--                        <button class="btn btn-info float-right ml-2">-->
+<!--                          <a class="text-light" routerLink="/merchant/dish/create">Phiếu mua hàng</a>-->
+<!--                        </button>-->
                         <button class="btn btn-info float-right ml-2">
-                          <a class="text-light" routerLink="/merchant/dish/create">Phiếu mua hàng</a>
-                        </button>
-                        <button class="btn btn-info float-right ml-2">
-                          <a class="text-light" routerLink="/merchant/dish/create">Khách hàng</a>
+                          <a class="text-light" routerLink="/merchant/{{merchant.id}}/orders/users">Khách hàng</a>
                         </button>
                         <button class="btn btn-info float-right ml-2">
                           <a class="text-light" routerLink="/merchant/{{merchant.id}}/orders/dishes">Món ăn</a>
