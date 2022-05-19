@@ -35,5 +35,11 @@
     </table>
   </div>
   <hr class="clearfix">
-  <app-merchant-coupon></app-merchant-coupon>
+  <h5 class="mt-4 mb-4">Coupons</h5>
+  <p class="mb-3">Danh sách mã giảm giá của cửa hàng</p>
+  <div class="border-btn-main mb-4">
+    <a class="border-btn mr-2 text-success coupon-link rounded" *ngFor="let coupon of coupons"><i
+      class="icofont-check-circled"></i>{{coupon.name}}</a>
+
+  </div>
 </div>

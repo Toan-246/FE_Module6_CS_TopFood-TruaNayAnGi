@@ -27,7 +27,6 @@ export class PeopleAlsoLikeComponent implements OnInit {
     this.dishService.findDishesWithSameCategoryWith(this.id, this.NUMBERS).subscribe(
       dishes => {
         this.dishesForYou = dishes;
-        console.log(this.dishesForYou);
       }
     );
   }

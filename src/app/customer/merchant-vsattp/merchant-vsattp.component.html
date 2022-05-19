@@ -1,4 +1,4 @@
-<div class="pb-2">
+<div class="p-1" *ngIf="merchant.vsattp">
   <div
     class="bg-white rounded shadow-sm text-white mb-4 p-4 clearfix restaurant-detailed-earn-pts card-icon-overlap">
     <img class="img-fluid float-left mr-3" src="assets/customer-template/img/earn-score-icon.png">
@@ -15,8 +15,8 @@
 
 <div class="modal fade" id="modal-vsattp-img" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content p-1">
-
+    <div class="modal-content p-3">
+      <h4 class="text-center">Giấy chứng nhận vệ sinh an toàn thực phẩm</h4>
       <img class="image-vsattp" src="http://localhost:8080/image/{{merchant.vsattp}}">
     </div>
     <div class="modal-footer d-flex justify-content-center">

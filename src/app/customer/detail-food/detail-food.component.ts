@@ -28,7 +28,7 @@ export class DetailFoodComponent implements OnInit {
   }
 
   ngOnInit() {
-    // document.getElementById('dish-image').scrollIntoView(true);
+    document.getElementById('dish-image').scrollIntoView(true);
   }
 
   getMerchant() {

@@ -49,3 +49,9 @@
   font-size: 120%;
   font-style: italic;
 }
+
+
+.coupon-link:hover {
+  cursor: pointer;
+  background: #3ECF8E;
+}

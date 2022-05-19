@@ -6,6 +6,9 @@ import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {CartService} from '../../service/cart/cart.service';
 import {NotificationService} from '../../service/notification/notification.service';
 import {AuthService} from '../../service/auth/auth.service';
+import {Coupon} from '../../model/coupon';
+import {CouponService} from '../../service/coupon/coupon.service';
+import {subscribeOn} from 'rxjs/operators';
 
 @Component({
   selector: 'app-add-to-cart',
@@ -20,6 +23,7 @@ export class AddToCartComponent implements OnInit {
   dishTotal: number;
   dishImage: string;
   quantity: number;
+  coupons: Coupon[];
 
   refreshNum = 0;
   @Output() refreshCarts = new EventEmitter();
@@ -28,7 +32,8 @@ export class AddToCartComponent implements OnInit {
               private cartService: CartService,
               private notificationService: NotificationService,
               private router: Router,
-              private authService: AuthService
+              private authService: AuthService,
+              private couponService: CouponService
   ) {
   }
 
@@ -36,9 +41,14 @@ export class AddToCartComponent implements OnInit {
     document.getElementById('dish-image').scrollIntoView(true);
     this.quantity = 1;
     this.getDish();
+    this.getCouponByDishId();
   }
 
-
+  getCouponByDishId(){
+    this.couponService.getCouponByDishId(this.id).subscribe(
+      response => this.coupons = response as Coupon[]
+    );
+  }
 
   getDish() {
     this.dishService.getById(this.id).subscribe(
@@ -62,6 +72,8 @@ export class AddToCartComponent implements OnInit {
     }
   }
 
+
+
   calculateDishTotal() {
     this.dishTotal = this.dish.price * this.quantity;
   }
@@ -79,12 +91,10 @@ export class AddToCartComponent implements OnInit {
     this.cartService.addDishToCart(cartDetail).subscribe(
       {
         next: (response) => {
-          console.log(response);
           this.notificationService.showSuccessMessage(`Đã thêm vào giỏ hàng </br> (${this.dish.name}) x ${this.quantity}`);
         },
         error: (error) => {
           this.notificationService.showErrorMessage('Có lỗi xảy ra!');
-          console.log(error.error.message);
         },
         complete: () => {
           this.quantity = 1;

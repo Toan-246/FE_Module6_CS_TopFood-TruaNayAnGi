@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Merchant} from '../../model/merchant';
 import {DishService} from '../../service/dish/dish.service';
 import {ActivatedRoute, ParamMap} from '@angular/router';
@@ -30,9 +30,11 @@ export class MerchantComponent implements OnInit {
   ngOnInit() {
     this.getMerchant();
     this.getDishes();
+    document.getElementById('app-merchant-banner').scrollIntoView(true);
+
   }
 
-  getMerchant(){
+  getMerchant() {
     this.merchantService.viewMerchantInfo(this.id).subscribe(
       merchant => {
         this.merchant = merchant;
