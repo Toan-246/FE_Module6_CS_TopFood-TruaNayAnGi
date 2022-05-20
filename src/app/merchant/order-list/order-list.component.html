@@ -48,8 +48,9 @@
                   order.status > 0 ? 'Đã xác nhận' :
                     'Đang chờ xác nhận'}}</td>
                 <td><button routerLink="/merchant/orders/view/{{order.id}}" class="btn btn-info">Xem chi tiết</button></td>
-                <td *ngIf="order.status == 0">
-                  <button (click)="submitAcceptOrderByMerchant(order.id,order)" class="btn btn-success">Xác nhận đơn hàng</button>
+                <td>
+                  <button *ngIf="order.status == 0" (click)="submitAcceptOrderByMerchant(order.id,order)"
+                          class="btn btn-success">Xác nhận đơn hàng</button>
                 </td>
 
               </tr>
