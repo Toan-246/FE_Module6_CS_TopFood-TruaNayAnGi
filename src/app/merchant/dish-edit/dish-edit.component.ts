@@ -21,14 +21,14 @@ declare var $: any;
 export class DishEditComponent implements OnInit {
   dishId: number;
   dish: Dish = {};
-  currentDishCate: Dish[] = [];
   merchant: Merchant = {};
   allCategories: Category[] = [];
-  categoryId: number[] = [];
+  categoryIds: number[] = [];
   dishForm = new FormGroup({
     name: new FormControl('', Validators.required),
     price: new FormControl('', Validators.required),
-    description: new FormControl('', Validators.required)
+    description: new FormControl('', Validators.required),
+    image: new FormControl('')
   });
 
   constructor(private notificationService: NotificationService,
@@ -39,8 +39,7 @@ export class DishEditComponent implements OnInit {
               private authService: AuthService,
               private categoryService: CategoryService) {
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
-      const id = +paramMap.get('id');
-      this.getAllCategory(id);
+      this.dishId = +paramMap.get('id');
     });
   }
 
@@ -56,67 +55,103 @@ export class DishEditComponent implements OnInit {
     return this.dishForm.get('description');
   }
 
-  // getMerchant() {
-  //   this.merchantService.getCurrentUserMerchant().subscribe(merchantBE => {
-  //     this.merchant = merchantBE;
-  //   });
-  // }
+  get imageControl() {
+    return this.dishForm.get('image');
+  }
 
-  getAllCategory(id) {
+  getAllCategory() {
     this.categoryService.getAllCategory().subscribe(categoryBE => {
       this.allCategories = categoryBE as Category[];
-      this.getCurrentDish(id);
+      // Đặt getCurrentDish trong getAllCategory để xử lý đồng bộ
     });
   }
 
   ngOnInit() {
-    // this.getMerchant();
+    this.getMerchant()
+    this.getAllCategory();
+    this.getCurrentDish(this.dishId);
   }
 
   toggleCategory(cateId: number) {
     let isChecked = $(`#cb-category-${cateId}`).is(':checked');
     if (isChecked) {
-      this.currentDishCate.push({id: cateId});
+      this.categoryIds.push(cateId);
     } else {
-      for (let i = 0; i < this.currentDishCate.length; i++) {
-        if (this.currentDishCate[i].id == cateId) {
-          this.currentDishCate.splice(i, 1);
+      for (let i = 0; i < this.categoryIds.length; i++) {
+        if (this.categoryIds[i] == cateId) {
+          this.categoryIds.splice(i, 1);
         }
       }
     }
   }
 
+  getNewCategories(){
+    // for
+  }
+
   getCurrentDish(id) {
-    this.dishService.getById(id).subscribe(currentDishBE => {
-      this.dishForm.get('name').setValue(currentDishBE.name);
-      this.dishForm.get('price').setValue(currentDishBE.price);
-      this.dishForm.get('description').setValue(currentDishBE.description);
-      this.merchant = currentDishBE.merchant;
-      this.dishId = currentDishBE.id;
-      this.currentDishCate = currentDishBE.categories;
-      for (let cate of currentDishBE.categories) {
-        this.categoryId.push(cate.id);
+    this.dishService.getById(id).subscribe(dish => {
+      this.dish = dish;
+      for (let cate of dish.categories) {
+        this.categoryIds.push(cate.id);
       }
+
+      this.nameControl.setValue(this.dish.name);
+      this.priceControl.setValue(this.dish.price);
+      this.descriptionControl.setValue(this.dish.description);
     });
     // tất cả cate trong DB cái nào nằm trong danh sách cate của currentDish thì tick
     // kiểm tra 1 số number có nằm trong 1 mảng number không
     }
 
+  // editMerchantDish() {
+  //   if (this.dishForm.valid) {
+  //     this.dish.name = this.dishForm.value.name;
+  //     this.dish.price = this.dishForm.value.price;
+  //     this.dish.description = this.dishForm.value.description;
+  //     this.dish.categories = this.currentDishCate;
+  //     this.dish.merchant = this.merchant;
+  //     this.dishService.updateDish(this.dishId, this.dish).subscribe(() => {
+  //       this.notificationService.showMessage('success', 'Chỉnh sửa món ăn thành công');
+  //       this.router.navigateByUrl('/merchant');
+  //     }, error => {
+  //       this.notificationService.showMessage('error', 'Đã xảy ra lỗi');
+  //     });
+  //   } else {
+  //     this.notificationService.showMessage('error', 'Vui lòng kiểm tra lại thông tin nhập');
+  //   }
+  // }
+  getMerchant() {
+    this.merchantService.getCurrentUserMerchant().subscribe(merchantBE => {
+      this.merchant = merchantBE;
+      // console.log(this.merchant);
+    });
+    // console.log(this.merchant);
+  }
   editMerchantDish() {
     if (this.dishForm.valid) {
-      this.dish.name = this.dishForm.value.name;
-      this.dish.price = this.dishForm.value.price;
-      this.dish.description = this.dishForm.value.description;
-      this.dish.categories = this.currentDishCate;
-      this.dish.merchant = this.merchant;
-      this.dishService.updateDish(this.dishId, this.dish).subscribe(() => {
-        this.notificationService.showMessage('success', 'Chỉnh sửa món ăn thành công');
+      let changedDish = new FormData();
+      changedDish.append('id', '' + this.dishId);
+      changedDish.append('name', this.dishForm.get('name').value);
+      changedDish.append('price', this.dishForm.get('price').value);
+      changedDish.append('description', this.dishForm.get('description').value);
+
+
+      for (let i = 0; i < this.categoryIds.length; i++) {
+        changedDish.append('categories[]', '' + this.categoryIds[i]);
+      }
+
+      const imageFile = (document.getElementById('image') as HTMLInputElement).files;
+      if (imageFile.length > 0) {
+        changedDish.append('image', imageFile[0]);
+        console.log(changedDish.get('image'));
+      }
+      this.dishService.updateDish(this.dishId, changedDish).subscribe(() => {
+        this.notificationService.showMessage('success', 'Sửa món ăn thành công');
         this.router.navigateByUrl('/merchant');
       }, error => {
-        this.notificationService.showMessage('error', 'Đã xảy ra lỗi');
+        this.notificationService.showMessage('error', error.error.message);
       });
-    } else {
-      this.notificationService.showMessage('error', 'Vui lòng kiểm tra lại thông tin nhập');
     }
   }
 }

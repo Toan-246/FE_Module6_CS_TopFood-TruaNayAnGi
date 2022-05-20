@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Merchant} from '../../model/merchant';
 
 @Component({
   selector: 'app-merchant-vsattp',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MerchantVsattpComponent implements OnInit {
 
-  constructor() { }
+  @Input()
+  merchant: Merchant;
+
+  constructor() {
+  }
 
   ngOnInit() {
   }
