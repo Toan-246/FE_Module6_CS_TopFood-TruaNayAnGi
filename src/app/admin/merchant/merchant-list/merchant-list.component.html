@@ -42,7 +42,7 @@
                   <td>{{merchant.phone}}</td>
                   <td>{{merchant.openTime}}</td>
                   <td>{{merchant.closeTime}}</td>
-                  <td>{{merchant.vsattp}}</td>
+                  <td>{{(merchant.vsattp && merchant.vsattp.length > 0)? "Có chứng nhận"  : '-'}}</td>
                   <td>{{merchant.active? 'Đang hoạt đông' : 'Đã khóa'}}</td>
                   <td>
                     <button *ngIf="merchant.active" class="btn btn-danger" (click)="toggleMerchant(merchant)">Khóa</button>

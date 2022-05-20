@@ -41,6 +41,7 @@ export class DetailFoodComponent implements OnInit {
 
   ngOnInit() {
     document.getElementById('dish-image').scrollIntoView(true);
+
     this.quantity = 1;
     this.getDish();
     this.getMerchant();
@@ -58,6 +59,7 @@ export class DetailFoodComponent implements OnInit {
       (response) => {
         this.dish = response as Dish;
         this.calculateDishTotal();
+        window.scroll(0,0);
       }
     );
   }
