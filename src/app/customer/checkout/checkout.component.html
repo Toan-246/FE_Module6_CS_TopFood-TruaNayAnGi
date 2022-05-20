@@ -37,9 +37,9 @@
                         </p>
                         <p class="mb-0 text-black font-weight-bold">
                         <p class="mb-0 text-black font-weight-bold"><button class="btn btn-sm btn-secondary mr-2"
-                                                                       data-toggle="modal" data-target="#edit-delivery-modal"
+                                                                            data-toggle="modal" data-target="#edit-delivery-modal"
                                                                             (click)="putToModalEditDeliveryInfo(defaultDeliveryInfo)">
-                        <i class="icofont-ui-edit"></i> Sửa</button>
+                          <i class="icofont-ui-edit"></i> Sửa</button>
                           <span>30MIN</span>
 
                         </p>
@@ -62,11 +62,11 @@
                             Chọn địa chỉ
                           </button>
                         <p class="mb-0 text-black font-weight-bold"><button class="btn btn-sm btn-secondary mr-2"
-                                                                       data-toggle="modal" data-target="#edit-delivery-modal"
-                                                                        (click)="putToModalEditDeliveryInfo(deliveryInfo)"><i
+                                                                            data-toggle="modal" data-target="#edit-delivery-modal"
+                                                                            (click)="putToModalEditDeliveryInfo(deliveryInfo)"><i
                           class="icofont-ui-edit"></i> Sửa</button>
                           <span>45MIN</span>
-                      </p>
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -82,7 +82,7 @@
                         <p>Địa chỉ giao hàng mới</p>
                         <p class="mb-0 text-black font-weight-bold"><a data-toggle="modal"
                                                                        data-target="#create-delivery-modal"
-                                                                       class="btn btn-sm btn-primary mr-2">
+                                                                       class="btn btn-sm btn-primary mr-2" (click)="clearForm()">
                           Thêm địa chỉ
                           giao hàng mới</a>
                         </p>
@@ -151,8 +151,8 @@
       </div>
       <div class="col-md-4">
         <app-cart-table-checkout [merchantId]="merchantId" [showCheckoutButton]="false"
-        [showRestaurantNote]="true"
-                        (changeCart)="changeCartFromChildComponent($event)"
+                                 [showRestaurantNote]="true"
+                                 (changeCart)="changeCartFromChildComponent($event)"
         ></app-cart-table-checkout>
 
       </div>
@@ -171,29 +171,16 @@
           <div class="mb-3">
             <label for="name" class="form-label">Họ và tên</label>
             <input type="text" class="form-control" id="name" formControlName="name">
-            <div class="validate" [hidden]="nameControl.valid || !nameControl.touched">
-              <div *ngIf="nameControl.errors?.required">Nhập tên</div>
-            </div>
-
             <!--            <p class="validate" [hidden]="fullName.valid || !fullName.touched">Nhập Họ và tên</p>-->
           </div>
           <div class="mb-3">
             <label for="phone" class="form-label">Số điện thoại</label>
             <input type="text" class="form-control" id="phone" formControlName="phone">
-            <div class="validate" [hidden]="phoneControl.valid || !phoneControl.touched">
-              <div *ngIf="phoneControl.errors?.required">Nhập số điện thoại</div>
-              <div *ngIf="phoneControl.errors?.pattern">Sai định dạng số điện thoại</div>
-            </div>
-
             <!--            <p class="validate" [hidden]="phone.valid || !phone.touched">Định dạng số điện thoại không đúng</p>-->
           </div>
           <div class="mb-3">
             <label for="address" class="form-label">Địa chỉ</label>
             <input type="text" class="form-control" id="address" formControlName="address">
-            <div class="validate" [hidden]="addressControl.valid || !addressControl.touched">
-              <div *ngIf="addressControl.errors?.required">Nhập địa chỉ giao hàng</div>
-            </div>
-
           </div>
         </div>
         <div class="modal-footer">
@@ -214,23 +201,18 @@
         </div>
         <div class="modal-body">
           <div class="mb-3">
-            <label for="name1" class="form-label">Họ và tên</label>
-            <input type="text" class="form-control" id="name1" formControlName="name1">
-
+            <label for="name" class="form-label">Họ và tên</label>
+            <input type="text" class="form-control" id="name" formControlName="name">
             <!--            <p class="validate" [hidden]="fullName.valid || !fullName.touched">Nhập Họ và tên</p>-->
           </div>
           <div class="mb-3">
-            <label for="phone1" class="form-label">Số điện thoại</label>
-            <input type="text" class="form-control" id="phone1" formControlName="phone1">
-
+            <label for="phone" class="form-label">Số điện thoại</label>
+            <input type="text" class="form-control" id="phone" formControlName="phone">
             <!--            <p class="validate" [hidden]="phone.valid || !phone.touched">Định dạng số điện thoại không đúng</p>-->
           </div>
           <div class="mb-3">
-            <label for="address1" class="form-label">Địa chỉ</label>
-            <input type="text" class="form-control" id="address1" formControlName="address1">
-            <div class="validate" [hidden]="addressControl.valid || !addressControl.touched">
-              <div *ngIf="addressControl.errors?.required">Nhập địa chỉ giao hàng</div>
-            </div>
+            <label for="address" class="form-label">Địa chỉ</label>
+            <input type="text" class="form-control" id="address" formControlName="address">
           </div>
         </div>
         <div class="modal-footer">
