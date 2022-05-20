@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
           break;
         }
         case 'ROLE_MERCHANT': {
-          this.router.navigateByUrl('/merchant');
+          this.router.navigateByUrl('/home');
           break;
         }
       }
