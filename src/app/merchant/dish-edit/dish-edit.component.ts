@@ -67,6 +67,7 @@ export class DishEditComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getMerchant()
     this.getAllCategory();
     this.getCurrentDish(this.dishId);
   }
@@ -120,7 +121,13 @@ export class DishEditComponent implements OnInit {
   //     this.notificationService.showMessage('error', 'Vui lòng kiểm tra lại thông tin nhập');
   //   }
   // }
-
+  getMerchant() {
+    this.merchantService.getCurrentUserMerchant().subscribe(merchantBE => {
+      this.merchant = merchantBE;
+      // console.log(this.merchant);
+    });
+    // console.log(this.merchant);
+  }
   editMerchantDish() {
     if (this.dishForm.valid) {
       let changedDish = new FormData();
