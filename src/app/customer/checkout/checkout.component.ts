@@ -10,6 +10,7 @@ import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {NotificationService} from '../../service/notification/notification.service';
 import {User} from '../../model/user';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+
 declare var $: any;
 
 @Component({
@@ -31,16 +32,16 @@ export class CheckoutComponent implements OnInit {
   otherDeliveryInfo: DeliveryInfo[] = [];
   restaurantNote: string;
   shippingNote: string;
-  deliveryInfo: DeliveryInfo={};
+  deliveryInfo: DeliveryInfo = {};
   editDeliveryInfo: DeliveryInfo = {};
-  createDeliveryInfo: DeliveryInfo={};
+  createDeliveryInfo: DeliveryInfo = {};
 
   deliveryInfoForm: FormGroup = new FormGroup({
     name: new FormControl(''),
     address: new FormControl(''),
     phone: new FormControl('', [Validators.pattern
     ('^[0](\\+\\d{1,3}\\s?)?((\\(\\d{3}\\)\\s?)|(\\d{3})(\\s|-?))(\\d{3}(\\s|-?))(\\d{3})(\\s?(([E|e]xt[:|.|]?)|x|X)(\\s?\\d+))?')]),
-  })
+  });
 
   constructor(private authService: AuthService,
               private cartService: CartService,
@@ -94,7 +95,7 @@ export class CheckoutComponent implements OnInit {
     this.cart = $event;
   }
 
-  putToModalEditDeliveryInfo(deliveryInfo: DeliveryInfo){
+  putToModalEditDeliveryInfo(deliveryInfo: DeliveryInfo) {
     this.deliveryInfoId = deliveryInfo.id;
     this.deliveryInfoForm.get('name').setValue(deliveryInfo.name);
     this.deliveryInfoForm.get('phone').setValue(deliveryInfo.phone);
@@ -106,34 +107,35 @@ export class CheckoutComponent implements OnInit {
     this.editDeliveryInfo = this.deliveryInfoForm.value;
     this.editDeliveryInfo.id = this.deliveryInfoId;
     console.log(this.editDeliveryInfo);
-    this.deliveryInfoService.updateDeliveryInfo(this.deliveryInfoId,this.editDeliveryInfo).subscribe(()=>{
+    this.deliveryInfoService.updateDeliveryInfo(this.deliveryInfoId, this.editDeliveryInfo).subscribe(() => {
       this.notificationService.showMessage('success', 'Cập nhật thành công');
       this.getDeliveryInfo();
-    },error => {
+    }, error => {
       this.notificationService.showMessage('error', error.error.message);
-    },()=>{
+    }, () => {
       $('edit-delivery-modal').modal('hide');
     });
 
   }
+
   submitFormCreateDeliveryInfo() {
     this.createDeliveryInfo = this.deliveryInfoForm.value;
-    this.createDeliveryInfo.user = {id: this.authService.getCurrentUserId()}
+    this.createDeliveryInfo.user = {id: this.authService.getCurrentUserId()};
     console.log(this.createDeliveryInfo);
-    this.deliveryInfoService.createDelivery(this.createDeliveryInfo).subscribe(()=>{
+    this.deliveryInfoService.createDelivery(this.createDeliveryInfo).subscribe(() => {
       this.notificationService.showMessage('success', 'Thêm thành công');
       this.getDeliveryInfo();
-    },error => {
+    }, error => {
       this.notificationService.showMessage('error', error.error.message);
-    },()=>{
+    }, () => {
       $('create-delivery-modal').modal('hide');
     });
 
   }
 
-  chooseDeliveryInfo(userId:number,deliveryInfoId:number) {
-    this.deliveryInfoService.setDeliveryInfoToSelected(userId,deliveryInfoId).subscribe(()=>{
-      this.getDeliveryInfo()
+  chooseDeliveryInfo(userId: number, deliveryInfoId: number) {
+    this.deliveryInfoService.setDeliveryInfoToSelected(userId, deliveryInfoId).subscribe(() => {
+      this.getDeliveryInfo();
     });
     console.log(`make delivery info default:  idDelivery=${deliveryInfoId} userId=${userId}`);
   }
@@ -154,5 +156,10 @@ export class CheckoutComponent implements OnInit {
     );
   }
 
+  clearForm() {
+    this.deliveryInfoForm.get('name').setValue('');
+    this.deliveryInfoForm.get('address').setValue('');
+    this.deliveryInfoForm.get('phone').setValue('');
+  }
 
 }
