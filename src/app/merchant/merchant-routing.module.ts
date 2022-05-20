@@ -11,6 +11,7 @@ import {CountOrdersByUserComponent} from './count-orders-by-user/count-orders-by
 import {ListOrderByCustomerComponent} from './list-order-by-customer/list-order-by-customer.component';
 import {OrderViewComponent} from './order-view/order-view.component';
 import {RevenueComponent} from './revenue/revenue.component';
+import {BannedComponent} from './banned/banned.component';
 
 const routes: Routes = [
 
@@ -61,6 +62,10 @@ const routes: Routes = [
   {
     path: 'dish/create1',
     component: DishCreateComponent
+  },
+  {
+    path: 'banned',
+    component: BannedComponent
   }
 ];
 

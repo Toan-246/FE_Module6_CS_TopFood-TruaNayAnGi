@@ -5,6 +5,7 @@ import {Dish} from '../../model/dish';
 import {DishService} from '../../service/dish/dish.service';
 import {AuthService} from '../../service/auth/auth.service';
 import {Order} from '../../model/order';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-dishes',
@@ -18,7 +19,8 @@ export class DishesComponent implements OnInit {
 
   constructor(private merchantService: MerchantService,
               private dishService: DishService,
-              private authService: AuthService
+              private authService: AuthService,
+              private router: Router
   ) {
   }
 
@@ -29,7 +31,12 @@ export class DishesComponent implements OnInit {
 
   getMerchant() {
     this.merchantService.getCurrentUserMerchant().subscribe(
-      merchant => this.merchant = merchant
+      merchant => {
+        this.merchant = merchant;
+        if (!merchant.active) {
+          this.router.navigateByUrl("/merchant/banned");
+        }
+      }
     );
   }
 

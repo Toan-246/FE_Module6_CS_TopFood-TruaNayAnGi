@@ -101,6 +101,7 @@ export class CustomerComponent implements OnInit {
 
   toggleCheckbox(categoryId: number) {
     this.isLoadMore = false; // load từ đầu
+    this.searchForm.limit = 6;
     this.endOfPage = false;
     this.quickSearchCategoryId = -1;  // check box thì không quick search
     const index: number = this.findInSelectedCategory(categoryId);

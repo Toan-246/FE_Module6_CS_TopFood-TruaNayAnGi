@@ -24,7 +24,7 @@
             <table id="example2" class="table table-bordered table-hover">
               <thead>
               <tr>
-                <th>#</th>
+                <th>STT</th>
                 <th>Mã đơn hàng</th>
                 <th>Tên khách hàng</th>
                 <th>Giá</th>
@@ -38,9 +38,9 @@
               <tbody>
               <tr *ngFor="let order of orders; index as i">
                 <td>{{i + 1}}</td>
-                <td>{{order.id}}</td>
+                <td>#{{order.id}}</td>
                 <td>{{order.full_Name}}</td>
-                <td>{{order.orderPrice}}</td>
+                <td>{{order.orderPrice | number}}</td>
                 <td>{{order.address}}</td>
                 <td>{{order.phone}}</td>
                 <td>{{order.create_Date | date: 'dd/MM/yyyy hh:mm' }}</td>

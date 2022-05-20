@@ -3,22 +3,22 @@
     <div class="row">
       <div class="col-md-12">
         <ul class="nav" id="pills-tab" role="tablist">
-          <li class="nav-item">
+          <li *ngIf="merchant.active" class="nav-item">
             <a class="nav-link " data-toggle="pill"
                routerLink="/merchant" role="tab" aria-controls="pills-order-online"
                aria-selected="true">Món ăn</a>
           </li>
-          <li class="nav-item">
+          <li *ngIf="merchant.active"  class="nav-item">
             <a class="nav-link "data-toggle="pill"
                routerLink="/merchant/orders" role="tab" aria-controls="pills-order-online"
                aria-selected="true">Đơn hàng</a>
           </li>
-          <li class="nav-item">
+          <li *ngIf="merchant.active"  class="nav-item">
             <a class="nav-link " data-toggle="pill"
                routerLink="/merchant/{{merchant.id}}/revenue" role="tab" aria-controls="pills-order-online"
                aria-selected="true">Doanh thu</a>
           </li>
-          <li class="nav-item">
+          <li *ngIf="merchant.active"  class="nav-item">
             <a class="nav-link " data-toggle="pill"
                routerLink="/merchant/info" role="tab" aria-controls="pills-order-online"
                aria-selected="true">Thông tin</a>

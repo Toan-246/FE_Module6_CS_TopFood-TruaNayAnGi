@@ -20,12 +20,13 @@ import { CountOrdersByUserComponent } from './count-orders-by-user/count-orders-
 import { ListOrderByCustomerComponent } from './list-order-by-customer/list-order-by-customer.component';
 import {OrderViewComponent} from './order-view/order-view.component';
 import { RevenueComponent } from './revenue/revenue.component';
+import { BannedComponent } from './banned/banned.component';
 
 @NgModule({
   declarations: [FoodListComponent, MyMerchantBannerComponent,
     SecondNavbarComponent, DishesComponent, InfoComponent,
     ListOrderByDishComponent, DishCreateComponent, DishEditComponent, DishCeaseComponent, OrderListComponent,
-    CountOrdersByDishComponent, CountOrdersByUserComponent, ListOrderByCustomerComponent,OrderViewComponent, RevenueComponent
+    CountOrdersByDishComponent, CountOrdersByUserComponent, ListOrderByCustomerComponent,OrderViewComponent, RevenueComponent, BannedComponent
   ],
     imports: [
         SharedModule,
